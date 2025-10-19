@@ -20,6 +20,6 @@
     'installable': True,
     'auto_install': False,
     'images': [
-        'static/description/logo.jpeg'
+        'static/description/logoCUA.png'
     ],
 }
