@@ -1,3 +1,3 @@
 # odoo_modules
 
-add some info
+Odoo modules for Caritas Ukraine
