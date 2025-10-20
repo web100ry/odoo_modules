@@ -1,0 +1,14 @@
+<odoo>
+  <record id="hr_hospital_1" model="hospital.doctor">
+    <field name="name">Hospital 1</field>
+    <field name="branchid">KML</field>
+    <field name="description">About Hospital 1 ...</field>
+    <field name="hospital_id">1</field>
+  </record>
+
+  <record id="hr_hospital_2" model="hospital.doctor">
+    <field name="name">Hospital 2</field>
+    <field name="branchid">KOL</field>
+    <field name="description">About Hospital 2 ...</field>
+  </record>
+</odoo>

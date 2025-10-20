@@ -6,7 +6,7 @@
     'category': 'Customizations',
     # тут перелік категорій odoo/odoo/addons/base/data/ir_module_category_data.xml
     'license': 'LGPL-3',
-    'version': '18.0.0.0.3',
+    'version': '18.0.2.1.0',
     #18.0.X.Y.Z
     #18.0 odoo version
     #X module number модель або представлення змінено
@@ -25,6 +25,7 @@
         'views/hr_hospital_hospital_views.xml',
     ],
     'demo': [
+        'demo/hr_hospital_hospital_demo.xml',
     ],
     'installable': True,
     'auto_install': False,

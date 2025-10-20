@@ -6,9 +6,13 @@
 
   <menuitem id="hr_hospital_menu_catalog"
             parent="hr_hospital_main_menu"
-            name="Catalog" sequence="100"/>
+            name="Hospital" sequence="100"/>
 
-  <menuitem id="hr_hospital_menu_main_settings"
+  <menuitem id="hr_hospital_doctor_menu_catalog"
             parent="hr_hospital_main_menu"
-            name="Settings" sequence="900"/>
+            name="Doctor" sequence="900"/>
+
+  <menuitem id="hr_hospital_patient_menu_catalog"
+            parent="hr_hospital_main_menu"
+            name="Patient" sequence="900"/>
 </odoo>
