@@ -19,10 +19,14 @@
       <form>
         <sheet>
           <group>
-            <field name="name"/>
-            <field name="age"/>
-            <field name="doctor_id"/>
-            <field name="disease_id"/>
+            <group>
+              <field name="name"/>
+              <field name="age"/>
+            </group>
+            <group>
+              <field name="doctor_id"/>
+              <field name="disease_id"/>
+            </group>
           </group>
         </sheet>
       </form>
@@ -31,7 +35,10 @@
 
   <record id="action_hr_hospital_patient" model="ir.actions.act_window">
     <field name="name">Patients</field>
+    <field name="type">ir.actions.act_window</field>
     <field name="res_model">hr.hospital.patient</field>
     <field name="view_mode">list,form</field>
   </record>
+
+
 </odoo>

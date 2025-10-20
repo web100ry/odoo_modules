@@ -2,13 +2,29 @@
 
   <menuitem id="hr_hospital_main_menu"
             web_icon="hr_hospital,static/description/icon.png"
-            name="Hospitals" sequence="300"/>
+            name="Caritas Ukraine" sequence="300"/>
 
   <menuitem id="hr_hospital_menu_catalog"
             parent="hr_hospital_main_menu"
-            name="Hospital" sequence="100"/>
+            name="Catalog" sequence="100"/>
+
+  <menuitem id="hr_hospital_doctor_menu_catalog"
+            parent="hr_hospital_menu_catalog"
+            action="action_hr_hospital_doctor_window"
+            name="Doctors" sequence="200"/>
+
+  <menuitem id="hr_hospital_patient_menu_catalog"
+            parent="hr_hospital_menu_catalog"
+            action="action_hr_hospital_patient"
+            name="Patients" sequence="300"/>
+
+  <menuitem id="hr_hospital_visit_menu_catalog"
+            parent="hr_hospital_menu_catalog"
+            action="action_hr_hospital_visit"
+            name="Visits" sequence="400"/>
 
   <menuitem id="hr_hospital_menu_main_settings"
             parent="hr_hospital_main_menu"
-            name="Patient" sequence="900"/>
+            name="Settings" sequence="900"/>
+
 </odoo>

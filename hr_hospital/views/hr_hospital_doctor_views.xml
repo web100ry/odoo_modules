@@ -7,7 +7,6 @@
         <field name="name"/>
         <field name="age"/>
         <field name="gender"/>
-        <field name="gender"/>
         <field name="speciality"/>
         <field name="description"/>
         <field name="hospital_id"/>
@@ -25,7 +24,6 @@
             <field name="name"/>
             <field name="age"/>
             <field name="gender"/>
-            <field name="gender"/>
             <field name="speciality"/>
             <field name="description"/>
             <field name="hospital_id"/>
@@ -35,9 +33,15 @@
     </field>
   </record>
 
-  <record id="action_hr_hospital_doctor" model="ir.actions.act_window">
+  <record id="action_hr_hospital_doctor_window" model="ir.actions.act_window">
     <field name="name">Doctors</field>
+    <field name="type">ir.actions.act_window</field>
     <field name="res_model">hr.hospital.doctor</field>
     <field name="view_mode">list,form</field>
   </record>
+
+  <menuitem id="hr_hospital_menu_doctor"
+            action="action_hr_hospital_doctor_window"
+            parent="hr_hospital_doctor_menu_catalog"
+            name="Doctors" sequence="200"/>
 </odoo>

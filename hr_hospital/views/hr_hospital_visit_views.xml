@@ -3,11 +3,11 @@
     <field name="name">hr.hospital.visit.list</field>
     <field name="model">hr.hospital.visit</field>
     <field name="arch" type="xml">
-      <tree>
+      <list>
         <field name="patient_id"/>
         <field name="doctor_id"/>
         <field name="visit_date"/>
-      </tree>
+      </list>
     </field>
   </record>
 
@@ -30,6 +30,7 @@
 
   <record id="action_hr_hospital_visit" model="ir.actions.act_window">
     <field name="name">Visits</field>
+    <field name="type">ir.actions.act_window</field>
     <field name="res_model">hr.hospital.visit</field>
     <field name="view_mode">list,form</field>
   </record>

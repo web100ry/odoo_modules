@@ -4,14 +4,8 @@
     'author': 'Valerii Ivaniuk',
     'website': 'https://www.vivaniuk.pp.ua/',
     'category': 'Customizations',
-    # тут перелік категорій odoo/odoo/addons/base/data/ir_module_category_data.xml
     'license': 'LGPL-3',
-    'version': '18.0.2.1.2',
-    #18.0.X.Y.Z
-    #18.0 odoo version
-    #X module number модель або представлення змінено
-    #Y release number додаються нові функції
-    #Z version number виправлення помилок
+    'version': '18.0.2.1.4',
     'description': "Даний модуль створено в рамках уроків ODOO Shool",
     'depends': [
         'base',
@@ -21,8 +15,13 @@
     },
     'data': [
         'security/ir.model.access.csv',
-        'views/hr_hospital_menu.xml',
+        # load actions first (views define actions)
         'views/hr_hospital_hospital_views.xml',
+        'views/hr_hospital_doctor_views.xml',
+        'views/hr_hospital_patient_views.xml',
+        'views/hr_hospital_visit_views.xml',
+        # load menus last (menus reference actions)
+        'views/hr_hospital_menu.xml',
     ],
     'demo': [
         'demo/hr_hospital_hospital_demo.xml',
@@ -33,20 +32,4 @@
         'static/description/icon.png',
     ],
     'application': False,
-    # 'assets':'',
-    # Статичні файли
-    # 'installable': True,
-    # Можливість встановлення модулю через інтерфейс
-    # 'maintainers':'',
-    # Організація, яка підтримує модуль
-    # 'summary':'',
-    # Опис з ключовими словами для пошуку
-    # 'pre_init_hook':'',
-    # 'post_init_hook':'',
-    # 'uninstall_hook':'',
-    # запуск методів у відповідні моменти (перед, після встановленняЮ або деінсталяції модуля)'
-    # 'images':'',
-    # 'price': '',
-    # 'currency':'',
-
 }
