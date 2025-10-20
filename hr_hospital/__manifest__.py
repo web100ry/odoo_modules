@@ -5,8 +5,8 @@
     'website': 'https://www.vivaniuk.pp.ua/',
     'category': 'Customizations',
     # тут перелік категорій odoo/odoo/addons/base/data/ir_module_category_data.xml
-    'license': 'OPL-1',
-    'version': '18.0.0.0.0',
+    'license': 'LGPL-3',
+    'version': '18.0.0.0.3',
     #18.0.X.Y.Z
     #18.0 odoo version
     #X module number модель або представлення змінено
@@ -20,6 +20,9 @@
         'python': [],
     },
     'data': [
+        'security/ir.model.access.csv',
+        'views/hr_hospital_menu.xml',
+        'views/hr_hospital_hospital_views.xml',
     ],
     'demo': [
     ],
