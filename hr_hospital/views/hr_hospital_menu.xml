@@ -6,20 +6,21 @@
 
   <menuitem id="hr_hospital_menu_catalog"
             parent="hr_hospital_main_menu"
-            name="Catalog" sequence="100"/>
+            action="action_hr_hospital_hospital_window"
+            name="Hospitals" sequence="100"/>
 
   <menuitem id="hr_hospital_doctor_menu_catalog"
-            parent="hr_hospital_menu_catalog"
+            parent="hr_hospital_main_menu"
             action="action_hr_hospital_doctor_window"
             name="Doctors" sequence="200"/>
 
   <menuitem id="hr_hospital_patient_menu_catalog"
-            parent="hr_hospital_menu_catalog"
+            parent="hr_hospital_main_menu"
             action="action_hr_hospital_patient"
             name="Patients" sequence="300"/>
 
   <menuitem id="hr_hospital_visit_menu_catalog"
-            parent="hr_hospital_menu_catalog"
+            parent="hr_hospital_main_menu"
             action="action_hr_hospital_visit"
             name="Visits" sequence="400"/>
 

@@ -1,5 +1,5 @@
 <odoo>
-  <record id="hr_patient_1" model="hospital.patient">
+  <record id="hr_patient_1" model="hr.hospital.patient">
     <field name="name">Ганна Білецька</field>
     <field name="age">25</field>
     <field name="gender">Female</field>
@@ -7,7 +7,7 @@
     <field name="disease_id" ref="hr_disease_flu"/>
   </record>
 
-  <record id="hr_patient_2" model="hospital.patient">
+  <record id="hr_patient_2" model="hr.hospital.patient">
     <field name="name">Іван Петрененко</field>
     <field name="age">40</field>
     <field name="gender">Male</field>
@@ -15,7 +15,7 @@
     <field name="disease_id" ref="hr_disease_covid"/>
   </record>
 
-  <record id="hr_patient_3" model="hospital.patient">
+  <record id="hr_patient_3" model="hr.hospital.patient">
     <field name="name">Ольга Ковальчук</field>
     <field name="age">32</field>
     <field name="gender">Female</field>

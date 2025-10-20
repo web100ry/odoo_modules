@@ -1,18 +1,16 @@
-<odoo>
-  <data noupdate="1">
-    <record id="hrh_disease_flu" model="hr.hospital.disease">
-      <field name="name">Flu</field>
-      <field name="description">Influenza virus infection</field>
-    </record>
+<odoo noupdate="1">
+  <record id="hr_disease_flu" model="hr.hospital.disease">
+    <field name="name">Flu</field>
+    <field name="description">Influenza virus infection</field>
+  </record>
 
-    <record id="hrh_disease_covid" model="hr.hospital.disease">
-      <field name="name">COVID-19</field>
-      <field name="description">Respiratory infection caused by SARS-CoV-2</field>
-    </record>
+  <record id="hr_disease_covid" model="hr.hospital.disease">
+    <field name="name">COVID-19</field>
+    <field name="description">Respiratory infection caused by SARS-CoV-2</field>
+  </record>
 
-    <record id="hrh_disease_migraine" model="hr.hospital.disease">
-      <field name="name">Migraine</field>
-      <field name="description">Severe headache with sensitivity to light</field>
-    </record>
-  </data>
+  <record id="hr_disease_migraine" model="hr.hospital.disease">
+    <field name="name">Migraine</field>
+    <field name="description">Severe headache with sensitivity to light</field>
+  </record>
 </odoo>

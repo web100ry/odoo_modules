@@ -1,28 +1,28 @@
 <odoo>
-  <record id="hr_doctor_1" model="hospital.doctor">
+  <record id="hr_doctor_1" model="hr.hospital.doctor">
     <field name="name">Dr. John Smith</field>
-    <field name="age">40</field>
-    <field name="gender">Male</field>
-    <field name="speciality">Therapist</field>
-    <field name="description">Therapist is a ...</field>
-    <field name="hospital_id">1</field>
+        <field name="age">40</field>
+        <field name="gender">Male</field>
+        <field name="speciality">Therapist</field>
+        <field name="description">Therapist is a ...</field>
+        <field name="hospital_id" ref="hr_hospital_1"/>
   </record>
 
-  <record id="hr_doctor_2" model="hospital.doctor">
-    <field name="name">Dr. Emily Brown</field>
-    <field name="age">38</field>
-    <field name="gender">Female</field>
-    <field name="speciality">Cardiologist</field>
-    <field name="description">Cardiologist  is a ...</field>
-    <field name="hospital_id">2</field>
+  <record id="hr_doctor_2" model="hr.hospital.doctor">
+        <field name="name">Dr. Emily Brown</field>
+        <field name="age">38</field>
+        <field name="gender">Female</field>
+        <field name="speciality">Cardiologist</field>
+        <field name="description">Cardiologist is a ...</field>
+
   </record>
 
-  <record id="hr_doctor_3" model="hospital.doctor">
-    <field name="name">Dr. Alex White</field>
-    <field name="age">54</field>
-    <field name="gender">Male</field>
-    <field name="speciality">Neurologist</field>
-    <field name="description">Neurologist  is a ...</field>
-    <field name="hospital_id">1</field>
+  <record id="hr_doctor_3" model="hr.hospital.doctor">
+        <field name="name">Dr. Alex White</field>
+        <field name="age">54</field>
+        <field name="gender">Male</field>
+        <field name="speciality">Neurologist</field>
+        <field name="description">Neurologist is a ...</field>
+        <field name="hospital_id" ref="hr_hospital_1"/>
   </record>
 </odoo>
