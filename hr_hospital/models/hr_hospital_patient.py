@@ -9,5 +9,5 @@ class HrHospitalPatient(models.Model):
     age = fields.Integer()
     gender = fields.Selection(
         selection=[('male', 'Male'), ('female', 'Female')])
-    disease_id = fields.Many2one('hr.hospital.disease')
-    doctor_id = fields.Many2one('hr.hospital.doctor')
+    disease_id = fields.Many2one(comodel_name='hr.hospital.disease')
+    doctor_id = fields.Many2one(comodel_name='hr.hospital.doctor')

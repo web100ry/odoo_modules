@@ -11,4 +11,4 @@ class HrHospitalDoctor(models.Model):
         selection=[('male', 'Male'), ('female', 'Female')])
     speciality = fields.Char()
     description = fields.Text()
-    hospital_id = fields.Many2one('hr.hospital.hospital')
+    hospital_id = fields.Many2one(comodel_name='hr.hospital.hospital')
