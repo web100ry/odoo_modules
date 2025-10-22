@@ -1,4 +1,4 @@
-Odoo Module For Hospital
+Odoo Modules for Caritas Ukraine
 -----------
 Installation
 -----------
