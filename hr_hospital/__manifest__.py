@@ -23,9 +23,9 @@
         'views/hr_hospital_menu.xml',
     ],
     'demo': [
-        #'demo/hr_hospital_hospital_demo.xml',
-        #'demo/hr_hospital_doctor_demo.xml',
-        #'demo/hr_hospital_patient_demo.xml',
+        'demo/hr_hospital_hospital_demo.xml',
+        'demo/hr_hospital_doctor_demo.xml',
+        'demo/hr_hospital_patient_demo.xml',
     ],
     'installable': True,
     'auto_install': False,
