@@ -4,7 +4,11 @@
     <field name="model">hr.hospital.doctor</field>
     <field name="arch" type="xml">
       <list>
-        <field name="name"/>
+        <field name="last_name"/>
+        <field name="first_name"/>
+        <field name="middle_name"/>
+        <field name="phone"/>
+        <field name="email"/>
         <field name="age"/>
         <field name="gender"/>
         <field name="speciality"/>
@@ -21,7 +25,11 @@
       <form>
         <sheet>
           <group>
-            <field name="name"/>
+            <field name="last_name"/>
+            <field name="first_name"/>
+            <field name="middle_name"/>
+            <field name="phone"/>
+            <field name="email"/>
             <field name="age"/>
             <field name="gender"/>
             <field name="speciality"/>
