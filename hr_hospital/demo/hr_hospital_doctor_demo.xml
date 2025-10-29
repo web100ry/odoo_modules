@@ -1,6 +1,7 @@
 <odoo>
   <record id="hr_doctor_1" model="hr.hospital.doctor">
-    <field name="name">Dr. John Smith</field>
+    <field name="last_name">Smith</field>
+    <field name="first_name">Dr. John</field>
         <field name="age">40</field>
         <field name="gender">male</field>
         <field name="speciality">Therapist</field>
@@ -9,7 +10,8 @@
   </record>
 
   <record id="hr_doctor_2" model="hr.hospital.doctor">
-        <field name="name">Dr. Emily Brown</field>
+        <field name="last_name">Brown</field>
+        <field name="first_name">Dr. Emily</field>
         <field name="age">38</field>
         <field name="gender">female</field>
         <field name="speciality">Cardiologist</field>
@@ -18,7 +20,8 @@
   </record>
 
   <record id="hr_doctor_3" model="hr.hospital.doctor">
-        <field name="name">Dr. Alex White</field>
+        <field name="last_name">White</field>
+        <field name="first_name">Dr. Alex</field>
         <field name="age">54</field>
         <field name="gender">male</field>
         <field name="speciality">Neurologist</field>

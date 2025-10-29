@@ -12,3 +12,5 @@ class AbstractPerson(models.AbstractModel):
 
     phone = fields.Char()
     email = fields.Char()
+    gender = fields.Selection(
+        selection=[('male', 'Male'), ('female', 'Female'),('other', 'Other')])

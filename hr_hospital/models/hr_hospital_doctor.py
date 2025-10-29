@@ -6,8 +6,6 @@ class HrHospitalDoctor(models.Model):
     _inherit = ['hr.hospital.abstract.person']
 
     age = fields.Integer()
-    gender = fields.Selection(
-        selection=[('male', 'Male'), ('female', 'Female')])
     speciality = fields.Char()
     description = fields.Text()
     hospital_id = fields.Many2one(comodel_name='hr.hospital.hospital')
