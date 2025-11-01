@@ -18,10 +18,10 @@ class AbstractPerson(models.AbstractModel):
 
     birth_date = fields.Date(string="Дата народження")
     age = fields.Integer(string="Вік", compute="_compute_age", store=True, readonly=False)
+    fullname = fields.Char(compute="_compute_fullname", store=True, readonly=False)
 
     @api.depends('birth_date')
     def _compute_age(self):
-        """Обчислення віку при зміні дати народження."""
         today = date.today()
         for record in self:
             if record.birth_date:
@@ -33,3 +33,10 @@ class AbstractPerson(models.AbstractModel):
                 record.age = years
             else:
                 record.age = 0
+
+    @api.depends('first_name', 'middle_name', 'last_name')
+    def _compute_fullname(self):
+        for record in self:
+            parts = [record.last_name or '', record.first_name or '', record.middle_name or '']
+            record.fullname = ' '.join(p for p in parts if p).strip()
+

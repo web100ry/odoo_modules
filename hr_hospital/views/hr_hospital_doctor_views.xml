@@ -7,6 +7,7 @@
         <field name="last_name"/>
         <field name="first_name"/>
         <field name="middle_name"/>
+        <field name="fullname"/>
         <field name="phone"/>
         <field name="email"/>
         <field name="birth_date"/>
@@ -26,14 +27,21 @@
       <form>
         <sheet>
           <group>
-            <field name="last_name"/>
-            <field name="first_name"/>
-            <field name="middle_name"/>
+            <field name="last_name"
+                   onchange="1"
+                   context="{'trigger_field': 'last_name'}"/>
+            <field name="first_name"
+                   onchange="1"
+                   context="{'trigger_field': 'first_name'}"/>
+            <field name="middle_name"
+                   onchange="1"
+                   context="{'trigger_field': 'middle_name'}"/>
+            <field name="fullname" readonly="1"/>
             <field name="phone"/>
             <field name="email"/>
             <field name="birth_date"
-                                   onchange="1"
-                                   context="{'trigger_field': 'birth_date'}"/>
+                   onchange="1"
+                   context="{'trigger_field': 'birth_date'}"/>
             <field name="age" readonly="1"/>
             <field name="gender"/>
             <field name="speciality"/>
