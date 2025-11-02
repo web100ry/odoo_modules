@@ -22,6 +22,10 @@ class AbstractPerson(models.AbstractModel):
     age = fields.Integer(string="Вік", compute="_compute_age", store=True, readonly=False)
     fullname = fields.Char(compute="_compute_fullname", store=True, readonly=False)
 
+    country_id = fields.Many2one('res.country', string="Країна громадянства")
+    lang_id = fields.Many2one('res.lang', string="Мова спілкування")
+
+#Валідація через ValidationError
     @api.constrains('phone')
     def _check_phone_format(self):
         for record in self:
@@ -50,6 +54,6 @@ class AbstractPerson(models.AbstractModel):
     @api.depends('first_name', 'middle_name', 'last_name')
     def _compute_fullname(self):
         for record in self:
-            parts = [record.last_name or '', record.first_name or '', record.middle_name or '']
+            parts = [record.first_name or '', record.last_name or '', record.middle_name or '']
             record.fullname = ' '.join(p for p in parts if p).strip()
 
