@@ -4,8 +4,17 @@
     <field name="model">hr.hospital.patient</field>
     <field name="arch" type="xml">
       <list>
-        <field name="name"/>
+        <field name="first_name"/>
+        <field name="last_name"/>
+        <field name="middle_name"/>
+        <field name="fullname"/>
+        <field name="phone"/>
+        <field name="email"/>
+        <field name="birth_date"/>
         <field name="age"/>
+        <field name="gender"/>
+        <field name="country_id"/>
+        <field name="lang_id"/>
         <field name="doctor_id"/>
         <field name="disease_id"/>
       </list>
@@ -20,12 +29,29 @@
         <sheet>
           <group>
             <group>
-              <field name="name"/>
-              <field name="age"/>
+                <field name="last_name"
+                   onchange="1"
+                   context="{'trigger_field': 'last_name'}"/>
+                <field name="first_name"
+                   onchange="1"
+                   context="{'trigger_field': 'first_name'}"/>
+                <field name="middle_name"
+                   onchange="1"
+                   context="{'trigger_field': 'middle_name'}"/>
+                <field name="fullname" readonly="1"/>
+                <field name="birth_date"
+                   onchange="1"
+                   context="{'trigger_field': 'birth_date'}"/>
+                <field name="age" readonly="1"/>
+                <field name="gender"/>
             </group>
             <group>
-              <field name="doctor_id"/>
-              <field name="disease_id"/>
+                <field name="country_id"/>
+                <field name="lang_id"/>
+                <field name="phone"/>
+                <field name="email"/>
+                <field name="doctor_id"/>
+                <field name="disease_id"/>
             </group>
           </group>
         </sheet>

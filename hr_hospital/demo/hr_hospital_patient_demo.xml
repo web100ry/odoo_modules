@@ -1,6 +1,8 @@
 <odoo>
   <record id="hr_patient_1" model="hr.hospital.patient">
-    <field name="name">Ганна Білецька</field>
+    <field name="first_name">Білецька</field>
+    <field name="last_name">Ганна</field>
+    <field name="middle_name">Іванівна</field>
     <field name="age">25</field>
     <field name="gender">female</field>
     <field name="doctor_id" ref="hr_doctor_1"/>
@@ -8,7 +10,9 @@
   </record>
 
   <record id="hr_patient_2" model="hr.hospital.patient">
-    <field name="name">Іван Петрененко</field>
+    <field name="first_name">Петрененко</field>
+    <field name="last_name">Іван</field>
+    <field name="middle_name">Васильович</field>
     <field name="age">40</field>
     <field name="gender">male</field>
     <field name="doctor_id" ref="hr_doctor_2"/>
@@ -16,7 +20,9 @@
   </record>
 
   <record id="hr_patient_3" model="hr.hospital.patient">
-    <field name="name">Ольга Ковальчук</field>
+    <field name="first_name">Ковальчук</field>
+    <field name="last_name">Ольга</field>
+    <field name="middle_name">Петрівна</field>
     <field name="age">32</field>
     <field name="gender">female</field>
     <field name="doctor_id" ref="hr_doctor_3"/>
