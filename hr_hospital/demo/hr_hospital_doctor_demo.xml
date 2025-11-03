@@ -4,9 +4,9 @@
     <field name="first_name">Dr. John</field>
         <field name="age">40</field>
         <field name="gender">male</field>
-        <field name="speciality">Therapist</field>
         <field name="description">Therapist is a ...</field>
         <field name="hospital_id" ref="hr_hospital_1"/>
+        <field name="license_number">LN-35791</field>
   </record>
 
   <record id="hr_doctor_2" model="hr.hospital.doctor">
@@ -14,9 +14,9 @@
         <field name="first_name">Dr. Emily</field>
         <field name="age">38</field>
         <field name="gender">female</field>
-        <field name="speciality">Cardiologist</field>
         <field name="description">Cardiologist is a ...</field>
-
+        <field name="hospital_id" ref="hr_hospital_2"/>
+        <field name="license_number">LN-12345</field>
   </record>
 
   <record id="hr_doctor_3" model="hr.hospital.doctor">
@@ -24,8 +24,8 @@
         <field name="first_name">Dr. Alex</field>
         <field name="age">54</field>
         <field name="gender">male</field>
-        <field name="speciality">Neurologist</field>
         <field name="description">Neurologist is a ...</field>
         <field name="hospital_id" ref="hr_hospital_1"/>
+        <field name="license_number">LN-24689</field>
   </record>
 </odoo>

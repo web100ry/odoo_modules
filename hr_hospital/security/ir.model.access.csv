@@ -3,3 +3,4 @@ access_hr_hospital_hospital_user,access_hr_hospital_hospital_user,model_hr_hospi
 access_hr_hospital_doctor_user,access_hr_hospital_doctor_user,model_hr_hospital_doctor,base.group_user,1,1,1,1
 access_hr_hospital_patient_user,access_hr_hospital_patient_user,model_hr_hospital_patient,base.group_user,1,1,1,1
 access_hr_hospital_visit_user,access_hr_hospital_visit_manager,model_hr_hospital_visit,base.group_system,1,1,1,1
+access_hr_hospital_contact_person_user,hr.hospital.contact.person,model_hr_hospital_contact_person,base.group_user,1,1,1,1

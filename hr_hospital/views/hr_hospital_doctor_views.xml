@@ -1,71 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-  <record id="view_hr_hospital_doctor_list" model="ir.ui.view">
-    <field name="name">hr.hospital.doctor.list</field>
-    <field name="model">hr.hospital.doctor</field>
-    <field name="arch" type="xml">
-      <list>
-        <field name="first_name"/>
-        <field name="last_name"/>
-        <field name="middle_name"/>
-        <field name="fullname"/>
-        <field name="phone"/>
-        <field name="email"/>
-        <field name="birth_date"/>
-        <field name="age"/>
-        <field name="gender"/>
-        <field name="speciality"/>
-        <field name="country_id"/>
-        <field name="lang_id"/>
-        <field name="description"/>
-        <field name="hospital_id"/>
-      </list>
-    </field>
-  </record>
 
-  <record id="view_hr_hospital_doctor_form" model="ir.ui.view">
-    <field name="name">hr.hospital.doctor.form</field>
-    <field name="model">hr.hospital.doctor</field>
-    <field name="arch" type="xml">
-      <form>
-        <sheet>
-          <group>
-            <group>
-                <field name="last_name"
-                   onchange="1"
-                   context="{'trigger_field': 'last_name'}"/>
-                <field name="first_name"
-                   onchange="1"
-                   context="{'trigger_field': 'first_name'}"/>
-                <field name="middle_name"
-                   onchange="1"
-                   context="{'trigger_field': 'middle_name'}"/>
-                <field name="fullname" readonly="1"/>
-                <field name="birth_date"
-                   onchange="1"
-                   context="{'trigger_field': 'birth_date'}"/>
-                <field name="age" readonly="1"/>
-                <field name="gender"/>
-                <field name="speciality"/>
-                <field name="description"/>
-                <field name="hospital_id"/>
-            </group>
-            <group>
-                <field name="country_id"/>
-                <field name="lang_id"/>
+    <!-- Список (Tree View) -->
+    <record id="view_hr_hospital_doctor_list" model="ir.ui.view">
+        <field name="name">hr.hospital.doctor.list</field>
+        <field name="model">hr.hospital.doctor</field>
+        <field name="arch" type="xml">
+            <list string="Лікарі">
+                <field name="fullname"/>
+                <field name="speciality_id"/>
+                <field name="is_intern"/>
+                <field name="mentor_id"/>
+                <field name="license_number"/>
+                <field name="license_date"/>
+                <field name="experience_years"/>
+                <field name="rating"/>
+                <field name="education_country_id"/>
                 <field name="phone"/>
                 <field name="email"/>
-            </group>
-          </group>
-        </sheet>
-      </form>
-    </field>
-  </record>
+            </list>
+        </field>
+    </record>
 
-  <record id="action_hr_hospital_doctor_window" model="ir.actions.act_window">
-    <field name="name">Doctors</field>
-    <field name="type">ir.actions.act_window</field>
-    <field name="res_model">hr.hospital.doctor</field>
-    <field name="view_mode">list,form</field>
-  </record>
+    <!-- Форма (Form View) -->
+    <record id="view_hr_hospital_doctor_form" model="ir.ui.view">
+        <field name="name">hr.hospital.doctor.form</field>
+        <field name="model">hr.hospital.doctor</field>
+        <field name="arch" type="xml">
+            <form string="Лікар">
+                <sheet>
+                    <group>
+                        <!-- Ліва колонка -->
+                        <group>
+                            <field name="last_name"/>
+                            <field name="first_name"/>
+                            <field name="middle_name"/>
+                            <field name="fullname" readonly="1"/>
+                            <field name="birth_date"/>
+                            <field name="age" readonly="1"/>
+                            <field name="gender"/>
+                            <field name="speciality_id"/>
+                            <field name="is_intern"/>
+                            <field name="mentor_id"/>
+                        </group>
+
+                        <!-- Права колонка -->
+                        <group>
+                            <field name="user_id"/>
+                            <field name="license_number"/>
+                            <field name="license_date"/>
+                            <field name="experience_years" readonly="1"/>
+                            <field name="rating"/>
+                            <field name="education_country_id"/>
+                            <field name="country_id"/>
+                            <field name="lang_id"/>
+                            <field name="phone"/>
+                            <field name="email"/>
+                        </group>
+                    </group>
+
+                    <notebook>
+                        <!-- Опис -->
+                        <page string="Опис">
+                            <field name="description"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Дія (Action) -->
+    <record id="action_hr_hospital_doctor_window" model="ir.actions.act_window">
+        <field name="name">Doctors</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hr.hospital.doctor</field>
+        <field name="view_mode">list,form</field>
+    </record>
 
 </odoo>

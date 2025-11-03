@@ -3,6 +3,7 @@ from datetime import date
 from odoo.exceptions import ValidationError
 import re
 
+
 class AbstractPerson(models.AbstractModel):
     _name = 'hr.hospital.abstract.person'
     _description = 'Abstract Person'

@@ -19,6 +19,11 @@
             action="action_hr_hospital_patient"
             name="Patients" sequence="300"/>
 
+  <menuitem id="hr_hospital_contact_person_menu_catalog"
+            parent="hr_hospital_main_menu"
+            action="action_hr_hospital_contact_person"
+            name="Contact Person" sequence="500"/>
+
   <menuitem id="hr_hospital_visit_menu_catalog"
             parent="hr_hospital_main_menu"
             action="action_hr_hospital_visit"
