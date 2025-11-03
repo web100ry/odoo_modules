@@ -1,7 +1,8 @@
-from odoo import models, fields, api
-from datetime import date
-from odoo.exceptions import ValidationError
 import re
+from datetime import date
+from odoo import models, fields, api
+from odoo.exceptions import ValidationError
+
 
 
 class AbstractPerson(models.AbstractModel):
@@ -57,4 +58,3 @@ class AbstractPerson(models.AbstractModel):
         for record in self:
             parts = [record.first_name or '', record.last_name or '', record.middle_name or '']
             record.fullname = ' '.join(p for p in parts if p).strip()
-

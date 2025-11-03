@@ -53,4 +53,3 @@ class HrHospitalPatient(models.Model):
     )
 
     insurance_policy_number = fields.Char(string='Номер страхового поліса')
-

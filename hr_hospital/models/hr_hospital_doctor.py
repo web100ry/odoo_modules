@@ -1,5 +1,5 @@
-from odoo import models, fields, api
 from datetime import date
+from odoo import models, fields, api
 
 
 class HrHospitalDoctor(models.Model):
