@@ -1,6 +1,6 @@
 import re
 from datetime import date
-from odoo import models, fields, api
+from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError
 
 
@@ -20,25 +20,24 @@ class AbstractPerson(models.AbstractModel):
     gender = fields.Selection(
         selection=[('male', 'Male'), ('female', 'Female'),('other', 'Other')])
 
-    birth_date = fields.Date(string="Дата народження")
-    age = fields.Integer(string="Вік", compute="_compute_age", store=True, readonly=False)
+    birth_date = fields.Date()
+    age = fields.Integer(compute="_compute_age", store=True, readonly=False)
     fullname = fields.Char(compute="_compute_fullname", store=True, readonly=False)
 
-    country_id = fields.Many2one('res.country', string="Країна громадянства")
-    lang_id = fields.Many2one('res.lang', string="Мова спілкування")
+    country_id = fields.Many2one('res.country', string="")
+    lang_id = fields.Many2one('res.lang')
 
-#Валідація через ValidationError
     @api.constrains('phone')
     def _check_phone_format(self):
         for record in self:
             if record.phone and not re.match(r'^\+380\d{9}$', record.phone):
-                raise ValidationError("Телефон має бути у форматі +380XXXXXXXXX")
+                raise ValidationError (_("The phone number must be in the format +380XXXXXXXXX"))
 
     @api.constrains('email')
     def _check_email_format(self):
         for record in self:
             if record.email and not re.match(r"[^@]+@[^@]+\.[^@]+", record.email):
-                raise ValidationError("Невірний формат email")
+                raise ValidationError(_("Invalid email format"))
 
     @api.depends('birth_date')
     def _compute_age(self):

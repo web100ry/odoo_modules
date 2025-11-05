@@ -53,3 +53,10 @@ class HrHospitalPatient(models.Model):
     )
 
     insurance_policy_number = fields.Char(string='Номер страхового поліса')
+
+    doctor_history_ids = fields.One2many(
+        'hr.hospital.patient.doctor.history',
+        'patient_id',
+        string='Doctor History'
+    )
+

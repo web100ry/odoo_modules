@@ -3,11 +3,17 @@
     <field name="name">hr.hospital.visit.list</field>
     <field name="model">hr.hospital.visit</field>
     <field name="arch" type="xml">
-      <list>
-        <field name="patient_id"/>
+    <list>
+        <field name="status"/>
+        <field name="planned_datetime"/>
+        <field name="actual_datetime"/>
         <field name="doctor_id"/>
-        <field name="visit_date"/>
-      </list>
+        <field name="patient_id"/>
+        <field name="visit_type"/>
+        <field name="amount_total"/>
+        <field name="currency_id"/>
+    </list>
+
     </field>
   </record>
 
@@ -18,10 +24,14 @@
       <form>
         <sheet>
           <group>
-            <field name="patient_id"/>
+            <field name="status"/>
+            <field name="planned_datetime"/>
+            <field name="actual_datetime"/>
             <field name="doctor_id"/>
-            <field name="visit_date"/>
-            <field name="notes"/>
+            <field name="patient_id"/>
+            <field name="visit_type"/>
+            <field name="amount_total"/>
+            <field name="currency_id"/>
           </group>
         </sheet>
       </form>

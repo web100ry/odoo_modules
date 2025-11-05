@@ -1,4 +1,5 @@
 <odoo>
+
   <record id="view_hr_hospital_patient_list" model="ir.ui.view">
     <field name="name">hr.hospital.patient.list</field>
     <field name="model">hr.hospital.patient</field>
@@ -10,7 +11,6 @@
         <field name="gender"/>
         <field name="phone"/>
         <field name="email"/>
-        <field name="doctor_id"/>
         <field name="personal_doctor_id"/>
         <field name="blood_type"/>
         <field name="insurance_company_id"/>
@@ -23,23 +23,15 @@
     <field name="name">hr.hospital.patient.form</field>
     <field name="model">hr.hospital.patient</field>
     <field name="arch" type="xml">
-      <form string="Пацієнт">
+      <form>
         <sheet>
           <group>
             <group>
-              <field name="last_name"
-                     onchange="1"
-                     context="{'trigger_field': 'last_name'}"/>
-              <field name="first_name"
-                     onchange="1"
-                     context="{'trigger_field': 'first_name'}"/>
-              <field name="middle_name"
-                     onchange="1"
-                     context="{'trigger_field': 'middle_name'}"/>
+              <field name="last_name"/>
+              <field name="first_name"/>
+              <field name="middle_name"/>
               <field name="fullname" readonly="1"/>
-              <field name="birth_date"
-                     onchange="1"
-                     context="{'trigger_field': 'birth_date'}"/>
+              <field name="birth_date"/>
               <field name="age" readonly="1"/>
               <field name="gender"/>
               <field name="blood_type"/>
@@ -60,6 +52,12 @@
             </group>
           </group>
 
+          <notebook>
+            <page string="Doctor History">
+
+            </page>
+          </notebook>
+
         </sheet>
       </form>
     </field>
@@ -71,4 +69,5 @@
     <field name="res_model">hr.hospital.patient</field>
     <field name="view_mode">list,form</field>
   </record>
+
 </odoo>

@@ -1,0 +1,28 @@
+from odoo import models, fields
+
+
+class HrHospitalPatientDoctorHistory(models.Model):
+    _name = 'hr.hospital.patient.doctor.history'
+    _description = 'Patient Doctor History'
+    _order = 'assign_date desc'
+
+    patient_id = fields.Many2one(
+        'hr.hospital.patient',
+        required=True,
+        ondelete='cascade'
+    )
+
+    doctor_id = fields.Many2one(
+        'hr.hospital.doctor',
+        required=True,
+        ondelete='restrict'
+    )
+
+    assign_date = fields.Date(
+        required=True,
+        default=fields.Date.context_today
+    )
+
+    change_date = fields.Date()
+    reason_change = fields.Text()
+    active = fields.Boolean(default=True)
