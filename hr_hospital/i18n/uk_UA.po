@@ -205,17 +205,17 @@ msgstr "Валюта"
 #. module: hr_hospital
 #: model:ir.model.fields,field_description:hr_hospital.field_hr_hospital_disease__danger_level
 msgid "Danger Level"
-msgstr ""
+msgstr "Рівень небезпеки"
 
 #. module: hr_hospital
 #: model:ir.model.fields,field_description:hr_hospital.field_hr_hospital_doctor_schedule__date
 msgid "Date"
-msgstr ""
+msgstr "Дата"
 
 #. module: hr_hospital
 #: model:ir.model.fields,field_description:hr_hospital.field_hr_hospital_doctor_schedule__day_of_week
 msgid "Day Of Week"
-msgstr ""
+msgstr "День тижня"
 
 #. module: hr_hospital
 #: model:ir.model.fields,field_description:hr_hospital.field_hr_hospital_disease__description
@@ -230,7 +230,7 @@ msgstr "Опис"
 #. module: hr_hospital
 #: model:ir.model.fields,field_description:hr_hospital.field_hr_hospital_visit__diagnosis_ids
 msgid "Diagnoses"
-msgstr ""
+msgstr "Діагноз"
 
 #. module: hr_hospital
 #: model:ir.model.fields,field_description:hr_hospital.field_hr_hospital_hospital__res_partner_id
