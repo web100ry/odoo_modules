@@ -4,7 +4,7 @@
     <field name="name">hr.hospital.patient.list</field>
     <field name="model">hr.hospital.patient</field>
     <field name="arch" type="xml">
-      <list string="Пацієнти">
+      <list string="Patients">
         <field name="fullname"/>
         <field name="birth_date"/>
         <field name="age"/>

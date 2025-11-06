@@ -22,14 +22,14 @@
   <menuitem id="hr_hospital_contact_person_menu_catalog"
             parent="hr_hospital_main_menu"
             action="action_hr_hospital_contact_person"
-            name="Contact Person" sequence="500"/>
+            name="Contact Person" sequence="400"/>
 
   <menuitem id="hr_hospital_visit_menu_catalog"
             parent="hr_hospital_main_menu"
             action="action_hr_hospital_visit"
-            name="Visits" sequence="400"/>
+            name="Visits" sequence="500"/>
 
-  <menuitem id="menu_hr_hospital_disease"
+  <menuitem id="hr_hospital_disease_menu_catalog"
           parent="hr_hospital_main_menu"
           action="action_hr_hospital_disease"
           name="Diseases" sequence="600"/>

@@ -8,7 +8,7 @@
         <field name="parent_id"/>
         <field name="icd10_code"/>
         <field name="danger_level"/>
-        <field name="contagious"/>
+        <field name="is_contagious"/>
       </list>
     </field>
   </record>
@@ -24,22 +24,22 @@
             <field name="icd10_code"/>
             <field name="parent_id"/>
             <field name="danger_level"/>
-            <field name="contagious"/>
+            <field name="is_contagious"/>
           </group>
 
           <group>
             <field name="symptoms"/>
-            <field name="spread_region_ids" widget="many2many_tags"/>
+            <field name="region_ids" widget="many2many_tags"/>
           </group>
 
           <notebook>
             <page string="Child Diseases">
               <field name="child_ids">
-                <tree>
+                <list>
                   <field name="name"/>
                   <field name="icd10_code"/>
                   <field name="danger_level"/>
-                </tree>
+                </list>
               </field>
             </page>
           </notebook>

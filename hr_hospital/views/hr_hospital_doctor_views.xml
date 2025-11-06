@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-
-    <!-- Список (Tree View) -->
     <record id="view_hr_hospital_doctor_list" model="ir.ui.view">
         <field name="name">hr.hospital.doctor.list</field>
         <field name="model">hr.hospital.doctor</field>
         <field name="arch" type="xml">
-            <list string="Лікарі">
+            <list string="Doctors">
                 <field name="fullname"/>
                 <field name="speciality_id"/>
                 <field name="is_intern"/>
@@ -22,15 +20,13 @@
         </field>
     </record>
 
-    <!-- Форма (Form View) -->
     <record id="view_hr_hospital_doctor_form" model="ir.ui.view">
         <field name="name">hr.hospital.doctor.form</field>
         <field name="model">hr.hospital.doctor</field>
         <field name="arch" type="xml">
-            <form string="Лікар">
+            <form string="Doctor">
                 <sheet>
                     <group>
-                        <!-- Ліва колонка -->
                         <group>
                             <field name="last_name"/>
                             <field name="first_name"/>
@@ -43,8 +39,6 @@
                             <field name="is_intern"/>
                             <field name="mentor_id"/>
                         </group>
-
-                        <!-- Права колонка -->
                         <group>
                             <field name="user_id"/>
                             <field name="license_number"/>
@@ -60,8 +54,7 @@
                     </group>
 
                     <notebook>
-                        <!-- Опис -->
-                        <page string="Опис">
+                        <page string="Description">
                             <field name="description"/>
                         </page>
                     </notebook>
@@ -70,7 +63,6 @@
         </field>
     </record>
 
-    <!-- Дія (Action) -->
     <record id="action_hr_hospital_doctor_window" model="ir.actions.act_window">
         <field name="name">Doctors</field>
         <field name="type">ir.actions.act_window</field>

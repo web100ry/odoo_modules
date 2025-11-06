@@ -6,10 +6,10 @@ class HrHospitalVisit(models.Model):
     _description = 'Patient Visit'
 
     status = fields.Selection([
-        ('planned', 'Заплановано'),
-        ('done', 'Завершено'),
-        ('cancelled', 'Скасовано'),
-        ('no_show', 'Не зʼявився'),
+        ('planned', 'Planned'),
+        ('done', 'Done'),
+        ('cancelled', 'Cancelled'),
+        ('no_show', 'No_show'),
     ], default='planned', required=True)
 
     planned_datetime = fields.Datetime(required=True)
@@ -19,10 +19,10 @@ class HrHospitalVisit(models.Model):
     patient_id = fields.Many2one('hr.hospital.patient', required=True)
 
     visit_type = fields.Selection([
-        ('primary', 'Первинний'),
-        ('secondary', 'Повторний'),
-        ('preventive', 'Профілактичний'),
-        ('urgent', 'Невідкладний'),
+        ('primary', 'Primary'),
+        ('secondary', 'Secondary'),
+        ('preventive', 'Preventive'),
+        ('urgent', 'Urgent'),
     ], required=True)
 
     diagnosis_ids = fields.One2many(

@@ -9,4 +9,3 @@ from . import hr_hospital_visit
 from . import hr_hospital_doctor_speciality
 from . import hr_hospital_doctor_schedule
 from . import hr_hospital_patient_doctor_history
-
