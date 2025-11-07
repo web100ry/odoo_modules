@@ -11,7 +11,6 @@ class HrHospitalMedicalDiagnosis(models.Model):
         ondelete='cascade'
     )
 
-
     disease_id = fields.Many2one(
         comodel_name='hr.hospital.disease'
     )
@@ -29,8 +28,8 @@ class HrHospitalMedicalDiagnosis(models.Model):
 
     severity = fields.Selection(
         selection=[
-        ('light', 'Light'),
-        ('medium', 'Medium'),
-        ('hard', 'Hard'),
-        ('critical', 'Critical'),
-    ])
+            ('light', 'Light'),
+            ('medium', 'Medium'),
+            ('hard', 'Hard'),
+            ('critical', 'Critical'),
+        ])

@@ -26,9 +26,9 @@ class HrHospitalDoctorSchedule(models.Model):
     time_to = fields.Float()
     type = fields.Selection(
         selection=[
-        ('work', 'Work Day'),
-        ('vacation', 'Vacation'),
-        ('sick', 'Sick'),
-        ('conference', 'Conference'),
-    ])
+            ('work', 'Work Day'),
+            ('vacation', 'Vacation'),
+            ('sick', 'Sick'),
+            ('conference', 'Conference'),
+        ])
     note = fields.Char()

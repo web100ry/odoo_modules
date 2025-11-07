@@ -15,8 +15,14 @@ class HrHospitalVisit(models.Model):
     planned_datetime = fields.Datetime(required=True)
     actual_datetime = fields.Datetime()
 
-    doctor_id = fields.Many2one('hr.hospital.doctor', required=True)
-    patient_id = fields.Many2one('hr.hospital.patient', required=True)
+    doctor_id = fields.Many2one(
+        'hr.hospital.doctor',
+        required=True
+    )
+    patient_id = fields.Many2one(
+        'hr.hospital.patient',
+        required=True
+    )
 
     visit_type = fields.Selection([
         ('primary', 'Primary'),
@@ -33,5 +39,10 @@ class HrHospitalVisit(models.Model):
 
     recommendations = fields.Html()
 
-    currency_id = fields.Many2one('res.currency', default=lambda self: self.env.company.currency_id)
-    amount_total = fields.Monetary(currency_field='currency_id')
+    currency_id = fields.Many2one(
+        'res.currency',
+        default=lambda self: self.env.company.currency_id
+    )
+    amount_total = fields.Monetary(
+        currency_field='currency_id'
+    )

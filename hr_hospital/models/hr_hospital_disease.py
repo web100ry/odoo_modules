@@ -1,5 +1,6 @@
 from odoo import models, fields
 
+
 class HrHospitalDisease(models.Model):
     _name = 'hr.hospital.disease'
     _description = 'Hospital Diseases'
@@ -17,11 +18,11 @@ class HrHospitalDisease(models.Model):
 
     danger_level = fields.Selection(
         selection=[
-        ('low', 'Low'),
-        ('medium', 'Medium'),
-        ('high', 'High'),
-        ('critical', 'Critical'),
-    ])
+            ('low', 'Low'),
+            ('medium', 'Medium'),
+            ('high', 'High'),
+            ('critical', 'Critical'),
+        ])
 
     is_contagious = fields.Boolean()
     symptoms = fields.Text()

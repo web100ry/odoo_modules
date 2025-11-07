@@ -40,9 +40,7 @@ class HrHospitalDoctor(models.Model):
         'doctor_id',
     )
 
-    education_country_id = fields.Many2one(
-        'res.country',
-    )
+    education_country_id = fields.Many2one('res.country')
 
     @api.depends('license_date')
     def _compute_experience(self):
@@ -51,7 +49,8 @@ class HrHospitalDoctor(models.Model):
             if record.license_date:
                 today = date.today()
                 delta = today.year - record.license_date.year
-                if (today.month, today.day) < (record.license_date.month, record.license_date.day):
+                if ((today.month, today.day) <
+                        (record.license_date.month, record.license_date.day)):
                     delta -= 1
                 record.experience_years = max(delta, 0)
             else:
