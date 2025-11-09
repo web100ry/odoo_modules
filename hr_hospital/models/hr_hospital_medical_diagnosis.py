@@ -6,7 +6,7 @@ class HrHospitalMedicalDiagnosis(models.Model):
     _description = 'Medical Diagnosis'
 
     visit_id = fields.Many2one(
-        'hr.hospital.visit',
+        comodel_name='hr.hospital.visit',
         string='Visit',
         ondelete='cascade'
     )

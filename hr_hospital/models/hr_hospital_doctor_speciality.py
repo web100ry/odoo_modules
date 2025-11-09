@@ -13,6 +13,6 @@ class HrHospitalDoctorSpeciality(models.Model):
     description = fields.Text()
     active = fields.Boolean(default=True)
     doctor_ids = fields.One2many(
-        'hr.hospital.doctor',
-        'speciality_id'
+        comodel_name='hr.hospital.doctor',
+        inverse_name='speciality_id'
     )

@@ -7,13 +7,13 @@ class HrHospitalPatientDoctorHistory(models.Model):
     _order = 'assign_date desc'
 
     patient_id = fields.Many2one(
-        'hr.hospital.patient',
+        comodel_name='hr.hospital.patient',
         required=True,
         ondelete='cascade'
     )
 
     doctor_id = fields.Many2one(
-        'hr.hospital.doctor',
+        comodel_name='hr.hospital.doctor',
         required=True,
         ondelete='restrict'
     )

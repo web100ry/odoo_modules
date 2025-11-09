@@ -8,13 +8,19 @@ class HrHospitalDoctor(models.Model):
     _inherit = ['hr.hospital.abstract.person']
 
     description = fields.Text()
-    hospital_id = fields.Many2one(comodel_name='hr.hospital.hospital')
+    hospital_id = fields.Many2one(
+        comodel_name='hr.hospital.hospital'
+    )
 
-    user_id = fields.Many2one('res.users')
-    speciality_id = fields.Many2one('hr.hospital.doctor.speciality')
+    user_id = fields.Many2one(
+        comodel_name='res.users'
+    )
+    speciality_id = fields.Many2one(
+        comodel_name= 'hr.hospital.doctor.speciality'
+    )
     is_intern = fields.Boolean()
     mentor_id = fields.Many2one(
-        'hr.hospital.doctor',
+        comodel_name='hr.hospital.doctor',
         domain=[('is_intern', '=', False)]
     )
 
@@ -36,11 +42,13 @@ class HrHospitalDoctor(models.Model):
     )
 
     schedule_ids = fields.One2many(
-        'hr.hospital.doctor.schedule',
-        'doctor_id',
+        comodel_name='hr.hospital.doctor.schedule',
+        inverse_name='doctor_id',
     )
 
-    education_country_id = fields.Many2one('res.country')
+    education_country_id = fields.Many2one(
+        comodel_name='res.country'
+    )
 
     @api.depends('license_date')
     def _compute_experience(self):

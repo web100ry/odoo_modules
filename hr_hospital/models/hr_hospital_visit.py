@@ -16,11 +16,11 @@ class HrHospitalVisit(models.Model):
     actual_datetime = fields.Datetime()
 
     doctor_id = fields.Many2one(
-        'hr.hospital.doctor',
+        comodel_name='hr.hospital.doctor',
         required=True
     )
     patient_id = fields.Many2one(
-        'hr.hospital.patient',
+        comodel_name='hr.hospital.patient',
         required=True
     )
 
@@ -32,15 +32,15 @@ class HrHospitalVisit(models.Model):
     ], required=True)
 
     diagnosis_ids = fields.One2many(
-        'hr.hospital.medical.diagnosis',
-        'visit_id',
+        comodel_name='hr.hospital.medical.diagnosis',
+        inverse_name='visit_id',
         string='Diagnoses'
     )
 
     recommendations = fields.Html()
 
     currency_id = fields.Many2one(
-        'res.currency',
+        comodel_name='res.currency',
         default=lambda self: self.env.company.currency_id
     )
     amount_total = fields.Monetary(

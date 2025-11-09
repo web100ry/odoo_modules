@@ -14,7 +14,7 @@ class HrHospitalPatient(models.Model):
     )
 
     personal_doctor_id = fields.Many2one(
-        'hr.hospital.doctor',
+        comodel_name='hr.hospital.doctor',
     )
 
     passport_data = fields.Char(
@@ -22,7 +22,7 @@ class HrHospitalPatient(models.Model):
     )
 
     contact_person_id = fields.Many2one(
-        'hr.hospital.contact.person',
+        comodel_name='hr.hospital.contact.person',
     )
 
     blood_type = fields.Selection(
@@ -40,13 +40,13 @@ class HrHospitalPatient(models.Model):
     allergies = fields.Text()
 
     insurance_company_id = fields.Many2one(
-        'res.partner',
+        comodel_name='res.partner',
         domain=[('is_company', '=', True)]
     )
 
     insurance_policy_number = fields.Char()
 
     doctor_history_ids = fields.One2many(
-        'hr.hospital.patient.doctor.history',
-        'patient_id'
+        comodel_name='hr.hospital.patient.doctor.history',
+        inverse_name='patient_id'
     )

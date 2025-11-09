@@ -9,11 +9,11 @@ class HrHospitalDisease(models.Model):
     icd10_code = fields.Char(size=10)
 
     parent_id = fields.Many2one(
-        'hr.hospital.disease',
+        comodel_name='hr.hospital.disease',
     )
     child_ids = fields.One2many(
-        'hr.hospital.disease',
-        'parent_id'
+        comodel_name='hr.hospital.disease',
+        inverse_name='parent_id'
     )
 
     danger_level = fields.Selection(

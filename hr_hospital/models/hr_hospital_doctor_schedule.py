@@ -6,7 +6,7 @@ class HrHospitalDoctorSchedule(models.Model):
     _description = 'Doctor Schedule'
 
     doctor_id = fields.Many2one(
-        'hr.hospital.doctor',
+        comodel_name='hr.hospital.doctor',
         required=True,
         ondelete='cascade'
     )
