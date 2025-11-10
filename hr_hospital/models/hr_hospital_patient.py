@@ -1,4 +1,5 @@
-from odoo import models, fields
+from odoo import models, fields, api, _
+from odoo.exceptions import ValidationError
 
 
 class HrHospitalPatient(models.Model):
@@ -50,3 +51,17 @@ class HrHospitalPatient(models.Model):
         comodel_name='hr.hospital.patient.doctor.history',
         inverse_name='patient_id'
     )
+
+    @api.constrains('birth_date')
+    def _check_age_positive(self):
+        from datetime import date
+        for rec in self:
+            if rec.birth_date:
+                if rec.birth_date >= date.today():
+                    raise ValidationError(_("Birth date must be in the past."))
+
+    @api.constrains('age')
+    def _check_age_positive(self):
+        for rec in self:
+            if rec.age < 0:
+                raise ValidationError(_("Age must be greater than 0."))
