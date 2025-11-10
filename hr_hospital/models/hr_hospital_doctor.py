@@ -1,6 +1,6 @@
 from datetime import date
-from odoo import models, fields, api
-
+from odoo import models, fields, api, _
+from odoo.exceptions import ValidationError
 
 class HrHospitalDoctor(models.Model):
     _name = 'hr.hospital.doctor'
@@ -19,15 +19,17 @@ class HrHospitalDoctor(models.Model):
         comodel_name= 'hr.hospital.doctor.speciality'
     )
     is_intern = fields.Boolean()
+
     mentor_id = fields.Many2one(
         comodel_name='hr.hospital.doctor',
-        domain=[('is_intern', '=', False)]
+        #domain=[('is_intern', '=', False)]
     )
 
     license_number = fields.Char(
         required=True,
         copy=False
     )
+
 
     license_date = fields.Date()
 
@@ -63,3 +65,20 @@ class HrHospitalDoctor(models.Model):
                 record.experience_years = max(delta, 0)
             else:
                 record.experience_years = 0
+
+    @api.constrains('mentor_id')
+    def _check_mentor_is_not_intern(self):
+        for rec in self:
+            if rec.mentor_id and rec.mentor_id.is_intern:
+                raise ValidationError(_("Intern cannot be chosen as a mentor."))
+
+    @api.constrains('mentor_id')
+    def _check_mentor_not_self(self):
+        for rec in self:
+            if rec.mentor_id and rec.mentor_id.id == rec.id:
+                raise ValidationError(_("Doctor cannot be a mentor to themselves."))
+
+    _sql_constraints = [
+        ('unique_license', 'unique(license_number)', _('License number must be unique.')),
+        ('check_rating', 'CHECK(rating >= 0 AND rating <= 5)', _('Rating must be between 0 and 5.'))
+    ]

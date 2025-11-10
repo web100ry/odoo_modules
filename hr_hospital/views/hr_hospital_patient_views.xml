@@ -54,7 +54,15 @@
 
           <notebook>
             <page string="Doctor History">
-
+              <field name="doctor_history_ids">
+                <list editable="bottom">
+                  <field name="doctor_id"/>
+                  <field name="assign_date"/>
+                  <field name="change_date"/>
+                  <field name="reason_change"/>
+                  <field name="active"/>
+                </list>
+              </field>
             </page>
           </notebook>
 
