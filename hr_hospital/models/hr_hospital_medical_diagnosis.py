@@ -5,6 +5,8 @@ class HrHospitalMedicalDiagnosis(models.Model):
     _name = 'hr.hospital.medical.diagnosis'
     _description = 'Medical Diagnosis'
 
+    name= fields.Char(required=True)
+
     visit_id = fields.Many2one(
         comodel_name='hr.hospital.visit',
         string='Visit',
@@ -19,12 +21,12 @@ class HrHospitalMedicalDiagnosis(models.Model):
     treatment = fields.Html()
     approved = fields.Boolean(default=False)
 
-    doctor_id = fields.Many2one(
+    mentor_id = fields.Many2one(
         comodel_name='hr.hospital.doctor',
         readonly=True
     )
 
-    approved_date = fields.Datetime(readonly=True)
+    approved_date = fields.Datetime()
 
     severity = fields.Selection(
         selection=[
@@ -33,3 +35,9 @@ class HrHospitalMedicalDiagnosis(models.Model):
             ('hard', 'Hard'),
             ('critical', 'Critical'),
         ])
+    def action_approve_by_mentor(self):
+        for record in self:
+            record.write({
+                'approved': True,
+                'approved_date': fields.Datetime.now()
+            })

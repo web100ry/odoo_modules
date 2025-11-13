@@ -18,6 +18,33 @@ class HrHospitalPatient(models.Model):
         comodel_name='hr.hospital.doctor',
     )
 
+    @api.model
+    def create(self, vals):
+        patient = super().create(vals)
+
+        if vals.get('personal_doctor_id'):
+            self.env['hr.hospital.patient.doctor.history'].create({
+                'patient_id': patient.id,
+                'doctor_id': vals['personal_doctor_id'],
+                'change_date': fields.Datetime.now(),
+                'reason_change': _('Initial doctor assignment')
+            })
+        return patient
+
+    def write(self, vals):
+        for patient in self:
+            if ('personal_doctor_id' in vals and
+                    vals['personal_doctor_id'] != patient.personal_doctor_id.id):
+
+                self.env['hr.hospital.patient.doctor.history'].create({
+                    'patient_id': patient.id,
+                    'doctor_id': vals['personal_doctor_id'],
+                    'change_date': fields.Datetime.now(),
+                    'reason_change': _('Doctor changed automatically')
+                })
+        return super().write(vals)
+
+
     passport_data = fields.Char(
         size=10
     )

@@ -25,4 +25,5 @@ class HrHospitalPatientDoctorHistory(models.Model):
 
     change_date = fields.Date()
     reason_change = fields.Text()
+    notes = fields.Text()
     active = fields.Boolean(default=True)

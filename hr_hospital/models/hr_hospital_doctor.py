@@ -68,7 +68,7 @@ class HrHospitalDoctor(models.Model):
                     raise ValidationError(
                         _("You cannot archive a doctor with active visits.")
                     )
-        return super(Doctor, self).write(vals)
+        return super(HrHospitalDoctor, self).write(vals)
 
 
     @api.depends('license_date')
