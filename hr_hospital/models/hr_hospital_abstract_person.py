@@ -9,8 +9,10 @@ class AbstractPerson(models.AbstractModel):
     _description = 'Abstract Person'
     _inherit = ['image.mixin']
 
-    last_name = fields.Char(required=True)
-    first_name = fields.Char(required=True)
+    last_name = fields.Char(required=True,
+                            translate=True)
+    first_name = fields.Char(required=True,
+                             translate=True)
     middle_name = fields.Char()
 
     phone = fields.Char()

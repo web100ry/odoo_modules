@@ -8,6 +8,7 @@ class HrHospitalVisit(models.Model):
 
     status = fields.Selection([
         ('planned', 'Planned'),
+        ('in_progress', 'In Progress'),
         ('done', 'Done'),
         ('cancelled', 'Cancelled'),
         ('no_show', 'No_show'),
@@ -37,6 +38,11 @@ class HrHospitalVisit(models.Model):
         inverse_name='visit_id',
         string='Diagnoses'
     )
+    def unlink(self):
+        for rec in self:
+            if rec.diagnosis_ids:
+                raise ValidationError(_("You cannot delete a visit that has diagnoses."))
+        return super(Visit, self).unlink()
 
     recommendations = fields.Html()
 
@@ -71,3 +77,13 @@ class HrHospitalVisit(models.Model):
 
             if existing:
                 raise ValidationError(_("Patient already has a visit to this doctor on that day."))
+
+    def write(self, vals):
+        for rec in self:
+            if rec.status == 'done':
+                blocked_fields = {'doctor_id', 'planned_datetime'}
+                if blocked_fields.intersection(vals.keys()):
+                    raise ValidationError(
+                        _("You cannot change doctor, date or time of a completed visit.")
+                    )
+        return super(HrHospitalVisit, self).write(vals)

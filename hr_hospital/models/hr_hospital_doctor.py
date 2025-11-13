@@ -52,6 +52,25 @@ class HrHospitalDoctor(models.Model):
         comodel_name='res.country'
     )
 
+    active = fields.Boolean(default=True)
+
+    visit_ids = fields.One2many('hr.hospital.visit', 'doctor_id')
+
+    def write(self, vals):
+        if 'active' in vals and vals['active'] is False:
+            for doctor in self:
+                active_visits = self.env['hr.hospital.visit'].search([
+                    ('doctor_id', '=', doctor.id),
+                    ('status', 'in', ['planned', 'in_progress'])
+                ], limit=1)
+
+                if active_visits:
+                    raise ValidationError(
+                        _("You cannot archive a doctor with active visits.")
+                    )
+        return super(Doctor, self).write(vals)
+
+
     @api.depends('license_date')
     def _compute_experience(self):
 

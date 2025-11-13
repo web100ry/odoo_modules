@@ -65,3 +65,4 @@ class HrHospitalPatient(models.Model):
         for rec in self:
             if rec.age < 0:
                 raise ValidationError(_("Age must be greater than 0."))
+
