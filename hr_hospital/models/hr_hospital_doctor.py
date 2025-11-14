@@ -106,8 +106,10 @@ class HrHospitalDoctor(models.Model):
     def name_get(self):
         result = []
         for doctor in self:
-            name = doctor.last_name
-            if doctor.specialty:
-                last_name = f"{name} ({doctor.specialty})"
-            result.append((doctor.id, last_name))
+            first = doctor.first_name or ''
+            last = doctor.last_name or ''
+            display_name = f"{first} {last}".strip() or 'No Name'
+            if doctor.speciality_id:
+                display_name = f"{display_name} ({doctor.speciality_id.name})"
+            result.append((doctor.id, display_name))
         return result
