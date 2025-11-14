@@ -1,4 +1,4 @@
-from odoo import models, fields
+from odoo import models, fields, api
 
 
 class HrHospitalPatientDoctorHistory(models.Model):
@@ -27,3 +27,12 @@ class HrHospitalPatientDoctorHistory(models.Model):
     reason_change = fields.Text()
     notes = fields.Text()
     active = fields.Boolean(default=True)
+
+
+    @api.model
+    def create(self, vals):
+        patient_id = vals.get('patient_id')
+        if patient_id:
+            self.search([('patient_id', '=', patient_id), ('active', '=', True)]).write({'active': False})
+
+        return super().create(vals)

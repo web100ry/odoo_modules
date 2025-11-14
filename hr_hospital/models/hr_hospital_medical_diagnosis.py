@@ -1,4 +1,4 @@
-from odoo import fields, models
+from odoo import fields, models, api, _
 
 
 class HrHospitalMedicalDiagnosis(models.Model):
@@ -25,6 +25,23 @@ class HrHospitalMedicalDiagnosis(models.Model):
         comodel_name='hr.hospital.doctor',
         readonly=True
     )
+
+
+    @api.onchange('doctor_id')
+    def _onchange_doctor_set_mentor(self):
+        if self.doctor_id and self.doctor_id.is_intern:
+            if self.doctor_id.mentor_id:
+                self.mentor_id = self.doctor_id.mentor_id
+                return {
+                    'warning': {
+                        'title': _("Intern Doctor"),
+                        'message': _(
+                            "Selected doctor is an intern. Mentor was automatically assigned."
+                        )
+                    }
+                }
+
+
 
     approved_date = fields.Datetime()
 

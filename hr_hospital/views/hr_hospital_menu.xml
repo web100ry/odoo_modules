@@ -34,6 +34,11 @@
           action="action_hr_hospital_disease"
           name="Diseases" sequence="600"/>
 
+    <menuitem id="hr_hospital_disease_menu_catalog"
+          parent="hr_hospital_main_menu"
+          action="action_hr_hospital_doctor_speciality"
+          name="DoctorSpeciality" sequence="700"/>
+
 
   <menuitem id="hr_hospital_menu_main_settings"
             parent="hr_hospital_main_menu"

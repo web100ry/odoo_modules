@@ -38,6 +38,19 @@ class HrHospitalVisit(models.Model):
         inverse_name='visit_id',
         string='Diagnoses'
     )
+
+    diagnosis_count = fields.Integer(
+        string=_("Number of Diagnoses"),
+        compute="_compute_diagnosis_count",
+        store=True,
+        readonly = True
+    )
+
+    @api.depends('diagnosis_ids')
+    def _compute_diagnosis_count(self):
+        for rec in self:
+            rec.diagnosis_count = len(rec.diagnosis_ids)
+
     def unlink(self):
         for rec in self:
             if rec.diagnosis_ids:
@@ -87,3 +100,15 @@ class HrHospitalVisit(models.Model):
                         _("You cannot change doctor, date or time of a completed visit.")
                     )
         return super(HrHospitalVisit, self).write(vals)
+
+    @api.onchange('patient_id')
+    def _onchange_patient_warning_allergies(self):
+        if self.patient_id and self.patient_id.allergies:
+            return {
+                'warning': {
+                    'title': _("Allergy Warning"),
+                    'message': _(
+                        "This patient has allergies: %s"
+                    ) % self.patient_id.allergies
+                }
+            }

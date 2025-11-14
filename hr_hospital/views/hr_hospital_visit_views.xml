@@ -34,6 +34,7 @@
             <field name="visit_type"/>
             <field name="amount_total"/>
             <field name="currency_id"/>
+            <field name="diagnosis_count"/>
           </group>
           <group>
             <field name="diagnosis_ids"/>

@@ -8,6 +8,11 @@ class AbstractPerson(models.AbstractModel):
     _name = 'hr.hospital.abstract.person'
     _description = 'Abstract Person'
     _inherit = ['image.mixin']
+    name = fields.Char(
+        compute="_compute_name",
+        store=True,
+        readonly=False
+    )
 
     last_name = fields.Char(required=True,
                             translate=True)
@@ -81,3 +86,12 @@ class AbstractPerson(models.AbstractModel):
                 record.middle_name or ''
             ]
             record.fullname = ' '.join(p for p in parts if p).strip()
+
+    @api.depends('first_name', 'last_name')
+    def _compute_name(self):
+        for record in self:
+            parts = [
+                record.first_name or '',
+                record.last_name or ''
+            ]
+            record.name = ' '.join(p for p in parts if p).strip()

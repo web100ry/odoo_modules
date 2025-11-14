@@ -7,6 +7,7 @@ class HrHospitalDoctor(models.Model):
     _description = 'Doctor'
     _inherit = ['hr.hospital.abstract.person']
 
+
     description = fields.Text()
     hospital_id = fields.Many2one(
         comodel_name='hr.hospital.hospital'
@@ -101,3 +102,12 @@ class HrHospitalDoctor(models.Model):
         ('unique_license', 'unique(license_number)', _('License number must be unique.')),
         ('check_rating', 'CHECK(rating >= 0 AND rating <= 5)', _('Rating must be between 0 and 5.'))
     ]
+
+    def name_get(self):
+        result = []
+        for doctor in self:
+            name = doctor.last_name
+            if doctor.specialty:
+                last_name = f"{name} ({doctor.specialty})"
+            result.append((doctor.id, last_name))
+        return result

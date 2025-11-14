@@ -93,3 +93,41 @@ class HrHospitalPatient(models.Model):
             if rec.age < 0:
                 raise ValidationError(_("Age must be greater than 0."))
 
+    @api.onchange('country_id')
+    def _onchange_country_suggest_language(self):
+        if not self.country_id:
+            self.lang_id = False
+            return
+
+        # мапінг кодів країн до кодів мов
+        mapping = {
+            'UA': 'uk_UA',
+            'PL': 'pl_PL',
+            'DE': 'de_DE',
+            'US': 'en_US',
+            'GB': 'en_GB',
+        }
+
+        lang_code = mapping.get(self.country_id.code)
+        if not lang_code:
+            self.lang_id = False
+            return
+
+        # шукаємо мову в Odoo
+        lang = self.env['res.lang'].search([('code', '=', lang_code)], limit=1)
+        if not lang:
+            self.lang_id = False
+            return
+
+        # автоматично підставляємо мову
+        self.lang_id = lang
+
+        # повертаємо попередження користувачу
+        return {
+            'warning': {
+                'title': _("Language Suggestion"),
+                'message': _(
+                    "Based on the selected citizenship (%s), the recommended communication language is: %s"
+                ) % (self.country_id.name, lang.name)
+            }
+        }
