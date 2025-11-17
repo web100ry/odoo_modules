@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-06 20:32+0000\n"
-"PO-Revision-Date: 2025-11-06 20:32+0000\n"
+"POT-Creation-Date: 2025-11-17 12:00+0000\n"
+"PO-Revision-Date: 2025-11-17 12:00+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -821,3 +821,112 @@ msgstr "СР"
 #: model:ir.model.fields.selection,name:hr_hospital.selection__hr_hospital_doctor_schedule__type__work
 msgid "Work Day"
 msgstr "Робочий день"
+
+#. module: hr_hospital
+#: model:ir.model,name:hr_hospital.model_reschedule_visit_wizard
+msgid "Reschedule Visit Wizard"
+msgstr "Майстер перенесення візиту"
+
+#. module: hr_hospital
+#: model:ir.model.fields,field_description:hr_hospital.field_reschedule_visit_wizard__visit_id
+msgid "Current Visit"
+msgstr "Поточний візит"
+
+#. module: hr_hospital
+#: model:ir.model.fields,field_description:hr_hospital.field_reschedule_visit_wizard__current_doctor_id
+msgid "Current Doctor"
+msgstr "Поточний лікар"
+
+#. module: hr_hospital
+#: model:ir.model.fields,field_description:hr_hospital.field_reschedule_visit_wizard__current_datetime
+msgid "Current Date & Time"
+msgstr "Поточні дата та час"
+
+#. module: hr_hospital
+#: model:ir.model.fields,field_description:hr_hospital.field_reschedule_visit_wizard__new_doctor_id
+msgid "New Doctor"
+msgstr "Новий лікар"
+
+#. module: hr_hospital
+#: model:ir.model.fields,field_description:hr_hospital.field_reschedule_visit_wizard__new_date
+msgid "New Date"
+msgstr "Нова дата"
+
+#. module: hr_hospital
+#: model:ir.model.fields,field_description:hr_hospital.field_reschedule_visit_wizard__new_time
+msgid "New Time"
+msgstr "Новий час"
+
+#. module: hr_hospital
+#: model:ir.model.fields,field_description:hr_hospital.field_reschedule_visit_wizard__reschedule_reason
+msgid "Reason for Rescheduling"
+msgstr "Причина перенесення"
+
+#. module: hr_hospital
+#. odoo-python
+#: code:addons/hr_hospital/wizard/reschedule_visit_wizard.py:0
+msgid "Time must be between 0:00 and 23:59!"
+msgstr "Час повинен бути між 0:00 та 23:59!"
+
+#. module: hr_hospital
+#. odoo-python
+#: code:addons/hr_hospital/wizard/reschedule_visit_wizard.py:0
+msgid "New date cannot be in the past!"
+msgstr "Нова дата не може бути в минулому!"
+
+#. module: hr_hospital
+#. odoo-python
+#: code:addons/hr_hospital/wizard/reschedule_visit_wizard.py:0
+msgid "No visit selected!"
+msgstr "Візит не вибрано!"
+
+#. module: hr_hospital
+#. odoo-python
+#: code:addons/hr_hospital/wizard/reschedule_visit_wizard.py:0
+msgid "Only planned visits can be rescheduled!"
+msgstr "Можна перенести тільки заплановані візити!"
+
+#. module: hr_hospital
+#. odoo-python
+#: code:addons/hr_hospital/wizard/reschedule_visit_wizard.py:0
+msgid "There is already a visit scheduled for this patient with this doctor at this time!"
+msgstr "Для цього пацієнта вже заплановано візит до цього лікаря на цей час!"
+
+#. module: hr_hospital
+#. odoo-python
+#: code:addons/hr_hospital/wizard/reschedule_visit_wizard.py:0
+msgid "Visit rescheduled. Reason: %s"
+msgstr "Візит перенесено. Причина: %s"
+
+#. module: hr_hospital
+#. odoo-python
+#: code:addons/hr_hospital/wizard/reschedule_visit_wizard.py:0
+msgid "Visit Rescheduled"
+msgstr "Візит перенесено"
+
+#. module: hr_hospital
+#. odoo-python
+#: code:addons/hr_hospital/wizard/reschedule_visit_wizard.py:0
+msgid "Success"
+msgstr "Успішно"
+
+#. module: hr_hospital
+#. odoo-python
+#: code:addons/hr_hospital/wizard/reschedule_visit_wizard.py:0
+msgid "Visit has been rescheduled successfully!"
+msgstr "Візит успішно перенесено!"
+
+#. module: hr_hospital
+#: model:ir.model.fields,field_description:hr_hospital.field_reschedule_visit_wizard__id
+#: model:ir.model.fields,field_description:hr_hospital.field_reschedule_visit_wizard__display_name
+#: model:ir.model.fields,field_description:hr_hospital.field_reschedule_visit_wizard__create_uid
+#: model:ir.model.fields,field_description:hr_hospital.field_reschedule_visit_wizard__create_date
+#: model:ir.model.fields,field_description:hr_hospital.field_reschedule_visit_wizard__write_uid
+#: model:ir.model.fields,field_description:hr_hospital.field_reschedule_visit_wizard__write_date
+msgid "ID"
+msgstr "ID"
+
+#. module: hr_hospital
+#: model:ir.model.fields.selection,name:hr_hospital.selection__hr_hospital_visit__status__in_progress
+msgid "In Progress"
+msgstr "В процесі"
