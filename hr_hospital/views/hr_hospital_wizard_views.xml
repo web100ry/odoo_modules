@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Mass Reassign Doctor Wizard -->
+    <record id="view_mass_reassign_doctor_wizard_form" model="ir.ui.view">
+        <field name="name">mass.reassign.doctor.wizard.form</field>
+        <field name="model">mass.reassign.doctor.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Mass Reassign Doctor">
+                <group>
+                    <group>
+                        <field name="old_doctor_id" options="{'no_create': True}"/>
+                        <field name="new_doctor_id" options="{'no_create': True}"/>
+                    </group>
+                    <group>
+                        <field name="change_date"/>
+                    </group>
+                </group>
+                <group>
+                    <field name="patient_ids" widget="many2many_tags" options="{'no_create': True}"/>
+                </group>
+                <group>
+                    <field name="reason_change"/>
+                </group>
+                <footer>
+                    <button string="Reassign" name="action_reassign" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_mass_reassign_doctor_wizard" model="ir.actions.act_window">
+        <field name="name">Mass Reassign Doctor</field>
+        <field name="res_model">mass.reassign.doctor.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="binding_model_id" ref="model_hr_hospital_patient"/>
+        <field name="binding_view_types">list</field>
+    </record>
+
+    <!-- Disease Report Wizard -->
+    <record id="view_disease_report_wizard_form" model="ir.ui.view">
+        <field name="name">disease.report.wizard.form</field>
+        <field name="model">disease.report.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Disease Report">
+                <group>
+                    <group>
+                        <field name="date_from"/>
+                        <field name="date_to"/>
+                        <field name="report_type"/>
+                        <field name="group_by"/>
+                    </group>
+                    <group>
+                        <field name="doctor_ids" widget="many2many_tags" options="{'no_create': True}"/>
+                        <field name="disease_ids" widget="many2many_tags" options="{'no_create': True}"/>
+                        <field name="country_ids" widget="many2many_tags" options="{'no_create': True}"/>
+                    </group>
+                </group>
+                <footer>
+                    <button string="Generate Report" name="action_generate_report" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_disease_report_wizard" model="ir.actions.act_window">
+        <field name="name">Disease Report</field>
+        <field name="res_model">disease.report.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <!-- Reschedule Visit Wizard -->
+    <record id="view_reschedule_visit_wizard_form" model="ir.ui.view">
+        <field name="name">reschedule.visit.wizard.form</field>
+        <field name="model">reschedule.visit.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Reschedule Visit">
+                <group>
+                    <group string="Current Information">
+                        <field name="visit_id" invisible="1"/>
+                        <field name="current_doctor_id"/>
+                        <field name="current_datetime"/>
+                    </group>
+                    <group string="New Information">
+                        <field name="new_doctor_id" options="{'no_create': True}"/>
+                        <field name="new_date"/>
+                        <field name="new_time" widget="float_time"/>
+                    </group>
+                </group>
+                <group>
+                    <field name="reschedule_reason"/>
+                </group>
+                <footer>
+                    <button string="Reschedule" name="action_reschedule" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_reschedule_visit_wizard" model="ir.actions.act_window">
+        <field name="name">Reschedule Visit</field>
+        <field name="res_model">reschedule.visit.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="binding_model_id" ref="model_hr_hospital_visit"/>
+        <field name="binding_view_types">form</field>
+    </record>
+
+    <!-- Doctor Schedule Wizard -->
+    <record id="view_doctor_schedule_wizard_form" model="ir.ui.view">
+        <field name="name">doctor.schedule.wizard.form</field>
+        <field name="model">doctor.schedule.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Fill Doctor Schedule">
+                <group>
+                    <group>
+                        <field name="doctor_id" options="{'no_create': True}"/>
+                        <field name="week_start_date"/>
+                        <field name="weeks_count"/>
+                        <field name="schedule_type"/>
+                    </group>
+                    <group string="Working Days">
+                        <field name="monday"/>
+                        <field name="tuesday"/>
+                        <field name="wednesday"/>
+                        <field name="thursday"/>
+                        <field name="friday"/>
+                        <field name="saturday"/>
+                        <field name="sunday"/>
+                    </group>
+                </group>
+                <group>
+                    <group string="Working Hours">
+                        <field name="time_from" widget="float_time"/>
+                        <field name="time_to" widget="float_time"/>
+                    </group>
+                    <group string="Break Time">
+                        <field name="break_from" widget="float_time"/>
+                        <field name="break_to" widget="float_time"/>
+                    </group>
+                </group>
+                <footer>
+                    <button string="Generate Schedule" name="action_generate_schedule" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_doctor_schedule_wizard" model="ir.actions.act_window">
+        <field name="name">Fill Doctor Schedule</field>
+        <field name="res_model">doctor.schedule.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <!-- Patient Card Export Wizard -->
+    <record id="view_patient_card_export_wizard_form" model="ir.ui.view">
+        <field name="name">patient.card.export.wizard.form</field>
+        <field name="model">patient.card.export.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Export Patient Medical Card">
+                <group>
+                    <group>
+                        <field name="patient_id" options="{'no_create': True}"/>
+                        <field name="date_from"/>
+                        <field name="date_to"/>
+                    </group>
+                    <group>
+                        <field name="include_diagnoses"/>
+                        <field name="include_recommendations"/>
+                        <field name="lang_id" options="{'no_create': True}"/>
+                        <field name="export_format"/>
+                    </group>
+                </group>
+                <footer>
+                    <button string="Export" name="action_export" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_patient_card_export_wizard" model="ir.actions.act_window">
+        <field name="name">Export Medical Card</field>
+        <field name="res_model">patient.card.export.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="binding_model_id" ref="model_hr_hospital_patient"/>
+        <field name="binding_view_types">form</field>
+    </record>
+
+</odoo>
