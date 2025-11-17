@@ -1,4 +1,5 @@
 from odoo import fields, models, api, _
+from datetime import datetime, timedelta
 
 
 class HrHospitalMedicalDiagnosis(models.Model):
@@ -7,15 +8,28 @@ class HrHospitalMedicalDiagnosis(models.Model):
 
     name= fields.Char(required=True)
 
+    # Складний домен: тільки завершені візити за останні 30 днів
     visit_id = fields.Many2one(
         comodel_name='hr.hospital.visit',
         string='Visit',
-        ondelete='cascade'
+        ondelete='cascade',
+        domain=lambda self: self._get_recent_completed_visits_domain()
     )
 
+    # Складний домен: тільки заразні хвороби з високим/критичним ступенем небезпеки
     disease_id = fields.Many2one(
-        comodel_name='hr.hospital.disease'
+        comodel_name='hr.hospital.disease',
+        domain="[('is_contagious', '=', True), ('danger_level', 'in', ['high', 'critical'])]"
     )
+
+    @api.model
+    def _get_recent_completed_visits_domain(self):
+        """Повертає домен для завершених візитів за останні 30 днів"""
+        thirty_days_ago = datetime.now() - timedelta(days=30)
+        return [
+            ('status', '=', 'done'),
+            ('planned_datetime', '>=', thirty_days_ago),
+        ]
 
     description = fields.Text()
     treatment = fields.Html()

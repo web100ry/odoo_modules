@@ -39,6 +39,25 @@
           action="action_hr_hospital_doctor_speciality"
           name="DoctorSpeciality" sequence="700"/>
 
+  <!-- Reports Section -->
+  <menuitem id="hr_hospital_menu_reports"
+            parent="hr_hospital_main_menu"
+            name="Reports" sequence="800"/>
+
+  <menuitem id="hr_hospital_menu_disease_report"
+            parent="hr_hospital_menu_reports"
+            action="hr_hospital.action_disease_report_wizard"
+            name="Disease Report" sequence="10"/>
+
+  <!-- Wizards Section -->
+  <menuitem id="hr_hospital_menu_wizards"
+            parent="hr_hospital_main_menu"
+            name="Wizards" sequence="850"/>
+
+  <menuitem id="hr_hospital_menu_doctor_schedule_wizard"
+            parent="hr_hospital_menu_wizards"
+            action="hr_hospital.action_doctor_schedule_wizard"
+            name="Fill Doctor Schedule" sequence="10"/>
 
   <menuitem id="hr_hospital_menu_main_settings"
             parent="hr_hospital_main_menu"

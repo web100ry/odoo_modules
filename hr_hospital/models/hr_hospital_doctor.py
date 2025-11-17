@@ -21,9 +21,10 @@ class HrHospitalDoctor(models.Model):
     )
     is_intern = fields.Boolean()
 
+    # Складний домен: тільки лікарі, які НЕ є інтернами
     mentor_id = fields.Many2one(
         comodel_name='hr.hospital.doctor',
-        #domain=[('is_intern', '=', False)]
+        domain="[('is_intern', '=', False), ('active', '=', True)]"
     )
 
     license_number = fields.Char(
@@ -103,13 +104,44 @@ class HrHospitalDoctor(models.Model):
         ('check_rating', 'CHECK(rating >= 0 AND rating <= 5)', _('Rating must be between 0 and 5.'))
     ]
 
-    def name_get(self):
-        result = []
-        for doctor in self:
-            first = doctor.first_name or ''
-            last = doctor.last_name or ''
-            display_name = f"{first} {last}".strip() or 'No Name'
-            if doctor.speciality_id:
-                display_name = f"{display_name} ({doctor.speciality_id.name})"
-            result.append((doctor.id, display_name))
-        return result
+    # Динамічні методи для доменів
+    @api.model
+    def get_doctors_with_schedule(self):
+        """Повертає домен для лікарів з заповненим розкладом"""
+        doctors_with_schedule = self.env['hr.hospital.doctor.schedule'].search([]).mapped('doctor_id')
+        return [('id', 'in', doctors_with_schedule.ids)]
+
+    @api.model
+    def get_doctors_by_speciality_and_schedule(self, speciality_id=None, date=None):
+        """
+        Повертає домен для лікарів за спеціальністю та розкладом
+
+        :param speciality_id: ID спеціальності
+        :param date: Дата для перевірки розкладу
+        :return: domain list
+        """
+        domain = [('active', '=', True)]
+
+        if speciality_id:
+            domain.append(('speciality_id', '=', speciality_id))
+
+        if date:
+            # Додаємо фільтр за розкладом на конкретну дату
+            target_date = fields.Date.to_date(date)
+            day_of_week = target_date.strftime('%A').lower()
+
+            schedules = self.env['hr.hospital.doctor.schedule'].search([
+                '|',
+                ('date', '=', target_date),
+                '&',
+                ('date', '=', False),
+                ('day_of_week', '=', day_of_week),
+                ('type', '=', 'work'),
+            ])
+
+            if schedules:
+                domain.append(('id', 'in', schedules.mapped('doctor_id').ids))
+
+        return domain
+
+

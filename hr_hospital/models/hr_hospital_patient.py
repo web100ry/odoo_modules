@@ -7,6 +7,52 @@ class HrHospitalPatient(models.Model):
     _description = 'Patient'
     _inherit = ['hr.hospital.abstract.person']
 
+    # Динамічні методи для доменів
+    @api.model
+    def get_patients_by_language_and_country(self, lang_id=None, country_id=None):
+        """
+        Повертає домен для пацієнтів за мовою спілкування та країною громадянства
+
+        :param lang_id: ID мови
+        :param country_id: ID країни
+        :return: domain list
+        """
+        domain = []
+
+        if lang_id:
+            domain.append(('lang_id', '=', lang_id))
+
+        if country_id:
+            domain.append(('country_id', '=', country_id))
+
+        return domain
+
+    @api.model
+    def search_patients_by_language(self, language_code):
+        """
+        Шукає пацієнтів за кодом мови
+
+        :param language_code: Код мови (наприклад, 'uk_UA')
+        :return: recordset пацієнтів
+        """
+        lang = self.env['res.lang'].search([('code', '=', language_code)], limit=1)
+        if lang:
+            return self.search([('lang_id', '=', lang.id)])
+        return self.env['hr.hospital.patient']
+
+    @api.model
+    def search_patients_by_country(self, country_code):
+        """
+        Шукає пацієнтів за кодом країни
+
+        :param country_code: Код країни (наприклад, 'UA')
+        :return: recordset пацієнтів
+        """
+        country = self.env['res.country'].search([('code', '=', country_code)], limit=1)
+        if country:
+            return self.search([('country_id', '=', country.id)])
+        return self.env['hr.hospital.patient']
+
     disease_id = fields.Many2one(
         comodel_name='hr.hospital.disease',
     )

@@ -1,5 +1,6 @@
 from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError
+from datetime import datetime, timedelta
 
 
 class HrHospitalVisit(models.Model):
@@ -17,9 +18,11 @@ class HrHospitalVisit(models.Model):
     planned_datetime = fields.Datetime(required=True)
     actual_datetime = fields.Datetime()
 
+    # Складний домен: тільки лікарі з заповненим ліцензійним номером
     doctor_id = fields.Many2one(
         comodel_name='hr.hospital.doctor',
-        required=True
+        required=True,
+        domain="[('license_number', '!=', False), ('license_number', '!=', '')]"
     )
     patient_id = fields.Many2one(
         comodel_name='hr.hospital.patient',
@@ -112,3 +115,101 @@ class HrHospitalVisit(models.Model):
                     ) % self.patient_id.allergies
                 }
             }
+
+    # Динамічні домени через методи
+    @api.model
+    def get_available_doctors_domain(self, speciality_id=None, date=None):
+        """
+        Повертає домен для доступних лікарів за спеціальністю та розкладом
+
+        :param speciality_id: ID спеціальності (опціонально)
+        :param date: Дата для перевірки розкладу (опціонально)
+        :return: domain list
+        """
+        domain = [
+            ('active', '=', True),
+            ('license_number', '!=', False),
+            ('license_number', '!=', ''),
+        ]
+
+        if speciality_id:
+            domain.append(('speciality_id', '=', speciality_id))
+
+        if date:
+            # Знаходимо лікарів, які мають розклад на цю дату
+            target_date = fields.Date.to_date(date)
+            day_of_week = target_date.strftime('%A').lower()
+
+            schedules = self.env['hr.hospital.doctor.schedule'].search([
+                '|',
+                ('date', '=', target_date),
+                '&',
+                ('date', '=', False),
+                ('day_of_week', '=', day_of_week),
+                ('type', '=', 'work'),
+            ])
+
+            available_doctor_ids = schedules.mapped('doctor_id').ids
+            if available_doctor_ids:
+                domain.append(('id', 'in', available_doctor_ids))
+
+        return domain
+
+    @api.model
+    def get_possible_visit_dates(self, doctor_id, days_ahead=30):
+        """
+        Повертає список можливих дат для візитів (виключаючи вихідні та відпустки)
+
+        :param doctor_id: ID лікаря
+        :param days_ahead: Кількість днів вперед для перевірки
+        :return: list of dates
+        """
+        if not doctor_id:
+            return []
+
+        doctor = self.env['hr.hospital.doctor'].browse(doctor_id)
+        if not doctor.exists():
+            return []
+
+        possible_dates = []
+        today = fields.Date.today()
+
+        for i in range(days_ahead):
+            check_date = today + timedelta(days=i)
+            day_of_week = check_date.strftime('%A').lower()
+
+            # Перевіряємо чи є робочий розклад на цю дату
+            work_schedule = self.env['hr.hospital.doctor.schedule'].search([
+                ('doctor_id', '=', doctor_id),
+                '|',
+                ('date', '=', check_date),
+                '&',
+                ('date', '=', False),
+                ('day_of_week', '=', day_of_week),
+                ('type', '=', 'work'),
+            ], limit=1)
+
+            # Перевіряємо чи немає відпустки/лікарняного
+            vacation_schedule = self.env['hr.hospital.doctor.schedule'].search([
+                ('doctor_id', '=', doctor_id),
+                ('date', '=', check_date),
+                ('type', 'in', ['vacation', 'sick']),
+            ], limit=1)
+
+            if work_schedule and not vacation_schedule:
+                possible_dates.append(check_date)
+
+        return possible_dates
+
+    @api.model
+    def get_doctors_by_education_country(self, country_id):
+        """
+        Повертає домен для лікарів за країною навчання
+
+        :param country_id: ID країни
+        :return: domain list
+        """
+        return [
+            ('education_country_id', '=', country_id),
+            ('active', '=', True),
+        ]

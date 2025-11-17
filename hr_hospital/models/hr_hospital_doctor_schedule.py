@@ -5,10 +5,12 @@ class HrHospitalDoctorSchedule(models.Model):
     _name = 'hr.hospital.doctor.schedule'
     _description = 'Doctor Schedule'
 
+    # Складний домен: тільки лікарі з заповненою спеціальністю
     doctor_id = fields.Many2one(
         comodel_name='hr.hospital.doctor',
         required=True,
-        ondelete='cascade'
+        ondelete='cascade',
+        domain="[('speciality_id', '!=', False), ('active', '=', True)]"
     )
     day_of_week = fields.Selection(
         selection=[

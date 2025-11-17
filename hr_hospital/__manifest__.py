@@ -22,6 +22,7 @@
         'views/hr_hospital_contact_person_views.xml',
         'views/hr_hospital_disease_views.xml',
         'views/hr_hospital_visit_views.xml',
+        'views/hr_hospital_wizard_views.xml',
         'views/hr_hospital_menu.xml',
     ],
     'demo': [
