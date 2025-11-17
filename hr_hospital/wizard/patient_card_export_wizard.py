@@ -1,9 +1,9 @@
-from odoo import models, fields, api, _
-from odoo.exceptions import ValidationError
 import json
 import csv
 import io
 import base64
+from odoo import models, fields, api, _
+from odoo.exceptions import ValidationError
 
 
 class PatientCardExportWizard(models.TransientModel):
@@ -12,31 +12,23 @@ class PatientCardExportWizard(models.TransientModel):
 
     patient_id = fields.Many2one(
         comodel_name='hr.hospital.patient',
-        string='Patient',
         required=True,
     )
 
-    date_from = fields.Date(
-        string='Date From',
-    )
+    date_from = fields.Date()
 
-    date_to = fields.Date(
-        string='Date To',
-    )
+    date_to = fields.Date()
 
     include_diagnoses = fields.Boolean(
-        string='Include Diagnoses',
         default=True,
     )
 
     include_recommendations = fields.Boolean(
-        string='Include Recommendations',
         default=True,
     )
 
     lang_id = fields.Many2one(
         comodel_name='res.lang',
-        string='Report Language',
     )
 
     export_format = fields.Selection(
@@ -44,14 +36,12 @@ class PatientCardExportWizard(models.TransientModel):
             ('json', 'JSON'),
             ('csv', 'CSV'),
         ],
-        string='Export Format',
         default='json',
         required=True,
     )
 
     # Export result fields
     export_file = fields.Binary(
-        string='Export File',
         readonly=True,
     )
 
@@ -220,7 +210,13 @@ class PatientCardExportWizard(models.TransientModel):
 
         # Write visits
         writer.writerow(['Visits History'])
-        writer.writerow(['Date', 'Doctor', 'Type', 'Status', 'Recommendations'])
+        writer.writerow(
+            ['Date',
+             'Doctor',
+             'Type',
+             'Status',
+             'Recommendations']
+        )
 
         for visit in data.get('visits', []):
             writer.writerow([
@@ -234,7 +230,13 @@ class PatientCardExportWizard(models.TransientModel):
             # Write diagnoses for this visit
             if self.include_diagnoses and visit.get('diagnoses'):
                 writer.writerow([])
-                writer.writerow(['', 'Diagnosis', 'Disease', 'Severity', 'Description'])
+                writer.writerow(
+                    ['',
+                     'Diagnosis',
+                     'Disease',
+                     'Severity',
+                     'Description']
+                )
                 for diagnosis in visit.get('diagnoses', []):
                     writer.writerow([
                         '',

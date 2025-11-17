@@ -2,13 +2,14 @@ from datetime import date
 from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError
 
+
 class HrHospitalDoctor(models.Model):
     _name = 'hr.hospital.doctor'
     _description = 'Doctor'
     _inherit = ['hr.hospital.abstract.person']
 
-
     description = fields.Text()
+
     hospital_id = fields.Many2one(
         comodel_name='hr.hospital.hospital'
     )
@@ -16,9 +17,11 @@ class HrHospitalDoctor(models.Model):
     user_id = fields.Many2one(
         comodel_name='res.users'
     )
+
     speciality_id = fields.Many2one(
-        comodel_name= 'hr.hospital.doctor.speciality'
+        comodel_name='hr.hospital.doctor.speciality'
     )
+
     is_intern = fields.Boolean()
 
     # Складний домен: тільки лікарі, які НЕ є інтернами
@@ -31,7 +34,6 @@ class HrHospitalDoctor(models.Model):
         required=True,
         copy=False
     )
-
 
     license_date = fields.Date()
 
@@ -50,9 +52,7 @@ class HrHospitalDoctor(models.Model):
         inverse_name='doctor_id',
     )
 
-    education_country_id = fields.Many2one(
-        comodel_name='res.country'
-    )
+    education_country_id = fields.Many2one(comodel_name='res.country')
 
     active = fields.Boolean(default=True)
 
@@ -72,7 +72,6 @@ class HrHospitalDoctor(models.Model):
                     )
         return super(HrHospitalDoctor, self).write(vals)
 
-
     @api.depends('license_date')
     def _compute_experience(self):
 
@@ -81,7 +80,8 @@ class HrHospitalDoctor(models.Model):
                 today = date.today()
                 delta = today.year - record.license_date.year
                 if ((today.month, today.day) <
-                        (record.license_date.month, record.license_date.day)):
+                        (record.license_date.month,
+                         record.license_date.day)):
                     delta -= 1
                 record.experience_years = max(delta, 0)
             else:
@@ -91,33 +91,51 @@ class HrHospitalDoctor(models.Model):
     def _check_mentor_is_not_intern(self):
         for rec in self:
             if rec.mentor_id and rec.mentor_id.is_intern:
-                raise ValidationError(_("Intern cannot be chosen as a mentor."))
+                raise ValidationError(
+                    _("Intern cannot be chosen as a mentor.")
+                )
 
     @api.constrains('mentor_id')
     def _check_mentor_not_self(self):
         for rec in self:
             if rec.mentor_id and rec.mentor_id.id == rec.id:
-                raise ValidationError(_("Doctor cannot be a mentor to themselves."))
+                raise ValidationError(
+                    _("Doctor cannot be a mentor to themselves.")
+                )
 
     _sql_constraints = [
-        ('unique_license', 'unique(license_number)', _('License number must be unique.')),
-        ('check_rating', 'CHECK(rating >= 0 AND rating <= 5)', _('Rating must be between 0 and 5.'))
+        ('unique_license',
+         'unique(license_number)',
+         _('License number must be unique.')
+         ),
+        ('check_rating',
+         'CHECK(rating >= 0 AND rating <= 5)',
+         _('Rating must be between 0 and 5.')
+         )
     ]
 
     # Динамічні методи для доменів
     @api.model
     def get_doctors_with_schedule(self):
         """Повертає домен для лікарів з заповненим розкладом"""
-        doctors_with_schedule = self.env['hr.hospital.doctor.schedule'].search([]).mapped('doctor_id')
+        doctors_with_schedule = (
+            self.env[
+                'hr.hospital.doctor.schedule'
+            ].search([]).mapped('doctor_id')
+        )
         return [('id', 'in', doctors_with_schedule.ids)]
 
     @api.model
-    def get_doctors_by_speciality_and_schedule(self, speciality_id=None, date=None):
+    def get_doctors_by_speciality_and_schedule(
+            self,
+            speciality_id=None,
+            schedule_date=None
+    ):
         """
         Повертає домен для лікарів за спеціальністю та розкладом
 
         :param speciality_id: ID спеціальності
-        :param date: Дата для перевірки розкладу
+        :param schedule_date: Дата для перевірки розкладу
         :return: domain list
         """
         domain = [('active', '=', True)]
@@ -125,9 +143,9 @@ class HrHospitalDoctor(models.Model):
         if speciality_id:
             domain.append(('speciality_id', '=', speciality_id))
 
-        if date:
+        if schedule_date:
             # Додаємо фільтр за розкладом на конкретну дату
-            target_date = fields.Date.to_date(date)
+            target_date = fields.Date.to_date(schedule_date)
             day_of_week = target_date.strftime('%A').lower()
 
             schedules = self.env['hr.hospital.doctor.schedule'].search([
@@ -143,5 +161,3 @@ class HrHospitalDoctor(models.Model):
                 domain.append(('id', 'in', schedules.mapped('doctor_id').ids))
 
         return domain
-
-

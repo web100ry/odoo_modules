@@ -1,6 +1,6 @@
+from datetime import timedelta
 from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError
-from datetime import timedelta
 
 
 class DoctorScheduleWizard(models.TransientModel):
@@ -9,18 +9,15 @@ class DoctorScheduleWizard(models.TransientModel):
 
     doctor_id = fields.Many2one(
         comodel_name='hr.hospital.doctor',
-        string='Doctor',
         required=True,
     )
 
     week_start_date = fields.Date(
-        string='Week Start Date',
         required=True,
         default=fields.Date.context_today,
     )
 
     weeks_count = fields.Integer(
-        string='Number of Weeks',
         default=1,
         required=True,
     )
@@ -31,19 +28,18 @@ class DoctorScheduleWizard(models.TransientModel):
             ('even_week', 'Even Week'),
             ('odd_week', 'Odd Week'),
         ],
-        string='Schedule Type',
         default='standard',
         required=True,
     )
 
     # Days of week
-    monday = fields.Boolean(string='Monday', default=True)
-    tuesday = fields.Boolean(string='Tuesday', default=True)
-    wednesday = fields.Boolean(string='Wednesday', default=True)
-    thursday = fields.Boolean(string='Thursday', default=True)
-    friday = fields.Boolean(string='Friday', default=True)
-    saturday = fields.Boolean(string='Saturday', default=False)
-    sunday = fields.Boolean(string='Sunday', default=False)
+    monday = fields.Boolean(string='MON', default=True)
+    tuesday = fields.Boolean(string='TUE', default=True)
+    wednesday = fields.Boolean(string='WED', default=True)
+    thursday = fields.Boolean(string='THU', default=True)
+    friday = fields.Boolean(string='FRI', default=True)
+    saturday = fields.Boolean(string='SAT', default=False)
+    sunday = fields.Boolean(string='SUN', default=False)
 
     # Time settings
     time_from = fields.Float(
@@ -96,10 +92,14 @@ class DoctorScheduleWizard(models.TransientModel):
         """Generate doctor schedule"""
         self.ensure_one()
 
-        # Check if at least one day is selected
         days_selected = any([
-            self.monday, self.tuesday, self.wednesday, 
-            self.thursday, self.friday, self.saturday, self.sunday
+            self.monday,
+            self.tuesday,
+            self.wednesday,
+            self.thursday,
+            self.friday,
+            self.saturday,
+            self.sunday
         ])
 
         if not days_selected:
@@ -131,7 +131,7 @@ class DoctorScheduleWizard(models.TransientModel):
 
             if self.schedule_type == 'even_week' and week_number % 2 != 0:
                 continue
-            elif self.schedule_type == 'odd_week' and week_number % 2 == 0:
+            if self.schedule_type == 'odd_week' and week_number % 2 == 0:
                 continue
 
             # Generate schedule for each day of the week
@@ -194,7 +194,7 @@ class DoctorScheduleWizard(models.TransientModel):
             'tag': 'display_notification',
             'params': {
                 'title': _('Success'),
-                'message': _('%s schedule entries have been created for %s') % (
+                'message': _("%(visit)s schedule entries have been created for %(count)s") % (
                     created_count,
                     self.doctor_id.name
                 ),

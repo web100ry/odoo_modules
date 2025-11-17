@@ -917,16 +917,6 @@ msgid "Visit has been rescheduled successfully!"
 msgstr "Візит успішно перенесено!"
 
 #. module: hr_hospital
-#: model:ir.model.fields,field_description:hr_hospital.field_reschedule_visit_wizard__id
-#: model:ir.model.fields,field_description:hr_hospital.field_reschedule_visit_wizard__display_name
-#: model:ir.model.fields,field_description:hr_hospital.field_reschedule_visit_wizard__create_uid
-#: model:ir.model.fields,field_description:hr_hospital.field_reschedule_visit_wizard__create_date
-#: model:ir.model.fields,field_description:hr_hospital.field_reschedule_visit_wizard__write_uid
-#: model:ir.model.fields,field_description:hr_hospital.field_reschedule_visit_wizard__write_date
-msgid "ID"
-msgstr "ID"
-
-#. module: hr_hospital
 #: model:ir.model.fields.selection,name:hr_hospital.selection__hr_hospital_visit__status__in_progress
 msgid "In Progress"
 msgstr "В процесі"

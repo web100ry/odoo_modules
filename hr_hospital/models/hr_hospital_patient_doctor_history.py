@@ -28,11 +28,12 @@ class HrHospitalPatientDoctorHistory(models.Model):
     notes = fields.Text()
     active = fields.Boolean(default=True)
 
-
     @api.model
     def create(self, vals):
         patient_id = vals.get('patient_id')
         if patient_id:
-            self.search([('patient_id', '=', patient_id), ('active', '=', True)]).write({'active': False})
+            self.search(
+                [('patient_id', '=', patient_id), ('active', '=', True)]
+            ).write({'active': False})
 
         return super().create(vals)

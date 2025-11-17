@@ -8,37 +8,31 @@ class RescheduleVisitWizard(models.TransientModel):
 
     visit_id = fields.Many2one(
         comodel_name='hr.hospital.visit',
-        string='Current Visit',
         readonly=True,
         required=True,
     )
 
     current_doctor_id = fields.Many2one(
         comodel_name='hr.hospital.doctor',
-        string='Current Doctor',
         related='visit_id.doctor_id',
         readonly=True,
     )
 
     current_datetime = fields.Datetime(
-        string='Current Date & Time',
         related='visit_id.planned_datetime',
         readonly=True,
     )
 
     new_doctor_id = fields.Many2one(
-        comodel_name='hr.hospital.doctor',
-        string='New Doctor',
+        comodel_name='hr.hospital.doctor'
     )
 
     new_date = fields.Date(
-        string='New Date',
         required=True,
         default=fields.Date.context_today,
     )
 
     new_time = fields.Float(
-        string='New Time',
         required=True,
         default=9.0,
     )
@@ -50,7 +44,7 @@ class RescheduleVisitWizard(models.TransientModel):
 
     @api.model
     def default_get(self, fields_list):
-        """Set default values from context"""
+
         res = super().default_get(fields_list)
 
         # Get visit_id from context (when called from visit form)

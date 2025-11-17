@@ -1,14 +1,14 @@
-from odoo import fields, models, api, _
 from datetime import datetime, timedelta
+from odoo import fields, models, api, _
 
 
 class HrHospitalMedicalDiagnosis(models.Model):
     _name = 'hr.hospital.medical.diagnosis'
     _description = 'Medical Diagnosis'
 
-    name= fields.Char(required=True)
+    name = fields.Char(required=True)
 
-    # Складний домен: тільки завершені візити за останні 30 днів
+    # тільки завершені візити за останні 30 днів
     visit_id = fields.Many2one(
         comodel_name='hr.hospital.visit',
         string='Visit',
@@ -16,10 +16,13 @@ class HrHospitalMedicalDiagnosis(models.Model):
         domain=lambda self: self._get_recent_completed_visits_domain()
     )
 
-    # Складний домен: тільки заразні хвороби з високим/критичним ступенем небезпеки
+    # тільки заразні хвороби
     disease_id = fields.Many2one(
         comodel_name='hr.hospital.disease',
-        domain="[('is_contagious', '=', True), ('danger_level', 'in', ['high', 'critical'])]"
+        domain=[
+            ('is_contagious', '=', True),
+            ('danger_level', 'in', ['high', 'critical']),
+        ],
     )
 
     @api.model
@@ -40,7 +43,6 @@ class HrHospitalMedicalDiagnosis(models.Model):
         readonly=True
     )
 
-
     @api.onchange('doctor_id')
     def _onchange_doctor_set_mentor(self):
         if self.doctor_id and self.doctor_id.is_intern:
@@ -50,12 +52,11 @@ class HrHospitalMedicalDiagnosis(models.Model):
                     'warning': {
                         'title': _("Intern Doctor"),
                         'message': _(
-                            "Selected doctor is an intern. Mentor was automatically assigned."
+                            "Doctor is an intern. Mentor was assigned."
                         )
                     }
                 }
-
-
+        return {}
 
     approved_date = fields.Datetime()
 
@@ -66,6 +67,7 @@ class HrHospitalMedicalDiagnosis(models.Model):
             ('hard', 'Hard'),
             ('critical', 'Critical'),
         ])
+
     def action_approve_by_mentor(self):
         for record in self:
             record.write({

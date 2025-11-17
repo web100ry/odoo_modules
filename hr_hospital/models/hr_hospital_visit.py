@@ -1,6 +1,6 @@
+from datetime import timedelta
 from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError
-from datetime import datetime, timedelta
 
 
 class HrHospitalVisit(models.Model):
@@ -22,7 +22,10 @@ class HrHospitalVisit(models.Model):
     doctor_id = fields.Many2one(
         comodel_name='hr.hospital.doctor',
         required=True,
-        domain="[('license_number', '!=', False), ('license_number', '!=', '')]"
+        domain=[
+            ('license_number', '!=', False),
+            ('license_number', '!=', '')
+        ]
     )
     patient_id = fields.Many2one(
         comodel_name='hr.hospital.patient',
@@ -39,14 +42,12 @@ class HrHospitalVisit(models.Model):
     diagnosis_ids = fields.One2many(
         comodel_name='hr.hospital.medical.diagnosis',
         inverse_name='visit_id',
-        string='Diagnoses'
     )
 
     diagnosis_count = fields.Integer(
-        string=_("Number of Diagnoses"),
         compute="_compute_diagnosis_count",
         store=True,
-        readonly = True
+        readonly=True,
     )
 
     @api.depends('diagnosis_ids')
@@ -58,7 +59,7 @@ class HrHospitalVisit(models.Model):
         for rec in self:
             if rec.diagnosis_ids:
                 raise ValidationError(_("You cannot delete a visit that has diagnoses."))
-        return super(Visit, self).unlink()
+        return super(HrHospitalVisit, self).unlink()
 
     recommendations = fields.Html()
 
@@ -81,7 +82,7 @@ class HrHospitalVisit(models.Model):
         for rec in self:
             if not rec.planned_datetime:
                 continue
-#TODO додати часовий пояс
+
             start_day = rec.planned_datetime.date()
             existing = self.search([
                 ('id', '!=', rec.id),
@@ -115,17 +116,11 @@ class HrHospitalVisit(models.Model):
                     ) % self.patient_id.allergies
                 }
             }
+        return {}
 
-    # Динамічні домени через методи
     @api.model
     def get_available_doctors_domain(self, speciality_id=None, date=None):
-        """
-        Повертає домен для доступних лікарів за спеціальністю та розкладом
 
-        :param speciality_id: ID спеціальності (опціонально)
-        :param date: Дата для перевірки розкладу (опціонально)
-        :return: domain list
-        """
         domain = [
             ('active', '=', True),
             ('license_number', '!=', False),
@@ -157,13 +152,7 @@ class HrHospitalVisit(models.Model):
 
     @api.model
     def get_possible_visit_dates(self, doctor_id, days_ahead=30):
-        """
-        Повертає список можливих дат для візитів (виключаючи вихідні та відпустки)
 
-        :param doctor_id: ID лікаря
-        :param days_ahead: Кількість днів вперед для перевірки
-        :return: list of dates
-        """
         if not doctor_id:
             return []
 

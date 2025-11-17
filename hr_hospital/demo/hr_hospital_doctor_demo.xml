@@ -1,37 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <!-- Users for doctors -->
-    <record id="user_doctor_smith" model="res.users">
+    <record id="user_doctor_smith" model="res.users" context="{'no_reset_password': True}">
         <field name="name">Dr. John Smith</field>
         <field name="login">doctor.smith@hospital.com</field>
         <field name="email">doctor.smith@hospital.com</field>
     </record>
 
-    <record id="user_doctor_brown" model="res.users">
+    <record id="user_doctor_brown" model="res.users" context="{'no_reset_password': True}">
         <field name="name">Dr. Emily Brown</field>
         <field name="login">doctor.brown@hospital.com</field>
         <field name="email">doctor.brown@hospital.com</field>
     </record>
 
-    <record id="user_doctor_white" model="res.users">
+    <record id="user_doctor_white" model="res.users" context="{'no_reset_password': True}">
         <field name="name">Dr. Alex White</field>
         <field name="login">doctor.white@hospital.com</field>
         <field name="email">doctor.white@hospital.com</field>
     </record>
 
-    <record id="user_doctor_johnson" model="res.users">
+    <record id="user_doctor_johnson" model="res.users" context="{'no_reset_password': True}">
         <field name="name">Dr. Michael Johnson</field>
         <field name="login">doctor.johnson@hospital.com</field>
         <field name="email">doctor.johnson@hospital.com</field>
     </record>
 
-    <record id="user_doctor_garcia" model="res.users">
+    <record id="user_doctor_garcia" model="res.users" context="{'no_reset_password': True}">
         <field name="name">Dr. Sofia Garcia</field>
         <field name="login">doctor.garcia@hospital.com</field>
         <field name="email">doctor.garcia@hospital.com</field>
     </record>
 
-    <record id="user_doctor_lee" model="res.users">
+    <record id="user_doctor_lee" model="res.users" context="{'no_reset_password': True}">
         <field name="name">Dr. David Lee</field>
         <field name="login">doctor.lee@hospital.com</field>
         <field name="email">doctor.lee@hospital.com</field>

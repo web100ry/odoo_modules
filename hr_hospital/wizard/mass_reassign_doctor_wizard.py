@@ -8,29 +8,24 @@ class MassReassignDoctorWizard(models.TransientModel):
 
     old_doctor_id = fields.Many2one(
         comodel_name='hr.hospital.doctor',
-        string='Old Doctor',
     )
 
     new_doctor_id = fields.Many2one(
         comodel_name='hr.hospital.doctor',
-        string='New Doctor',
         required=True,
     )
 
     patient_ids = fields.Many2many(
         comodel_name='hr.hospital.patient',
-        string='Patients',
         domain="[('personal_doctor_id', '=', old_doctor_id)]",
     )
 
     change_date = fields.Date(
-        string='Change Date',
         default=fields.Date.context_today,
         required=True,
     )
 
     reason_change = fields.Text(
-        string='Reason for Change',
         required=True,
     )
 
@@ -47,13 +42,12 @@ class MassReassignDoctorWizard(models.TransientModel):
                     'patient_ids': [('personal_doctor_id', '=', self.old_doctor_id.id)]
                 }
             }
-        else:
-            self.patient_ids = False
-            return {
-                'domain': {
-                    'patient_ids': [('id', '=', False)]
-                }
+        self.patient_ids = False
+        return {
+            'domain': {
+                'patient_ids': [('id', '=', False)]
             }
+        }
 
     @api.constrains('old_doctor_id', 'new_doctor_id')
     def _check_different_doctors(self):
@@ -91,10 +85,10 @@ class MassReassignDoctorWizard(models.TransientModel):
             'tag': 'display_notification',
             'params': {
                 'title': _('Success'),
-                'message': _('%s patient(s) have been reassigned to %s') % (
-                    len(self.patient_ids),
-                    self.new_doctor_id.name
-                ),
+                'message': _("%(count)s patient(s) have been reassigned to %(doctor)s") % {
+                    'count': len(self.patient_ids),
+                    'doctor': self.new_doctor_id.name
+                },
                 'type': 'success',
                 'sticky': False,
             }

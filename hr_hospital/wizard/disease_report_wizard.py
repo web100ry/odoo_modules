@@ -25,13 +25,11 @@ class DiseaseReportWizard(models.TransientModel):
     )
 
     date_from = fields.Date(
-        string='Date From',
         required=True,
         default=fields.Date.context_today,
     )
 
     date_to = fields.Date(
-        string='Date To',
         required=True,
         default=fields.Date.context_today,
     )
@@ -41,7 +39,6 @@ class DiseaseReportWizard(models.TransientModel):
             ('detailed', 'Detailed'),
             ('summary', 'Summary'),
         ],
-        string='Report Type',
         default='summary',
         required=True,
     )
@@ -53,7 +50,6 @@ class DiseaseReportWizard(models.TransientModel):
             ('month', 'Month'),
             ('country', 'Country'),
         ],
-        string='Group By',
         default='disease',
     )
 
@@ -126,59 +122,82 @@ class DiseaseReportWizard(models.TransientModel):
             })
         return data
 
+    def _group_by_doctor(self, diagnoses):
+        """Group diagnoses by doctor"""
+        data = {}
+        for diagnosis in diagnoses:
+            doctor = diagnosis.visit_id.doctor_id
+            if doctor.id not in data:
+                data[doctor.id] = {
+                    'name': doctor.name,
+                    'count': 0,
+                    'diseases': set(),
+                }
+            data[doctor.id]['count'] += 1
+            if diagnosis.disease_id:
+                data[doctor.id]['diseases'].add(diagnosis.disease_id.name)
+        return data
+
+    def _group_by_disease(self, diagnoses):
+        """Group diagnoses by disease"""
+        data = {}
+        for diagnosis in diagnoses:
+            disease = diagnosis.disease_id
+            disease_key = disease.id if disease else 0
+            disease_name = disease.name if disease else _('Unspecified')
+
+            if disease_key not in data:
+                data[disease_key] = {
+                    'name': disease_name,
+                    'count': 0,
+                    'doctors': set(),
+                }
+            data[disease_key]['count'] += 1
+            data[disease_key]['doctors'].add(diagnosis.visit_id.doctor_id.name)
+        return data
+
+    def _group_by_month(self, diagnoses):
+        """Group diagnoses by month"""
+        data = {}
+        for diagnosis in diagnoses:
+            month_key = diagnosis.visit_id.planned_datetime.strftime('%Y-%m')
+            if month_key not in data:
+                data[month_key] = {
+                    'name': month_key,
+                    'count': 0,
+                }
+            data[month_key]['count'] += 1
+        return data
+
+    def _group_by_country(self, diagnoses):
+        """Group diagnoses by country"""
+        data = {}
+        for diagnosis in diagnoses:
+            country = diagnosis.visit_id.patient_id.country_id
+            country_key = country.id if country else 0
+            country_name = country.name if country else _('Unspecified')
+
+            if country_key not in data:
+                data[country_key] = {
+                    'name': country_name,
+                    'count': 0,
+                }
+            data[country_key]['count'] += 1
+        return data
+
     def _generate_summary_report(self, diagnoses):
         """Generate summary report data"""
-        data = {}
+        group_methods = {
+            'doctor': self._group_by_doctor,
+            'disease': self._group_by_disease,
+            'month': self._group_by_month,
+            'country': self._group_by_country,
+        }
 
-        if self.group_by == 'doctor':
-            for diagnosis in diagnoses:
-                doctor = diagnosis.visit_id.doctor_id
-                if doctor.id not in data:
-                    data[doctor.id] = {
-                        'name': doctor.name,
-                        'count': 0,
-                        'diseases': set(),
-                    }
-                data[doctor.id]['count'] += 1
-                if diagnosis.disease_id:
-                    data[doctor.id]['diseases'].add(diagnosis.disease_id.name)
-
-        elif self.group_by == 'disease':
-            for diagnosis in diagnoses:
-                disease = diagnosis.disease_id
-                disease_key = disease.id if disease else 0
-                disease_name = disease.name if disease else _('Unspecified')
-
-                if disease_key not in data:
-                    data[disease_key] = {
-                        'name': disease_name,
-                        'count': 0,
-                        'doctors': set(),
-                    }
-                data[disease_key]['count'] += 1
-                data[disease_key]['doctors'].add(diagnosis.visit_id.doctor_id.name)
-
-        elif self.group_by == 'month':
-            for diagnosis in diagnoses:
-                month_key = diagnosis.visit_id.planned_datetime.strftime('%Y-%m')
-                if month_key not in data:
-                    data[month_key] = {
-                        'name': month_key,
-                        'count': 0,
-                    }
-                data[month_key]['count'] += 1
-
-        elif self.group_by == 'country':
-            for diagnosis in diagnoses:
-                country = diagnosis.visit_id.patient_id.country_id
-                country_key = country.id if country else 0
-                country_name = country.name if country else _('Unspecified')
-
-                if country_key not in data:
-                    data[country_key] = {
-                        'name': country_name,
-                        'count': 0,
-                    }
-                data[country_key]['count'] += 1
+        group_method = group_methods.get(self.group_by)
+        if group_method:
+            data = group_method(diagnoses)
+        else:
+            data = {}
 
         return list(data.values())
