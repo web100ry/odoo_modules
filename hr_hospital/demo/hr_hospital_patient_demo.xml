@@ -1,31 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
 <odoo>
-  <record id="hr_patient_1" model="hr.hospital.patient">
-    <field name="first_name">Білецька</field>
-    <field name="last_name">Ганна</field>
-    <field name="middle_name">Іванівна</field>
-    <field name="age">25</field>
-    <field name="gender">female</field>
-    <field name="doctor_id" ref="hr_doctor_1"/>
-    <field name="disease_id" ref="hr_disease_flu"/>
-  </record>
+    <!-- 15 Patients -->
+    <record id="hr_patient_1" model="hr.hospital.patient">
+        <field name="first_name">Ганна</field>
+        <field name="last_name">Білецька</field>
+        <field name="middle_name">Іванівна</field>
+        <field name="birth_date" eval="(DateTime.now() - timedelta(days=365*25)).strftime('%Y-%m-%d')"/>
+        <field name="gender">female</field>
+        <field name="phone">+380671234501</field>
+        <field name="email">anna.biletska@email.com</field>
+        <field name="passport_data">AA1234567</field>
+        <field name="blood_type">a_plus</field>
+        <field name="allergies">Penicillin allergy</field>
+        <field name="personal_doctor_id" ref="hr_doctor_1"/>
+        <field name="disease_id" ref="hr_disease_flu"/>
+    </record>
 
-  <record id="hr_patient_2" model="hr.hospital.patient">
-    <field name="first_name">Петрененко</field>
-    <field name="last_name">Іван</field>
-    <field name="middle_name">Васильович</field>
-    <field name="age">40</field>
-    <field name="gender">male</field>
-    <field name="doctor_id" ref="hr_doctor_2"/>
-    <field name="disease_id" ref="hr_disease_covid"/>
-  </record>
+    <record id="hr_patient_2" model="hr.hospital.patient">
+        <field name="first_name">Іван</field>
+        <field name="last_name">Петренко</field>
+        <field name="middle_name">Васильович</field>
+        <field name="birth_date" eval="(DateTime.now() - timedelta(days=365*40)).strftime('%Y-%m-%d')"/>
+        <field name="gender">male</field>
+        <field name="phone">+380671234502</field>
+        <field name="email">ivan.petrenko@email.com</field>
+        <field name="passport_data">BB2345678</field>
+        <field name="blood_type">o_plus</field>
+        <field name="allergies">Aspirin sensitivity</field>
+        <field name="personal_doctor_id" ref="hr_doctor_4"/>
+        <field name="disease_id" ref="hr_disease_covid"/>
+    </record>
 
-  <record id="hr_patient_3" model="hr.hospital.patient">
-    <field name="first_name">Ковальчук</field>
-    <field name="last_name">Ольга</field>
-    <field name="middle_name">Петрівна</field>
-    <field name="age">32</field>
-    <field name="gender">female</field>
-    <field name="doctor_id" ref="hr_doctor_3"/>
-    <field name="disease_id" ref="hr_disease_migraine"/>
-  </record>
+    <record id="hr_patient_3" model="hr.hospital.patient">
+        <field name="first_name">Ольга</field>
+        <field name="last_name">Ковальчук</field>
+        <field name="middle_name">Петрівна</field>
+        <field name="birth_date" eval="(DateTime.now() - timedelta(days=365*32)).strftime('%Y-%m-%d')"/>
+        <field name="gender">female</field>
+        <field name="phone">+380671234503</field>
+        <field name="email">olga.kovalchuk@email.com</field>
+        <field name="passport_data">CC3456789</field>
+        <field name="blood_type">b_plus</field>
+        <field name="allergies">Pollen allergy</field>
+        <field name="personal_doctor_id" ref="hr_doctor_3"/>
+        <field name="disease_id" ref="hr_disease_migraine"/>
+    </record>
+
+    <record id="hr_patient_4" model="hr.hospital.patient">
+        <field name="first_name">Михайло</field>
+        <field name="last_name">Шевченко</field>
+        <field name="middle_name">Олексійович</field>
+        <field name="birth_date" eval="(DateTime.now() - timedelta(days=365*55)).strftime('%Y-%m-%d')"/>
+        <field name="gender">male</field>
+        <field name="phone">+380671234504</field>
+        <field name="email">mykhailo.shevchenko@email.com</field>
+        <field name="passport_data">DD4567890</field>
+        <field name="blood_type">ab_plus</field>
+        <field name="allergies">Lactose intolerance</field>
+        <field name="personal_doctor_id" ref="hr_doctor_1"/>
+    </record>
+
+    <record id="hr_patient_5" model="hr.hospital.patient">
+        <field name="first_name">Марія</field>
+        <field name="last_name">Коваленко</field>
+        <field name="middle_name">Сергіївна</field>
+        <field name="birth_date" eval="(DateTime.now() - timedelta(days=365*28)).strftime('%Y-%m-%d')"/>
+        <field name="gender">female</field>
+        <field name="phone">+380671234505</field>
+        <field name="email">maria.kovalenko@email.com</field>
+        <field name="passport_data">EE5678901</field>
+        <field name="blood_type">o_minus</field>
+        <field name="allergies">Shellfish allergy</field>
+        <field name="personal_doctor_id" ref="hr_doctor_2"/>
+    </record>
+
+    <record id="hr_patient_6" model="hr.hospital.patient">
+        <field name="first_name">Andriy</field>
+        <field name="last_name">Melnyk</field>
+        <field name="birth_date" eval="(DateTime.now() - timedelta(days=365*45)).strftime('%Y-%m-%d')"/>
+        <field name="gender">male</field>
+        <field name="phone">+380671234506</field>
+        <field name="email">andriy.melnyk@email.com</field>
+        <field name="passport_data">FF6789012</field>
+        <field name="blood_type">a_minus</field>
+        <field name="allergies">Dust mite allergy</field>
+        <field name="personal_doctor_id" ref="hr_doctor_6"/>
+    </record>
+
+    <record id="hr_patient_7" model="hr.hospital.patient">
+        <field name="first_name">Natalia</field>
+        <field name="last_name">Bondar</field>
+        <field name="birth_date" eval="(DateTime.now() - timedelta(days=365*35)).strftime('%Y-%m-%d')"/>
+        <field name="gender">female</field>
+        <field name="phone">+380671234507</field>
+        <field name="email">natalia.bondar@email.com</field>
+        <field name="passport_data">GG7890123</field>
+        <field name="blood_type">b_minus</field>
+        <field name="allergies">Bee sting allergy</field>
+        <field name="personal_doctor_id" ref="hr_doctor_4"/>
+    </record>
+
+    <record id="hr_patient_8" model="hr.hospital.patient">
+        <field name="first_name">Dmytro</field>
+        <field name="last_name">Kravchenko</field>
+        <field name="birth_date" eval="(DateTime.now() - timedelta(days=365*50)).strftime('%Y-%m-%d')"/>
+        <field name="gender">male</field>
+        <field name="phone">+380671234508</field>
+        <field name="email">dmytro.kravchenko@email.com</field>
+        <field name="passport_data">HH8901234</field>
+        <field name="blood_type">ab_minus</field>
+        <field name="allergies">Gluten intolerance</field>
+        <field name="personal_doctor_id" ref="hr_doctor_1"/>
+    </record>
+
+    <record id="hr_patient_9" model="hr.hospital.patient">
+        <field name="first_name">Olena</field>
+        <field name="last_name">Tkachenko</field>
+        <field name="birth_date" eval="(DateTime.now() - timedelta(days=365*22)).strftime('%Y-%m-%d')"/>
+        <field name="gender">female</field>
+        <field name="phone">+380671234509</field>
+        <field name="email">olena.tkachenko@email.com</field>
+        <field name="passport_data">II9012345</field>
+        <field name="blood_type">o_plus</field>
+        <field name="allergies">Latex allergy</field>
+        <field name="personal_doctor_id" ref="hr_doctor_2"/>
+    </record>
+
+    <record id="hr_patient_10" model="hr.hospital.patient">
+        <field name="first_name">Viktor</field>
+        <field name="last_name">Boyko</field>
+        <field name="birth_date" eval="(DateTime.now() - timedelta(days=365*38)).strftime('%Y-%m-%d')"/>
+        <field name="gender">male</field>
+        <field name="phone">+380671234510</field>
+        <field name="email">viktor.boyko@email.com</field>
+        <field name="passport_data">JJ0123456</field>
+        <field name="blood_type">a_plus</field>
+        <field name="allergies">Mold allergy</field>
+        <field name="personal_doctor_id" ref="hr_doctor_3"/>
+    </record>
+
+    <record id="hr_patient_11" model="hr.hospital.patient">
+        <field name="first_name">Tetiana</field>
+        <field name="last_name">Savchenko</field>
+        <field name="birth_date" eval="(DateTime.now() - timedelta(days=365*30)).strftime('%Y-%m-%d')"/>
+        <field name="gender">female</field>
+        <field name="phone">+380671234511</field>
+        <field name="email">tetiana.savchenko@email.com</field>
+        <field name="passport_data">KK1234567</field>
+        <field name="blood_type">b_plus</field>
+        <field name="allergies">Nuts allergy</field>
+        <field name="personal_doctor_id" ref="hr_doctor_6"/>
+    </record>
+
+    <record id="hr_patient_12" model="hr.hospital.patient">
+        <field name="first_name">Serhiy</field>
+        <field name="last_name">Ponomarenko</field>
+        <field name="birth_date" eval="(DateTime.now() - timedelta(days=365*42)).strftime('%Y-%m-%d')"/>
+        <field name="gender">male</field>
+        <field name="phone">+380671234512</field>
+        <field name="email">serhiy.ponomarenko@email.com</field>
+        <field name="passport_data">LL2345678</field>
+        <field name="blood_type">o_minus</field>
+        <field name="allergies">Iodine allergy</field>
+        <field name="personal_doctor_id" ref="hr_doctor_4"/>
+    </record>
+
+    <record id="hr_patient_13" model="hr.hospital.patient">
+        <field name="first_name">Yulia</field>
+        <field name="last_name">Pavlenko</field>
+        <field name="birth_date" eval="(DateTime.now() - timedelta(days=365*27)).strftime('%Y-%m-%d')"/>
+        <field name="gender">female</field>
+        <field name="phone">+380671234513</field>
+        <field name="email">yulia.pavlenko@email.com</field>
+        <field name="passport_data">MM3456789</field>
+        <field name="blood_type">a_minus</field>
+        <field name="allergies">Egg allergy</field>
+        <field name="personal_doctor_id" ref="hr_doctor_2"/>
+    </record>
+
+    <record id="hr_patient_14" model="hr.hospital.patient">
+        <field name="first_name">Roman</field>
+        <field name="last_name">Lysenko</field>
+        <field name="birth_date" eval="(DateTime.now() - timedelta(days=365*60)).strftime('%Y-%m-%d')"/>
+        <field name="gender">male</field>
+        <field name="phone">+380671234514</field>
+        <field name="email">roman.lysenko@email.com</field>
+        <field name="passport_data">NN4567890</field>
+        <field name="blood_type">ab_plus</field>
+        <field name="allergies">Sulfa drugs allergy</field>
+        <field name="personal_doctor_id" ref="hr_doctor_1"/>
+    </record>
+
+    <record id="hr_patient_15" model="hr.hospital.patient">
+        <field name="first_name">Iryna</field>
+        <field name="last_name">Moroz</field>
+        <field name="birth_date" eval="(DateTime.now() - timedelta(days=365*33)).strftime('%Y-%m-%d')"/>
+        <field name="gender">female</field>
+        <field name="phone">+380671234515</field>
+        <field name="email">iryna.moroz@email.com</field>
+        <field name="passport_data">OO5678901</field>
+        <field name="blood_type">o_plus</field>
+        <field name="allergies">Nickel allergy</field>
+        <field name="personal_doctor_id" ref="hr_doctor_3"/>
+    </record>
 </odoo>

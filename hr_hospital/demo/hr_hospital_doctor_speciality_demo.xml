@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Doctor Specialities -->
+    <record id="speciality_cardiology" model="hr.hospital.doctor.speciality">
+        <field name="name">Cardiology</field>
+        <field name="code">CARD</field>
+        <field name="description">Medical specialty dealing with disorders of the heart and blood vessels</field>
+    </record>
+
+    <record id="speciality_neurology" model="hr.hospital.doctor.speciality">
+        <field name="name">Neurology</field>
+        <field name="code">NEUR</field>
+        <field name="description">Medical specialty dealing with disorders of the nervous system</field>
+    </record>
+
+    <record id="speciality_pediatrics" model="hr.hospital.doctor.speciality">
+        <field name="name">Pediatrics</field>
+        <field name="code">PED</field>
+        <field name="description">Medical specialty focused on the care of infants, children, and adolescents</field>
+    </record>
+
+    <record id="speciality_general_practice" model="hr.hospital.doctor.speciality">
+        <field name="name">General Practice</field>
+        <field name="code">GP</field>
+        <field name="description">Medical specialty for primary healthcare and family medicine</field>
+    </record>
+
+    <record id="speciality_surgery" model="hr.hospital.doctor.speciality">
+        <field name="name">Surgery</field>
+        <field name="code">SURG</field>
+        <field name="description">Medical specialty that uses operative manual techniques on a patient</field>
+    </record>
+</odoo>

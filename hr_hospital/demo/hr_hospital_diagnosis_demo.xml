@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- 20 Diagnoses (including unapproved from interns) -->
+
+    <!-- Approved Diagnoses (15) -->
+    <record id="hr_diagnosis_1" model="hr.hospital.medical.diagnosis">
+        <field name="name">Influenza Type A</field>
+        <field name="visit_id" ref="hr_visit_1"/>
+        <field name="disease_id" ref="hr_disease_flu"/>
+        <field name="description">Patient presents with typical flu symptoms including high fever and body aches</field>
+        <field name="treatment">&lt;p&gt;Antiviral medication prescribed. Rest and hydration recommended.&lt;/p&gt;</field>
+        <field name="severity">medium</field>
+        <field name="approved" eval="True"/>
+        <field name="approved_date" eval="(DateTime.now() - timedelta(days=14)).strftime('%Y-%m-%d %H:%M:%S')"/>
+    </record>
+
+    <record id="hr_diagnosis_2" model="hr.hospital.medical.diagnosis">
+        <field name="name">COVID-19 Infection</field>
+        <field name="visit_id" ref="hr_visit_2"/>
+        <field name="disease_id" ref="hr_disease_covid"/>
+        <field name="description">Positive PCR test for SARS-CoV-2. Mild symptoms observed</field>
+        <field name="treatment">&lt;p&gt;Self-isolation, symptomatic treatment, oxygen monitoring&lt;/p&gt;</field>
+        <field name="severity">hard</field>
+        <field name="approved" eval="True"/>
+        <field name="approved_date" eval="(DateTime.now() - timedelta(days=19)).strftime('%Y-%m-%d %H:%M:%S')"/>
+    </record>
+
+    <record id="hr_diagnosis_3" model="hr.hospital.medical.diagnosis">
+        <field name="name">Chronic Migraine</field>
+        <field name="visit_id" ref="hr_visit_3"/>
+        <field name="disease_id" ref="hr_disease_migraine"/>
+        <field name="description">Recurrent migraine attacks, photophobia and phonophobia present</field>
+        <field name="treatment">&lt;p&gt;Prescribed prophylactic medication. Lifestyle modifications advised&lt;/p&gt;</field>
+        <field name="severity">medium</field>
+        <field name="approved" eval="True"/>
+        <field name="approved_date" eval="(DateTime.now() - timedelta(days=24)).strftime('%Y-%m-%d %H:%M:%S')"/>
+    </record>
+
+    <record id="hr_diagnosis_4" model="hr.hospital.medical.diagnosis">
+        <field name="name">Cardiovascular Assessment</field>
+        <field name="visit_id" ref="hr_visit_4"/>
+        <field name="disease_id" ref="hr_disease_heart_disease"/>
+        <field name="description">Preventive checkup shows early signs of cardiovascular strain</field>
+        <field name="treatment">&lt;p&gt;Diet and exercise plan. Regular monitoring recommended&lt;/p&gt;</field>
+        <field name="severity">light</field>
+        <field name="approved" eval="True"/>
+        <field name="approved_date" eval="(DateTime.now() - timedelta(days=17)).strftime('%Y-%m-%d %H:%M:%S')"/>
+    </record>
+
+    <record id="hr_diagnosis_5" model="hr.hospital.medical.diagnosis">
+        <field name="name">Routine Pediatric Checkup</field>
+        <field name="visit_id" ref="hr_visit_5"/>
+        <field name="description">Child is healthy and developing normally</field>
+        <field name="treatment">&lt;p&gt;Continue with vaccination schedule&lt;/p&gt;</field>
+        <field name="severity">light</field>
+        <field name="approved" eval="True"/>
+        <field name="approved_date" eval="(DateTime.now() - timedelta(days=11)).strftime('%Y-%m-%d %H:%M:%S')"/>
+    </record>
+
+    <record id="hr_diagnosis_6" model="hr.hospital.medical.diagnosis">
+        <field name="name">Hypertension Follow-up</field>
+        <field name="visit_id" ref="hr_visit_6"/>
+        <field name="disease_id" ref="hr_disease_cardiovascular"/>
+        <field name="description">Blood pressure levels stable with current medication</field>
+        <field name="treatment">&lt;p&gt;Continue current medication regimen&lt;/p&gt;</field>
+        <field name="severity">medium</field>
+        <field name="approved" eval="True"/>
+        <field name="approved_date" eval="(DateTime.now() - timedelta(days=21)).strftime('%Y-%m-%d %H:%M:%S')"/>
+    </record>
+
+    <record id="hr_diagnosis_7" model="hr.hospital.medical.diagnosis">
+        <field name="name">Allergic Reaction Assessment</field>
+        <field name="visit_id" ref="hr_visit_7"/>
+        <field name="description">Mild allergic reaction to bee sting, no anaphylaxis</field>
+        <field name="treatment">&lt;p&gt;Antihistamine prescribed. EpiPen recommended for future&lt;/p&gt;</field>
+        <field name="severity">light</field>
+        <field name="approved" eval="True"/>
+        <field name="approved_date" eval="(DateTime.now() - timedelta(days=27)).strftime('%Y-%m-%d %H:%M:%S')"/>
+    </record>
+
+    <record id="hr_diagnosis_8" model="hr.hospital.medical.diagnosis">
+        <field name="name">Annual Health Screening</field>
+        <field name="visit_id" ref="hr_visit_8"/>
+        <field name="description">All vitals within normal range. Patient is healthy</field>
+        <field name="treatment">&lt;p&gt;Continue healthy lifestyle&lt;/p&gt;</field>
+        <field name="severity">light</field>
+        <field name="approved" eval="True"/>
+        <field name="approved_date" eval="(DateTime.now() - timedelta(days=9)).strftime('%Y-%m-%d %H:%M:%S')"/>
+        <field name="mentor_id" ref="hr_doctor_1"/>
+    </record>
+
+    <record id="hr_diagnosis_9" model="hr.hospital.medical.diagnosis">
+        <field name="name">Pediatric Development Assessment</field>
+        <field name="visit_id" ref="hr_visit_9"/>
+        <field name="description">Young adult showing normal development markers</field>
+        <field name="treatment">&lt;p&gt;No treatment needed. Follow-up in 1 year&lt;/p&gt;</field>
+        <field name="severity">light</field>
+        <field name="approved" eval="True"/>
+        <field name="approved_date" eval="(DateTime.now() - timedelta(days=13)).strftime('%Y-%m-%d %H:%M:%S')"/>
+    </record>
+
+    <record id="hr_diagnosis_10" model="hr.hospital.medical.diagnosis">
+        <field name="name">Neurological Follow-up</field>
+        <field name="visit_id" ref="hr_visit_10"/>
+        <field name="disease_id" ref="hr_disease_headache_disorders"/>
+        <field name="description">Tension headache patterns observed</field>
+        <field name="treatment">&lt;p&gt;Stress management and relaxation techniques&lt;/p&gt;</field>
+        <field name="severity">light</field>
+        <field name="approved" eval="True"/>
+        <field name="approved_date" eval="(DateTime.now() - timedelta(days=7)).strftime('%Y-%m-%d %H:%M:%S')"/>
+        <field name="mentor_id" ref="hr_doctor_3"/>
+    </record>
+
+    <record id="hr_diagnosis_11" model="hr.hospital.medical.diagnosis">
+        <field name="name">Respiratory Infection</field>
+        <field name="visit_id" ref="hr_visit_1"/>
+        <field name="disease_id" ref="hr_disease_viral_respiratory"/>
+        <field name="description">Secondary respiratory infection diagnosis</field>
+        <field name="treatment">&lt;p&gt;Antibiotics prescribed&lt;/p&gt;</field>
+        <field name="severity">medium</field>
+        <field name="approved" eval="True"/>
+        <field name="approved_date" eval="(DateTime.now() - timedelta(days=14)).strftime('%Y-%m-%d %H:%M:%S')"/>
+    </record>
+
+    <record id="hr_diagnosis_12" model="hr.hospital.medical.diagnosis">
+        <field name="name">Post-COVID Syndrome</field>
+        <field name="visit_id" ref="hr_visit_2"/>
+        <field name="disease_id" ref="hr_disease_covid"/>
+        <field name="description">Long-term effects of COVID-19 infection</field>
+        <field name="treatment">&lt;p&gt;Rehabilitation program recommended&lt;/p&gt;</field>
+        <field name="severity">medium</field>
+        <field name="approved" eval="True"/>
+        <field name="approved_date" eval="(DateTime.now() - timedelta(days=19)).strftime('%Y-%m-%d %H:%M:%S')"/>
+    </record>
+
+    <record id="hr_diagnosis_13" model="hr.hospital.medical.diagnosis">
+        <field name="name">Pneumonia</field>
+        <field name="visit_id" ref="hr_visit_6"/>
+        <field name="disease_id" ref="hr_disease_pneumonia"/>
+        <field name="description">Bacterial pneumonia confirmed via X-ray</field>
+        <field name="treatment">&lt;p&gt;Antibiotic course, rest, and monitoring&lt;/p&gt;</field>
+        <field name="severity">critical</field>
+        <field name="approved" eval="True"/>
+        <field name="approved_date" eval="(DateTime.now() - timedelta(days=21)).strftime('%Y-%m-%d %H:%M:%S')"/>
+    </record>
+
+    <record id="hr_diagnosis_14" model="hr.hospital.medical.diagnosis">
+        <field name="name">Cardiac Arrhythmia</field>
+        <field name="visit_id" ref="hr_visit_4"/>
+        <field name="disease_id" ref="hr_disease_heart_disease"/>
+        <field name="description">Irregular heartbeat detected during examination</field>
+        <field name="treatment">&lt;p&gt;Beta-blockers prescribed, ECG monitoring&lt;/p&gt;</field>
+        <field name="severity">hard</field>
+        <field name="approved" eval="True"/>
+        <field name="approved_date" eval="(DateTime.now() - timedelta(days=17)).strftime('%Y-%m-%d %H:%M:%S')"/>
+    </record>
+
+    <record id="hr_diagnosis_15" model="hr.hospital.medical.diagnosis">
+        <field name="name">Tension Headache</field>
+        <field name="visit_id" ref="hr_visit_3"/>
+        <field name="disease_id" ref="hr_disease_headache_disorders"/>
+        <field name="description">Stress-related tension headache</field>
+        <field name="treatment">&lt;p&gt;Pain relievers and stress management&lt;/p&gt;</field>
+        <field name="severity">light</field>
+        <field name="approved" eval="True"/>
+        <field name="approved_date" eval="(DateTime.now() - timedelta(days=24)).strftime('%Y-%m-%d %H:%M:%S')"/>
+    </record>
+
+    <!-- Unapproved Diagnoses from Interns (5) -->
+    <record id="hr_diagnosis_16" model="hr.hospital.medical.diagnosis">
+        <field name="name">Suspected Arrhythmia</field>
+        <field name="visit_id" ref="hr_visit_8"/>
+        <field name="disease_id" ref="hr_disease_heart_disease"/>
+        <field name="description">Irregular heartbeat noted during checkup - requires senior review</field>
+        <field name="treatment">&lt;p&gt;Further tests needed&lt;/p&gt;</field>
+        <field name="severity">medium</field>
+        <field name="approved" eval="False"/>
+        <field name="mentor_id" ref="hr_doctor_1"/>
+    </record>
+
+    <record id="hr_diagnosis_17" model="hr.hospital.medical.diagnosis">
+        <field name="name">Possible Migraine Variant</field>
+        <field name="visit_id" ref="hr_visit_10"/>
+        <field name="disease_id" ref="hr_disease_headache_disorders"/>
+        <field name="description">Atypical headache presentation - mentor consultation needed</field>
+        <field name="treatment">&lt;p&gt;Pending mentor approval&lt;/p&gt;</field>
+        <field name="severity">medium</field>
+        <field name="approved" eval="False"/>
+        <field name="mentor_id" ref="hr_doctor_3"/>
+    </record>
+
+    <record id="hr_diagnosis_18" model="hr.hospital.medical.diagnosis">
+        <field name="name">Upper Respiratory Infection</field>
+        <field name="visit_id" ref="hr_visit_8"/>
+        <field name="disease_id" ref="hr_disease_viral_respiratory"/>
+        <field name="description">Common cold symptoms observed</field>
+        <field name="treatment">&lt;p&gt;Symptomatic treatment&lt;/p&gt;</field>
+        <field name="severity">light</field>
+        <field name="approved" eval="False"/>
+        <field name="mentor_id" ref="hr_doctor_1"/>
+    </record>
+
+    <record id="hr_diagnosis_19" model="hr.hospital.medical.diagnosis">
+        <field name="name">Neurological Symptoms</field>
+        <field name="visit_id" ref="hr_visit_10"/>
+        <field name="disease_id" ref="hr_disease_neurological"/>
+        <field name="description">Patient reports dizziness - requires further evaluation</field>
+        <field name="treatment">&lt;p&gt;Awaiting mentor review&lt;/p&gt;</field>
+        <field name="severity">medium</field>
+        <field name="approved" eval="False"/>
+        <field name="mentor_id" ref="hr_doctor_3"/>
+    </record>
+
+    <record id="hr_diagnosis_20" model="hr.hospital.medical.diagnosis">
+        <field name="name">Cardiovascular Screening</field>
+        <field name="visit_id" ref="hr_visit_8"/>
+        <field name="description">Routine screening shows minor irregularities</field>
+        <field name="treatment">&lt;p&gt;Pending senior doctor approval&lt;/p&gt;</field>
+        <field name="severity">light</field>
+        <field name="approved" eval="False"/>
+        <field name="mentor_id" ref="hr_doctor_1"/>
+    </record>
+</odoo>

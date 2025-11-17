@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- 25 Visits with different statuses -->
+
+    <!-- Done Visits (10) -->
+    <record id="hr_visit_1" model="hr.hospital.visit">
+        <field name="patient_id" ref="hr_patient_1"/>
+        <field name="doctor_id" ref="hr_doctor_1"/>
+        <field name="planned_datetime" eval="(DateTime.now() - timedelta(days=15)).strftime('%Y-%m-%d 09:00:00')"/>
+        <field name="actual_datetime" eval="(DateTime.now() - timedelta(days=15)).strftime('%Y-%m-%d 09:15:00')"/>
+        <field name="visit_type">primary</field>
+        <field name="status">done</field>
+        <field name="recommendations">&lt;p&gt;Rest and drink plenty of fluids&lt;/p&gt;</field>
+        <field name="amount_total">500</field>
+    </record>
+
+    <record id="hr_visit_2" model="hr.hospital.visit">
+        <field name="patient_id" ref="hr_patient_2"/>
+        <field name="doctor_id" ref="hr_doctor_4"/>
+        <field name="planned_datetime" eval="(DateTime.now() - timedelta(days=20)).strftime('%Y-%m-%d 10:00:00')"/>
+        <field name="actual_datetime" eval="(DateTime.now() - timedelta(days=20)).strftime('%Y-%m-%d 10:10:00')"/>
+        <field name="visit_type">urgent</field>
+        <field name="status">done</field>
+        <field name="recommendations">&lt;p&gt;Self-isolation for 14 days&lt;/p&gt;</field>
+        <field name="amount_total">800</field>
+    </record>
+
+    <record id="hr_visit_3" model="hr.hospital.visit">
+        <field name="patient_id" ref="hr_patient_3"/>
+        <field name="doctor_id" ref="hr_doctor_3"/>
+        <field name="planned_datetime" eval="(DateTime.now() - timedelta(days=25)).strftime('%Y-%m-%d 11:00:00')"/>
+        <field name="actual_datetime" eval="(DateTime.now() - timedelta(days=25)).strftime('%Y-%m-%d 11:20:00')"/>
+        <field name="visit_type">secondary</field>
+        <field name="status">done</field>
+        <field name="recommendations">&lt;p&gt;Avoid bright lights and loud noises&lt;/p&gt;</field>
+        <field name="amount_total">600</field>
+    </record>
+
+    <record id="hr_visit_4" model="hr.hospital.visit">
+        <field name="patient_id" ref="hr_patient_4"/>
+        <field name="doctor_id" ref="hr_doctor_1"/>
+        <field name="planned_datetime" eval="(DateTime.now() - timedelta(days=18)).strftime('%Y-%m-%d 14:00:00')"/>
+        <field name="actual_datetime" eval="(DateTime.now() - timedelta(days=18)).strftime('%Y-%m-%d 14:05:00')"/>
+        <field name="visit_type">preventive</field>
+        <field name="status">done</field>
+        <field name="recommendations">&lt;p&gt;Regular checkups every 6 months&lt;/p&gt;</field>
+        <field name="amount_total">450</field>
+    </record>
+
+    <record id="hr_visit_5" model="hr.hospital.visit">
+        <field name="patient_id" ref="hr_patient_5"/>
+        <field name="doctor_id" ref="hr_doctor_2"/>
+        <field name="planned_datetime" eval="(DateTime.now() - timedelta(days=12)).strftime('%Y-%m-%d 15:00:00')"/>
+        <field name="actual_datetime" eval="(DateTime.now() - timedelta(days=12)).strftime('%Y-%m-%d 15:10:00')"/>
+        <field name="visit_type">primary</field>
+        <field name="status">done</field>
+        <field name="recommendations">&lt;p&gt;Vaccination recommended&lt;/p&gt;</field>
+        <field name="amount_total">550</field>
+    </record>
+
+    <record id="hr_visit_6" model="hr.hospital.visit">
+        <field name="patient_id" ref="hr_patient_6"/>
+        <field name="doctor_id" ref="hr_doctor_6"/>
+        <field name="planned_datetime" eval="(DateTime.now() - timedelta(days=22)).strftime('%Y-%m-%d 09:30:00')"/>
+        <field name="actual_datetime" eval="(DateTime.now() - timedelta(days=22)).strftime('%Y-%m-%d 09:45:00')"/>
+        <field name="visit_type">secondary</field>
+        <field name="status">done</field>
+        <field name="recommendations">&lt;p&gt;Continue medication as prescribed&lt;/p&gt;</field>
+        <field name="amount_total">700</field>
+    </record>
+
+    <record id="hr_visit_7" model="hr.hospital.visit">
+        <field name="patient_id" ref="hr_patient_7"/>
+        <field name="doctor_id" ref="hr_doctor_4"/>
+        <field name="planned_datetime" eval="(DateTime.now() - timedelta(days=28)).strftime('%Y-%m-%d 13:00:00')"/>
+        <field name="actual_datetime" eval="(DateTime.now() - timedelta(days=28)).strftime('%Y-%m-%d 13:15:00')"/>
+        <field name="visit_type">primary</field>
+        <field name="status">done</field>
+        <field name="recommendations">&lt;p&gt;Avoid allergens&lt;/p&gt;</field>
+        <field name="amount_total">500</field>
+    </record>
+
+    <record id="hr_visit_8" model="hr.hospital.visit">
+        <field name="patient_id" ref="hr_patient_8"/>
+        <field name="doctor_id" ref="hr_doctor_intern_1"/>
+        <field name="planned_datetime" eval="(DateTime.now() - timedelta(days=10)).strftime('%Y-%m-%d 10:30:00')"/>
+        <field name="actual_datetime" eval="(DateTime.now() - timedelta(days=10)).strftime('%Y-%m-%d 10:40:00')"/>
+        <field name="visit_type">preventive</field>
+        <field name="status">done</field>
+        <field name="recommendations">&lt;p&gt;Annual health screening&lt;/p&gt;</field>
+        <field name="amount_total">400</field>
+    </record>
+
+    <record id="hr_visit_9" model="hr.hospital.visit">
+        <field name="patient_id" ref="hr_patient_9"/>
+        <field name="doctor_id" ref="hr_doctor_2"/>
+        <field name="planned_datetime" eval="(DateTime.now() - timedelta(days=14)).strftime('%Y-%m-%d 16:00:00')"/>
+        <field name="actual_datetime" eval="(DateTime.now() - timedelta(days=14)).strftime('%Y-%m-%d 16:10:00')"/>
+        <field name="visit_type">primary</field>
+        <field name="status">done</field>
+        <field name="recommendations">&lt;p&gt;Lifestyle modifications recommended&lt;/p&gt;</field>
+        <field name="amount_total">550</field>
+    </record>
+
+    <record id="hr_visit_10" model="hr.hospital.visit">
+        <field name="patient_id" ref="hr_patient_10"/>
+        <field name="doctor_id" ref="hr_doctor_intern_2"/>
+        <field name="planned_datetime" eval="(DateTime.now() - timedelta(days=8)).strftime('%Y-%m-%d 11:30:00')"/>
+        <field name="actual_datetime" eval="(DateTime.now() - timedelta(days=8)).strftime('%Y-%m-%d 11:45:00')"/>
+        <field name="visit_type">secondary</field>
+        <field name="status">done</field>
+        <field name="recommendations">&lt;p&gt;Follow-up in 2 weeks&lt;/p&gt;</field>
+        <field name="amount_total">650</field>
+    </record>
+
+    <!-- Planned Visits (8) -->
+    <record id="hr_visit_11" model="hr.hospital.visit">
+        <field name="patient_id" ref="hr_patient_11"/>
+        <field name="doctor_id" ref="hr_doctor_6"/>
+        <field name="planned_datetime" eval="(DateTime.now() + timedelta(days=2)).strftime('%Y-%m-%d 09:00:00')"/>
+        <field name="visit_type">primary</field>
+        <field name="status">planned</field>
+        <field name="amount_total">500</field>
+    </record>
+
+    <record id="hr_visit_12" model="hr.hospital.visit">
+        <field name="patient_id" ref="hr_patient_12"/>
+        <field name="doctor_id" ref="hr_doctor_4"/>
+        <field name="planned_datetime" eval="(DateTime.now() + timedelta(days=3)).strftime('%Y-%m-%d 10:00:00')"/>
+        <field name="visit_type">preventive</field>
+        <field name="status">planned</field>
+        <field name="amount_total">450</field>
+    </record>
+
+    <record id="hr_visit_13" model="hr.hospital.visit">
+        <field name="patient_id" ref="hr_patient_13"/>
+        <field name="doctor_id" ref="hr_doctor_2"/>
+        <field name="planned_datetime" eval="(DateTime.now() + timedelta(days=4)).strftime('%Y-%m-%d 14:00:00')"/>
+        <field name="visit_type">secondary</field>
+        <field name="status">planned</field>
+        <field name="amount_total">600</field>
+    </record>
+
+    <record id="hr_visit_14" model="hr.hospital.visit">
+        <field name="patient_id" ref="hr_patient_14"/>
+        <field name="doctor_id" ref="hr_doctor_1"/>
+        <field name="planned_datetime" eval="(DateTime.now() + timedelta(days=5)).strftime('%Y-%m-%d 11:00:00')"/>
+        <field name="visit_type">primary</field>
+        <field name="status">planned</field>
+        <field name="amount_total">500</field>
+    </record>
+
+    <record id="hr_visit_15" model="hr.hospital.visit">
+        <field name="patient_id" ref="hr_patient_15"/>
+        <field name="doctor_id" ref="hr_doctor_3"/>
+        <field name="planned_datetime" eval="(DateTime.now() + timedelta(days=6)).strftime('%Y-%m-%d 15:00:00')"/>
+        <field name="visit_type">urgent</field>
+        <field name="status">planned</field>
+        <field name="amount_total">800</field>
+    </record>
+
+    <record id="hr_visit_16" model="hr.hospital.visit">
+        <field name="patient_id" ref="hr_patient_1"/>
+        <field name="doctor_id" ref="hr_doctor_1"/>
+        <field name="planned_datetime" eval="(DateTime.now() + timedelta(days=7)).strftime('%Y-%m-%d 09:30:00')"/>
+        <field name="visit_type">secondary</field>
+        <field name="status">planned</field>
+        <field name="amount_total">550</field>
+    </record>
+
+    <record id="hr_visit_17" model="hr.hospital.visit">
+        <field name="patient_id" ref="hr_patient_3"/>
+        <field name="doctor_id" ref="hr_doctor_3"/>
+        <field name="planned_datetime" eval="(DateTime.now() + timedelta(days=8)).strftime('%Y-%m-%d 16:00:00')"/>
+        <field name="visit_type">preventive</field>
+        <field name="status">planned</field>
+        <field name="amount_total">450</field>
+    </record>
+
+    <record id="hr_visit_18" model="hr.hospital.visit">
+        <field name="patient_id" ref="hr_patient_5"/>
+        <field name="doctor_id" ref="hr_doctor_2"/>
+        <field name="planned_datetime" eval="(DateTime.now() + timedelta(days=9)).strftime('%Y-%m-%d 10:30:00')"/>
+        <field name="visit_type">primary</field>
+        <field name="status">planned</field>
+        <field name="amount_total">500</field>
+    </record>
+
+    <!-- In Progress Visits (3) -->
+    <record id="hr_visit_19" model="hr.hospital.visit">
+        <field name="patient_id" ref="hr_patient_7"/>
+        <field name="doctor_id" ref="hr_doctor_4"/>
+        <field name="planned_datetime" eval="DateTime.now().strftime('%Y-%m-%d %H:00:00')"/>
+        <field name="actual_datetime" eval="DateTime.now().strftime('%Y-%m-%d %H:%M:%S')"/>
+        <field name="visit_type">urgent</field>
+        <field name="status">in_progress</field>
+        <field name="amount_total">800</field>
+    </record>
+
+    <record id="hr_visit_20" model="hr.hospital.visit">
+        <field name="patient_id" ref="hr_patient_9"/>
+        <field name="doctor_id" ref="hr_doctor_2"/>
+        <field name="planned_datetime" eval="DateTime.now().strftime('%Y-%m-%d %H:00:00')"/>
+        <field name="actual_datetime" eval="DateTime.now().strftime('%Y-%m-%d %H:%M:%S')"/>
+        <field name="visit_type">primary</field>
+        <field name="status">in_progress</field>
+        <field name="amount_total">500</field>
+    </record>
+
+    <record id="hr_visit_21" model="hr.hospital.visit">
+        <field name="patient_id" ref="hr_patient_11"/>
+        <field name="doctor_id" ref="hr_doctor_6"/>
+        <field name="planned_datetime" eval="DateTime.now().strftime('%Y-%m-%d %H:00:00')"/>
+        <field name="actual_datetime" eval="DateTime.now().strftime('%Y-%m-%d %H:%M:%S')"/>
+        <field name="visit_type">secondary</field>
+        <field name="status">in_progress</field>
+        <field name="amount_total">600</field>
+    </record>
+
+    <!-- Cancelled Visits (2) -->
+    <record id="hr_visit_22" model="hr.hospital.visit">
+        <field name="patient_id" ref="hr_patient_4"/>
+        <field name="doctor_id" ref="hr_doctor_1"/>
+        <field name="planned_datetime" eval="(DateTime.now() - timedelta(days=5)).strftime('%Y-%m-%d 13:00:00')"/>
+        <field name="visit_type">preventive</field>
+        <field name="status">cancelled</field>
+        <field name="amount_total">0</field>
+    </record>
+
+    <record id="hr_visit_23" model="hr.hospital.visit">
+        <field name="patient_id" ref="hr_patient_6"/>
+        <field name="doctor_id" ref="hr_doctor_6"/>
+        <field name="planned_datetime" eval="(DateTime.now() - timedelta(days=3)).strftime('%Y-%m-%d 14:00:00')"/>
+        <field name="visit_type">primary</field>
+        <field name="status">cancelled</field>
+        <field name="amount_total">0</field>
+    </record>
+
+    <!-- No Show Visits (2) -->
+    <record id="hr_visit_24" model="hr.hospital.visit">
+        <field name="patient_id" ref="hr_patient_8"/>
+        <field name="doctor_id" ref="hr_doctor_1"/>
+        <field name="planned_datetime" eval="(DateTime.now() - timedelta(days=7)).strftime('%Y-%m-%d 15:00:00')"/>
+        <field name="visit_type">secondary</field>
+        <field name="status">no_show</field>
+        <field name="amount_total">0</field>
+    </record>
+
+    <record id="hr_visit_25" model="hr.hospital.visit">
+        <field name="patient_id" ref="hr_patient_10"/>
+        <field name="doctor_id" ref="hr_doctor_3"/>
+        <field name="planned_datetime" eval="(DateTime.now() - timedelta(days=4)).strftime('%Y-%m-%d 16:00:00')"/>
+        <field name="visit_type">primary</field>
+        <field name="status">no_show</field>
+        <field name="amount_total">0</field>
+    </record>
+</odoo>

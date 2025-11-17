@@ -1,31 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
 <odoo>
-  <record id="hr_doctor_1" model="hr.hospital.doctor">
-    <field name="last_name">Smith</field>
-    <field name="first_name">Dr. John</field>
-        <field name="age">40</field>
+    <!-- Users for doctors -->
+    <record id="user_doctor_smith" model="res.users">
+        <field name="name">Dr. John Smith</field>
+        <field name="login">doctor.smith@hospital.com</field>
+        <field name="email">doctor.smith@hospital.com</field>
+    </record>
+
+    <record id="user_doctor_brown" model="res.users">
+        <field name="name">Dr. Emily Brown</field>
+        <field name="login">doctor.brown@hospital.com</field>
+        <field name="email">doctor.brown@hospital.com</field>
+    </record>
+
+    <record id="user_doctor_white" model="res.users">
+        <field name="name">Dr. Alex White</field>
+        <field name="login">doctor.white@hospital.com</field>
+        <field name="email">doctor.white@hospital.com</field>
+    </record>
+
+    <record id="user_doctor_johnson" model="res.users">
+        <field name="name">Dr. Michael Johnson</field>
+        <field name="login">doctor.johnson@hospital.com</field>
+        <field name="email">doctor.johnson@hospital.com</field>
+    </record>
+
+    <record id="user_doctor_garcia" model="res.users">
+        <field name="name">Dr. Sofia Garcia</field>
+        <field name="login">doctor.garcia@hospital.com</field>
+        <field name="email">doctor.garcia@hospital.com</field>
+    </record>
+
+    <record id="user_doctor_lee" model="res.users">
+        <field name="name">Dr. David Lee</field>
+        <field name="login">doctor.lee@hospital.com</field>
+        <field name="email">doctor.lee@hospital.com</field>
+    </record>
+
+    <!-- Senior Doctors (Mentors) -->
+    <record id="hr_doctor_1" model="hr.hospital.doctor">
+        <field name="last_name">Smith</field>
+        <field name="first_name">John</field>
+        <field name="birth_date" eval="(DateTime.now() - timedelta(days=365*45)).strftime('%Y-%m-%d')"/>
         <field name="gender">male</field>
-        <field name="description">Therapist is a ...</field>
+        <field name="phone">+380501234567</field>
+        <field name="email">doctor.smith@hospital.com</field>
+        <field name="description">Experienced cardiologist with 15 years of practice</field>
         <field name="hospital_id" ref="hr_hospital_1"/>
+        <field name="user_id" ref="user_doctor_smith"/>
+        <field name="speciality_id" ref="speciality_cardiology"/>
+        <field name="is_intern" eval="False"/>
         <field name="license_number">LN-35791</field>
-  </record>
+        <field name="license_date" eval="(DateTime.now() - timedelta(days=365*15)).strftime('%Y-%m-%d')"/>
+        <field name="rating">4.8</field>
+    </record>
 
-  <record id="hr_doctor_2" model="hr.hospital.doctor">
+    <record id="hr_doctor_2" model="hr.hospital.doctor">
         <field name="last_name">Brown</field>
-        <field name="first_name">Dr. Emily</field>
-        <field name="age">38</field>
+        <field name="first_name">Emily</field>
+        <field name="birth_date" eval="(DateTime.now() - timedelta(days=365*42)).strftime('%Y-%m-%d')"/>
         <field name="gender">female</field>
-        <field name="description">Cardiologist is a ...</field>
+        <field name="phone">+380501234568</field>
+        <field name="email">doctor.brown@hospital.com</field>
+        <field name="description">Specialist in pediatrics with focus on child development</field>
         <field name="hospital_id" ref="hr_hospital_2"/>
+        <field name="user_id" ref="user_doctor_brown"/>
+        <field name="speciality_id" ref="speciality_pediatrics"/>
+        <field name="is_intern" eval="False"/>
         <field name="license_number">LN-12345</field>
-  </record>
+        <field name="license_date" eval="(DateTime.now() - timedelta(days=365*12)).strftime('%Y-%m-%d')"/>
+        <field name="rating">4.9</field>
+    </record>
 
-  <record id="hr_doctor_3" model="hr.hospital.doctor">
+    <record id="hr_doctor_3" model="hr.hospital.doctor">
         <field name="last_name">White</field>
-        <field name="first_name">Dr. Alex</field>
-        <field name="age">54</field>
+        <field name="first_name">Alex</field>
+        <field name="birth_date" eval="(DateTime.now() - timedelta(days=365*54)).strftime('%Y-%m-%d')"/>
         <field name="gender">male</field>
-        <field name="description">Neurologist is a ...</field>
+        <field name="phone">+380501234569</field>
+        <field name="email">doctor.white@hospital.com</field>
+        <field name="description">Senior neurologist, head of neurology department</field>
         <field name="hospital_id" ref="hr_hospital_1"/>
+        <field name="user_id" ref="user_doctor_white"/>
+        <field name="speciality_id" ref="speciality_neurology"/>
+        <field name="is_intern" eval="False"/>
         <field name="license_number">LN-24689</field>
-  </record>
+        <field name="license_date" eval="(DateTime.now() - timedelta(days=365*25)).strftime('%Y-%m-%d')"/>
+        <field name="rating">4.95</field>
+    </record>
+
+    <record id="hr_doctor_4" model="hr.hospital.doctor">
+        <field name="last_name">Johnson</field>
+        <field name="first_name">Michael</field>
+        <field name="birth_date" eval="(DateTime.now() - timedelta(days=365*48)).strftime('%Y-%m-%d')"/>
+        <field name="gender">male</field>
+        <field name="phone">+380501234570</field>
+        <field name="email">doctor.johnson@hospital.com</field>
+        <field name="description">General practitioner with family medicine focus</field>
+        <field name="hospital_id" ref="hr_hospital_1"/>
+        <field name="user_id" ref="user_doctor_johnson"/>
+        <field name="speciality_id" ref="speciality_general_practice"/>
+        <field name="is_intern" eval="False"/>
+        <field name="license_number">LN-98765</field>
+        <field name="license_date" eval="(DateTime.now() - timedelta(days=365*18)).strftime('%Y-%m-%d')"/>
+        <field name="rating">4.7</field>
+    </record>
+
+    <record id="hr_doctor_5" model="hr.hospital.doctor">
+        <field name="last_name">Garcia</field>
+        <field name="first_name">Sofia</field>
+        <field name="birth_date" eval="(DateTime.now() - timedelta(days=365*50)).strftime('%Y-%m-%d')"/>
+        <field name="gender">female</field>
+        <field name="phone">+380501234571</field>
+        <field name="email">doctor.garcia@hospital.com</field>
+        <field name="description">Expert surgeon specializing in cardiovascular surgery</field>
+        <field name="hospital_id" ref="hr_hospital_2"/>
+        <field name="user_id" ref="user_doctor_garcia"/>
+        <field name="speciality_id" ref="speciality_surgery"/>
+        <field name="is_intern" eval="False"/>
+        <field name="license_number">LN-55555</field>
+        <field name="license_date" eval="(DateTime.now() - timedelta(days=365*20)).strftime('%Y-%m-%d')"/>
+        <field name="rating">4.85</field>
+    </record>
+
+    <record id="hr_doctor_6" model="hr.hospital.doctor">
+        <field name="last_name">Lee</field>
+        <field name="first_name">David</field>
+        <field name="birth_date" eval="(DateTime.now() - timedelta(days=365*40)).strftime('%Y-%m-%d')"/>
+        <field name="gender">male</field>
+        <field name="phone">+380501234572</field>
+        <field name="email">doctor.lee@hospital.com</field>
+        <field name="description">Experienced cardiologist specializing in arrhythmia</field>
+        <field name="hospital_id" ref="hr_hospital_1"/>
+        <field name="user_id" ref="user_doctor_lee"/>
+        <field name="speciality_id" ref="speciality_cardiology"/>
+        <field name="is_intern" eval="False"/>
+        <field name="license_number">LN-77777</field>
+        <field name="license_date" eval="(DateTime.now() - timedelta(days=365*10)).strftime('%Y-%m-%d')"/>
+        <field name="rating">4.6</field>
+    </record>
+
+    <!-- Intern Doctors (with Mentors) -->
+    <record id="hr_doctor_intern_1" model="hr.hospital.doctor">
+        <field name="last_name">Taylor</field>
+        <field name="first_name">Anna</field>
+        <field name="birth_date" eval="(DateTime.now() - timedelta(days=365*28)).strftime('%Y-%m-%d')"/>
+        <field name="gender">female</field>
+        <field name="phone">+380501234573</field>
+        <field name="email">doctor.taylor@hospital.com</field>
+        <field name="description">Intern in cardiology department</field>
+        <field name="hospital_id" ref="hr_hospital_1"/>
+        <field name="speciality_id" ref="speciality_cardiology"/>
+        <field name="is_intern" eval="True"/>
+        <field name="mentor_id" ref="hr_doctor_1"/>
+        <field name="license_number">LN-INT-001</field>
+        <field name="license_date" eval="(DateTime.now() - timedelta(days=365*1)).strftime('%Y-%m-%d')"/>
+        <field name="rating">4.2</field>
+    </record>
+
+    <record id="hr_doctor_intern_2" model="hr.hospital.doctor">
+        <field name="last_name">Martinez</field>
+        <field name="first_name">Carlos</field>
+        <field name="birth_date" eval="(DateTime.now() - timedelta(days=365*27)).strftime('%Y-%m-%d')"/>
+        <field name="gender">male</field>
+        <field name="phone">+380501234574</field>
+        <field name="email">doctor.martinez@hospital.com</field>
+        <field name="description">Intern in neurology department</field>
+        <field name="hospital_id" ref="hr_hospital_1"/>
+        <field name="speciality_id" ref="speciality_neurology"/>
+        <field name="is_intern" eval="True"/>
+        <field name="mentor_id" ref="hr_doctor_3"/>
+        <field name="license_number">LN-INT-002</field>
+        <field name="license_date" eval="(DateTime.now() - timedelta(days=180)).strftime('%Y-%m-%d')"/>
+        <field name="rating">4.0</field>
+    </record>
 </odoo>

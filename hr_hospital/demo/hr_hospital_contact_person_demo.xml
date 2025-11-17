@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Contact Persons for Patients with Allergies -->
+    <record id="hr_contact_person_1" model="hr.hospital.contact.person">
+        <field name="first_name">Іван</field>
+        <field name="last_name">Білецький</field>
+        <field name="phone">+380671111501</field>
+        <field name="email">ivan.biletsky@email.com</field>
+        <field name="gender">male</field>
+        <field name="patient_id" ref="hr_patient_1"/>
+    </record>
+
+    <record id="hr_contact_person_2" model="hr.hospital.contact.person">
+        <field name="first_name">Марія</field>
+        <field name="last_name">Петренко</field>
+        <field name="phone">+380671111502</field>
+        <field name="email">maria.petrenko@email.com</field>
+        <field name="gender">female</field>
+        <field name="patient_id" ref="hr_patient_2"/>
+    </record>
+
+    <record id="hr_contact_person_3" model="hr.hospital.contact.person">
+        <field name="first_name">Петро</field>
+        <field name="last_name">Ковальчук</field>
+        <field name="phone">+380671111503</field>
+        <field name="email">petro.kovalchuk@email.com</field>
+        <field name="gender">male</field>
+        <field name="patient_id" ref="hr_patient_3"/>
+    </record>
+
+    <record id="hr_contact_person_4" model="hr.hospital.contact.person">
+        <field name="first_name">Наталія</field>
+        <field name="last_name">Шевченко</field>
+        <field name="phone">+380671111504</field>
+        <field name="email">natalia.shevchenko@email.com</field>
+        <field name="gender">female</field>
+        <field name="patient_id" ref="hr_patient_4"/>
+    </record>
+
+    <record id="hr_contact_person_5" model="hr.hospital.contact.person">
+        <field name="first_name">Олександр</field>
+        <field name="last_name">Коваленко</field>
+        <field name="phone">+380671111505</field>
+        <field name="email">oleksandr.kovalenko@email.com</field>
+        <field name="gender">male</field>
+        <field name="patient_id" ref="hr_patient_5"/>
+    </record>
+
+    <record id="hr_contact_person_6" model="hr.hospital.contact.person">
+        <field name="first_name">Kateryna</field>
+        <field name="last_name">Melnyk</field>
+        <field name="phone">+380671111506</field>
+        <field name="email">kateryna.melnyk@email.com</field>
+        <field name="gender">female</field>
+        <field name="patient_id" ref="hr_patient_6"/>
+    </record>
+
+    <record id="hr_contact_person_7" model="hr.hospital.contact.person">
+        <field name="first_name">Vasyl</field>
+        <field name="last_name">Bondar</field>
+        <field name="phone">+380671111507</field>
+        <field name="email">vasyl.bondar@email.com</field>
+        <field name="gender">male</field>
+        <field name="patient_id" ref="hr_patient_7"/>
+    </record>
+
+    <record id="hr_contact_person_8" model="hr.hospital.contact.person">
+        <field name="first_name">Svitlana</field>
+        <field name="last_name">Kravchenko</field>
+        <field name="phone">+380671111508</field>
+        <field name="email">svitlana.kravchenko@email.com</field>
+        <field name="gender">female</field>
+        <field name="patient_id" ref="hr_patient_8"/>
+    </record>
+
+    <record id="hr_contact_person_9" model="hr.hospital.contact.person">
+        <field name="first_name">Mykola</field>
+        <field name="last_name">Tkachenko</field>
+        <field name="phone">+380671111509</field>
+        <field name="email">mykola.tkachenko@email.com</field>
+        <field name="gender">male</field>
+        <field name="patient_id" ref="hr_patient_9"/>
+    </record>
+
+    <record id="hr_contact_person_10" model="hr.hospital.contact.person">
+        <field name="first_name">Anna</field>
+        <field name="last_name">Boyko</field>
+        <field name="phone">+380671111510</field>
+        <field name="email">anna.boyko@email.com</field>
+        <field name="gender">female</field>
+        <field name="patient_id" ref="hr_patient_10"/>
+    </record>
+
+    <record id="hr_contact_person_11" model="hr.hospital.contact.person">
+        <field name="first_name">Bohdan</field>
+        <field name="last_name">Savchenko</field>
+        <field name="phone">+380671111511</field>
+        <field name="email">bohdan.savchenko@email.com</field>
+        <field name="gender">male</field>
+        <field name="patient_id" ref="hr_patient_11"/>
+    </record>
+
+    <record id="hr_contact_person_12" model="hr.hospital.contact.person">
+        <field name="first_name">Lesia</field>
+        <field name="last_name">Ponomarenko</field>
+        <field name="phone">+380671111512</field>
+        <field name="email">lesia.ponomarenko@email.com</field>
+        <field name="gender">female</field>
+        <field name="patient_id" ref="hr_patient_12"/>
+    </record>
+
+    <record id="hr_contact_person_13" model="hr.hospital.contact.person">
+        <field name="first_name">Taras</field>
+        <field name="last_name">Pavlenko</field>
+        <field name="phone">+380671111513</field>
+        <field name="email">taras.pavlenko@email.com</field>
+        <field name="gender">male</field>
+        <field name="patient_id" ref="hr_patient_13"/>
+    </record>
+
+    <record id="hr_contact_person_14" model="hr.hospital.contact.person">
+        <field name="first_name">Liudmyla</field>
+        <field name="last_name">Lysenko</field>
+        <field name="phone">+380671111514</field>
+        <field name="email">liudmyla.lysenko@email.com</field>
+        <field name="gender">female</field>
+        <field name="patient_id" ref="hr_patient_14"/>
+    </record>
+
+    <record id="hr_contact_person_15" model="hr.hospital.contact.person">
+        <field name="first_name">Maksym</field>
+        <field name="last_name">Moroz</field>
+        <field name="phone">+380671111515</field>
+        <field name="email">maksym.moroz@email.com</field>
+        <field name="gender">male</field>
+        <field name="patient_id" ref="hr_patient_15"/>
+    </record>
+</odoo>

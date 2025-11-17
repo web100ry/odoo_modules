@@ -1,16 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
 <odoo noupdate="1">
-  <record id="hr_disease_flu" model="hr.hospital.disease">
-    <field name="name">Flu</field>
-    <field name="description">Influenza virus infection</field>
-  </record>
+    <!-- Level 1: Main Disease Categories -->
+    <record id="hr_disease_respiratory" model="hr.hospital.disease">
+        <field name="name">Respiratory Diseases</field>
+        <field name="icd10_code">J00-J99</field>
+        <field name="danger_level">medium</field>
+        <field name="is_contagious" eval="True"/>
+        <field name="description">Diseases affecting the respiratory system</field>
+        <field name="symptoms">Cough, shortness of breath, chest pain</field>
+        <field name="region_ids" eval="[(6, 0, [])]"/>
+    </record>
 
-  <record id="hr_disease_covid" model="hr.hospital.disease">
-    <field name="name">COVID-19</field>
-    <field name="description">Respiratory infection caused by SARS-CoV-2</field>
-  </record>
+    <record id="hr_disease_cardiovascular" model="hr.hospital.disease">
+        <field name="name">Cardiovascular Diseases</field>
+        <field name="icd10_code">I00-I99</field>
+        <field name="danger_level">high</field>
+        <field name="is_contagious" eval="False"/>
+        <field name="description">Diseases of the heart and blood vessels</field>
+        <field name="symptoms">Chest pain, irregular heartbeat, fatigue</field>
+        <field name="region_ids" eval="[(6, 0, [])]"/>
+    </record>
 
-  <record id="hr_disease_migraine" model="hr.hospital.disease">
-    <field name="name">Migraine</field>
-    <field name="description">Severe headache with sensitivity to light</field>
-  </record>
+    <record id="hr_disease_neurological" model="hr.hospital.disease">
+        <field name="name">Neurological Disorders</field>
+        <field name="icd10_code">G00-G99</field>
+        <field name="danger_level">high</field>
+        <field name="is_contagious" eval="False"/>
+        <field name="description">Disorders of the nervous system</field>
+        <field name="symptoms">Headache, dizziness, numbness, seizures</field>
+        <field name="region_ids" eval="[(6, 0, [])]"/>
+    </record>
+
+    <record id="hr_disease_infectious" model="hr.hospital.disease">
+        <field name="name">Infectious Diseases</field>
+        <field name="icd10_code">A00-B99</field>
+        <field name="danger_level">critical</field>
+        <field name="is_contagious" eval="True"/>
+        <field name="description">Diseases caused by pathogenic microorganisms</field>
+        <field name="symptoms">Fever, weakness, body aches</field>
+        <field name="region_ids" eval="[(6, 0, [])]"/>
+    </record>
+
+    <!-- Level 2: Specific Disease Groups -->
+    <record id="hr_disease_viral_respiratory" model="hr.hospital.disease">
+        <field name="name">Viral Respiratory Infections</field>
+        <field name="icd10_code">J09-J18</field>
+        <field name="parent_id" ref="hr_disease_respiratory"/>
+        <field name="danger_level">medium</field>
+        <field name="is_contagious" eval="True"/>
+        <field name="description">Respiratory infections caused by viruses</field>
+        <field name="symptoms">Runny nose, sore throat, cough, fever</field>
+        <field name="region_ids" eval="[(6, 0, [])]"/>
+    </record>
+
+    <record id="hr_disease_heart_disease" model="hr.hospital.disease">
+        <field name="name">Heart Disease</field>
+        <field name="icd10_code">I20-I25</field>
+        <field name="parent_id" ref="hr_disease_cardiovascular"/>
+        <field name="danger_level">critical</field>
+        <field name="is_contagious" eval="False"/>
+        <field name="description">Diseases affecting the heart muscle and coronary arteries</field>
+        <field name="symptoms">Chest pain, shortness of breath, irregular heartbeat</field>
+        <field name="region_ids" eval="[(6, 0, [])]"/>
+    </record>
+
+    <record id="hr_disease_headache_disorders" model="hr.hospital.disease">
+        <field name="name">Headache Disorders</field>
+        <field name="icd10_code">G43-G44</field>
+        <field name="parent_id" ref="hr_disease_neurological"/>
+        <field name="danger_level">medium</field>
+        <field name="is_contagious" eval="False"/>
+        <field name="description">Primary headache disorders</field>
+        <field name="symptoms">Headache, sensitivity to light and sound, nausea</field>
+        <field name="region_ids" eval="[(6, 0, [])]"/>
+    </record>
+
+    <record id="hr_disease_bacterial_infections" model="hr.hospital.disease">
+        <field name="name">Bacterial Infections</field>
+        <field name="icd10_code">A30-A49</field>
+        <field name="parent_id" ref="hr_disease_infectious"/>
+        <field name="danger_level">high</field>
+        <field name="is_contagious" eval="True"/>
+        <field name="description">Infections caused by bacteria</field>
+        <field name="symptoms">Fever, inflammation, pain at infection site</field>
+        <field name="region_ids" eval="[(6, 0, [])]"/>
+    </record>
+
+    <!-- Level 3: Specific Diseases -->
+    <record id="hr_disease_flu" model="hr.hospital.disease">
+        <field name="name">Influenza (Flu)</field>
+        <field name="icd10_code">J10</field>
+        <field name="parent_id" ref="hr_disease_viral_respiratory"/>
+        <field name="danger_level">medium</field>
+        <field name="is_contagious" eval="True"/>
+        <field name="description">Influenza virus infection</field>
+        <field name="symptoms">High fever, body aches, cough, sore throat, fatigue</field>
+        <field name="region_ids" eval="[(6, 0, [])]"/>
+    </record>
+
+    <record id="hr_disease_covid" model="hr.hospital.disease">
+        <field name="name">COVID-19</field>
+        <field name="icd10_code">U07.1</field>
+        <field name="parent_id" ref="hr_disease_viral_respiratory"/>
+        <field name="danger_level">high</field>
+        <field name="is_contagious" eval="True"/>
+        <field name="description">Respiratory infection caused by SARS-CoV-2</field>
+        <field name="symptoms">Fever, dry cough, tiredness, loss of taste or smell</field>
+        <field name="region_ids" eval="[(6, 0, [])]"/>
+    </record>
+
+    <record id="hr_disease_migraine" model="hr.hospital.disease">
+        <field name="name">Migraine</field>
+        <field name="icd10_code">G43</field>
+        <field name="parent_id" ref="hr_disease_headache_disorders"/>
+        <field name="danger_level">low</field>
+        <field name="is_contagious" eval="False"/>
+        <field name="description">Severe headache with sensitivity to light</field>
+        <field name="symptoms">Severe headache, nausea, sensitivity to light and sound</field>
+        <field name="region_ids" eval="[(6, 0, [])]"/>
+    </record>
+
+    <record id="hr_disease_pneumonia" model="hr.hospital.disease">
+        <field name="name">Pneumonia</field>
+        <field name="icd10_code">J18</field>
+        <field name="parent_id" ref="hr_disease_bacterial_infections"/>
+        <field name="danger_level">critical</field>
+        <field name="is_contagious" eval="True"/>
+        <field name="description">Lung inflammation caused by bacterial infection</field>
+        <field name="symptoms">Chest pain, cough with phlegm, fever, difficulty breathing</field>
+        <field name="region_ids" eval="[(6, 0, [])]"/>
+    </record>
 </odoo>

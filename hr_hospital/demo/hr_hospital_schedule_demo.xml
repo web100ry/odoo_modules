@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Doctor Schedules for Current Week -->
+
+    <!-- Dr. Smith (Cardiology) - Monday to Friday, 9-17 -->
+    <record id="hr_schedule_smith_mon" model="hr.hospital.doctor.schedule">
+        <field name="doctor_id" ref="hr_doctor_1"/>
+        <field name="day_of_week">monday</field>
+        <field name="time_from">9.0</field>
+        <field name="time_to">17.0</field>
+        <field name="type">work</field>
+    </record>
+    <record id="hr_schedule_smith_tue" model="hr.hospital.doctor.schedule">
+        <field name="doctor_id" ref="hr_doctor_1"/>
+        <field name="day_of_week">tuesday</field>
+        <field name="time_from">9.0</field>
+        <field name="time_to">17.0</field>
+        <field name="type">work</field>
+    </record>
+    <record id="hr_schedule_smith_wed" model="hr.hospital.doctor.schedule">
+        <field name="doctor_id" ref="hr_doctor_1"/>
+        <field name="day_of_week">wednesday</field>
+        <field name="time_from">9.0</field>
+        <field name="time_to">17.0</field>
+        <field name="type">work</field>
+    </record>
+    <record id="hr_schedule_smith_thu" model="hr.hospital.doctor.schedule">
+        <field name="doctor_id" ref="hr_doctor_1"/>
+        <field name="day_of_week">thursday</field>
+        <field name="time_from">9.0</field>
+        <field name="time_to">17.0</field>
+        <field name="type">work</field>
+    </record>
+    <record id="hr_schedule_smith_fri" model="hr.hospital.doctor.schedule">
+        <field name="doctor_id" ref="hr_doctor_1"/>
+        <field name="day_of_week">friday</field>
+        <field name="time_from">9.0</field>
+        <field name="time_to">17.0</field>
+        <field name="type">work</field>
+    </record>
+
+    <!-- Dr. Brown (Pediatrics) - Monday to Friday, 10-18 -->
+    <record id="hr_schedule_brown_mon" model="hr.hospital.doctor.schedule">
+        <field name="doctor_id" ref="hr_doctor_2"/>
+        <field name="day_of_week">monday</field>
+        <field name="time_from">10.0</field>
+        <field name="time_to">18.0</field>
+        <field name="type">work</field>
+    </record>
+    <record id="hr_schedule_brown_tue" model="hr.hospital.doctor.schedule">
+        <field name="doctor_id" ref="hr_doctor_2"/>
+        <field name="day_of_week">tuesday</field>
+        <field name="time_from">10.0</field>
+        <field name="time_to">18.0</field>
+        <field name="type">work</field>
+    </record>
+    <record id="hr_schedule_brown_wed" model="hr.hospital.doctor.schedule">
+        <field name="doctor_id" ref="hr_doctor_2"/>
+        <field name="day_of_week">wednesday</field>
+        <field name="time_from">10.0</field>
+        <field name="time_to">18.0</field>
+        <field name="type">work</field>
+    </record>
+    <record id="hr_schedule_brown_thu" model="hr.hospital.doctor.schedule">
+        <field name="doctor_id" ref="hr_doctor_2"/>
+        <field name="day_of_week">thursday</field>
+        <field name="time_from">10.0</field>
+        <field name="time_to">18.0</field>
+        <field name="type">work</field>
+    </record>
+    <record id="hr_schedule_brown_fri" model="hr.hospital.doctor.schedule">
+        <field name="doctor_id" ref="hr_doctor_2"/>
+        <field name="day_of_week">friday</field>
+        <field name="time_from">10.0</field>
+        <field name="time_to">18.0</field>
+        <field name="type">work</field>
+    </record>
+
+    <!-- Dr. White (Neurology) - Monday to Saturday, 8-16 -->
+    <record id="hr_schedule_white_mon" model="hr.hospital.doctor.schedule">
+        <field name="doctor_id" ref="hr_doctor_3"/>
+        <field name="day_of_week">monday</field>
+        <field name="time_from">8.0</field>
+        <field name="time_to">16.0</field>
+        <field name="type">work</field>
+    </record>
+    <record id="hr_schedule_white_tue" model="hr.hospital.doctor.schedule">
+        <field name="doctor_id" ref="hr_doctor_3"/>
+        <field name="day_of_week">tuesday</field>
+        <field name="time_from">8.0</field>
+        <field name="time_to">16.0</field>
+        <field name="type">work</field>
+    </record>
+    <record id="hr_schedule_white_wed" model="hr.hospital.doctor.schedule">
+        <field name="doctor_id" ref="hr_doctor_3"/>
+        <field name="day_of_week">wednesday</field>
+        <field name="time_from">8.0</field>
+        <field name="time_to">16.0</field>
+        <field name="type">work</field>
+    </record>
+    <record id="hr_schedule_white_thu" model="hr.hospital.doctor.schedule">
+        <field name="doctor_id" ref="hr_doctor_3"/>
+        <field name="day_of_week">thursday</field>
+        <field name="time_from">8.0</field>
+        <field name="time_to">16.0</field>
+        <field name="type">work</field>
+    </record>
+    <record id="hr_schedule_white_fri" model="hr.hospital.doctor.schedule">
+        <field name="doctor_id" ref="hr_doctor_3"/>
+        <field name="day_of_week">friday</field>
+        <field name="time_from">8.0</field>
+        <field name="time_to">16.0</field>
+        <field name="type">work</field>
+    </record>
+    <record id="hr_schedule_white_sat" model="hr.hospital.doctor.schedule">
+        <field name="doctor_id" ref="hr_doctor_3"/>
+        <field name="day_of_week">saturday</field>
+        <field name="time_from">9.0</field>
+        <field name="time_to">14.0</field>
+        <field name="type">work</field>
+    </record>
+
+    <!-- Dr. Johnson (General Practice) - Monday to Friday, 9-18 -->
+    <record id="hr_schedule_johnson_mon" model="hr.hospital.doctor.schedule">
+        <field name="doctor_id" ref="hr_doctor_4"/>
+        <field name="day_of_week">monday</field>
+        <field name="time_from">9.0</field>
+        <field name="time_to">18.0</field>
+        <field name="type">work</field>
+    </record>
+    <record id="hr_schedule_johnson_tue" model="hr.hospital.doctor.schedule">
+        <field name="doctor_id" ref="hr_doctor_4"/>
+        <field name="day_of_week">tuesday</field>
+        <field name="time_from">9.0</field>
+        <field name="time_to">18.0</field>
+        <field name="type">work</field>
+    </record>
+    <record id="hr_schedule_johnson_wed" model="hr.hospital.doctor.schedule">
+        <field name="doctor_id" ref="hr_doctor_4"/>
+        <field name="day_of_week">wednesday</field>
+        <field name="time_from">9.0</field>
+        <field name="time_to">18.0</field>
+        <field name="type">work</field>
+    </record>
+    <record id="hr_schedule_johnson_thu" model="hr.hospital.doctor.schedule">
+        <field name="doctor_id" ref="hr_doctor_4"/>
+        <field name="day_of_week">thursday</field>
+        <field name="time_from">9.0</field>
+        <field name="time_to">18.0</field>
+        <field name="type">work</field>
+    </record>
+    <record id="hr_schedule_johnson_fri" model="hr.hospital.doctor.schedule">
+        <field name="doctor_id" ref="hr_doctor_4"/>
+        <field name="day_of_week">friday</field>
+        <field name="time_from">9.0</field>
+        <field name="time_to">18.0</field>
+        <field name="type">work</field>
+    </record>
+
+    <!-- Dr. Garcia (Surgery) - Tuesday to Saturday, 7-15 -->
+    <record id="hr_schedule_garcia_tue" model="hr.hospital.doctor.schedule">
+        <field name="doctor_id" ref="hr_doctor_5"/>
+        <field name="day_of_week">tuesday</field>
+        <field name="time_from">7.0</field>
+        <field name="time_to">15.0</field>
+        <field name="type">work</field>
+    </record>
+    <record id="hr_schedule_garcia_wed" model="hr.hospital.doctor.schedule">
+        <field name="doctor_id" ref="hr_doctor_5"/>
+        <field name="day_of_week">wednesday</field>
+        <field name="time_from">7.0</field>
+        <field name="time_to">15.0</field>
+        <field name="type">work</field>
+    </record>
+    <record id="hr_schedule_garcia_thu" model="hr.hospital.doctor.schedule">
+        <field name="doctor_id" ref="hr_doctor_5"/>
+        <field name="day_of_week">thursday</field>
+        <field name="time_from">7.0</field>
+        <field name="time_to">15.0</field>
+        <field name="type">work</field>
+    </record>
+    <record id="hr_schedule_garcia_fri" model="hr.hospital.doctor.schedule">
+        <field name="doctor_id" ref="hr_doctor_5"/>
+        <field name="day_of_week">friday</field>
+        <field name="time_from">7.0</field>
+        <field name="time_to">15.0</field>
+        <field name="type">work</field>
+    </record>
+    <record id="hr_schedule_garcia_sat" model="hr.hospital.doctor.schedule">
+        <field name="doctor_id" ref="hr_doctor_5"/>
+        <field name="day_of_week">saturday</field>
+        <field name="time_from">8.0</field>
+        <field name="time_to">13.0</field>
+        <field name="type">work</field>
+    </record>
+
+    <!-- Dr. Lee (Cardiology) - Monday to Friday, 11-19 -->
+    <record id="hr_schedule_lee_mon" model="hr.hospital.doctor.schedule">
+        <field name="doctor_id" ref="hr_doctor_6"/>
+        <field name="day_of_week">monday</field>
+        <field name="time_from">11.0</field>
+        <field name="time_to">19.0</field>
+        <field name="type">work</field>
+    </record>
+    <record id="hr_schedule_lee_tue" model="hr.hospital.doctor.schedule">
+        <field name="doctor_id" ref="hr_doctor_6"/>
+        <field name="day_of_week">tuesday</field>
+        <field name="time_from">11.0</field>
+        <field name="time_to">19.0</field>
+        <field name="type">work</field>
+    </record>
+    <record id="hr_schedule_lee_wed" model="hr.hospital.doctor.schedule">
+        <field name="doctor_id" ref="hr_doctor_6"/>
+        <field name="day_of_week">wednesday</field>
+        <field name="time_from">11.0</field>
+        <field name="time_to">19.0</field>
+        <field name="type">work</field>
+    </record>
+    <record id="hr_schedule_lee_thu" model="hr.hospital.doctor.schedule">
+        <field name="doctor_id" ref="hr_doctor_6"/>
+        <field name="day_of_week">thursday</field>
+        <field name="time_from">11.0</field>
+        <field name="time_to">19.0</field>
+        <field name="type">work</field>
+    </record>
+    <record id="hr_schedule_lee_fri" model="hr.hospital.doctor.schedule">
+        <field name="doctor_id" ref="hr_doctor_6"/>
+        <field name="day_of_week">friday</field>
+        <field name="time_from">11.0</field>
+        <field name="time_to">19.0</field>
+        <field name="type">work</field>
+    </record>
+
+    <!-- Intern Taylor (with Dr. Smith) - Monday to Friday, 9-17 -->
+    <record id="hr_schedule_taylor_mon" model="hr.hospital.doctor.schedule">
+        <field name="doctor_id" ref="hr_doctor_intern_1"/>
+        <field name="day_of_week">monday</field>
+        <field name="time_from">9.0</field>
+        <field name="time_to">17.0</field>
+        <field name="type">work</field>
+    </record>
+    <record id="hr_schedule_taylor_tue" model="hr.hospital.doctor.schedule">
+        <field name="doctor_id" ref="hr_doctor_intern_1"/>
+        <field name="day_of_week">tuesday</field>
+        <field name="time_from">9.0</field>
+        <field name="time_to">17.0</field>
+        <field name="type">work</field>
+    </record>
+    <record id="hr_schedule_taylor_wed" model="hr.hospital.doctor.schedule">
+        <field name="doctor_id" ref="hr_doctor_intern_1"/>
+        <field name="day_of_week">wednesday</field>
+        <field name="time_from">9.0</field>
+        <field name="time_to">17.0</field>
+        <field name="type">work</field>
+    </record>
+    <record id="hr_schedule_taylor_thu" model="hr.hospital.doctor.schedule">
+        <field name="doctor_id" ref="hr_doctor_intern_1"/>
+        <field name="day_of_week">thursday</field>
+        <field name="time_from">9.0</field>
+        <field name="time_to">17.0</field>
+        <field name="type">work</field>
+    </record>
+    <record id="hr_schedule_taylor_fri" model="hr.hospital.doctor.schedule">
+        <field name="doctor_id" ref="hr_doctor_intern_1"/>
+        <field name="day_of_week">friday</field>
+        <field name="time_from">9.0</field>
+        <field name="time_to">17.0</field>
+        <field name="type">work</field>
+    </record>
+
+    <!-- Intern Martinez (with Dr. White) - Monday to Friday, 8-16 -->
+    <record id="hr_schedule_martinez_mon" model="hr.hospital.doctor.schedule">
+        <field name="doctor_id" ref="hr_doctor_intern_2"/>
+        <field name="day_of_week">monday</field>
+        <field name="time_from">8.0</field>
+        <field name="time_to">16.0</field>
+        <field name="type">work</field>
+    </record>
+    <record id="hr_schedule_martinez_tue" model="hr.hospital.doctor.schedule">
+        <field name="doctor_id" ref="hr_doctor_intern_2"/>
+        <field name="day_of_week">tuesday</field>
+        <field name="time_from">8.0</field>
+        <field name="time_to">16.0</field>
+        <field name="type">work</field>
+    </record>
+    <record id="hr_schedule_martinez_wed" model="hr.hospital.doctor.schedule">
+        <field name="doctor_id" ref="hr_doctor_intern_2"/>
+        <field name="day_of_week">wednesday</field>
+        <field name="time_from">8.0</field>
+        <field name="time_to">16.0</field>
+        <field name="type">work</field>
+    </record>
+    <record id="hr_schedule_martinez_thu" model="hr.hospital.doctor.schedule">
+        <field name="doctor_id" ref="hr_doctor_intern_2"/>
+        <field name="day_of_week">thursday</field>
+        <field name="time_from">8.0</field>
+        <field name="time_to">16.0</field>
+        <field name="type">work</field>
+    </record>
+    <record id="hr_schedule_martinez_fri" model="hr.hospital.doctor.schedule">
+        <field name="doctor_id" ref="hr_doctor_intern_2"/>
+        <field name="day_of_week">friday</field>
+        <field name="time_from">8.0</field>
+        <field name="time_to">16.0</field>
+        <field name="type">work</field>
+    </record>
+</odoo>
