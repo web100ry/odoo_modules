@@ -5,7 +5,7 @@
     'website': 'https://www.vivaniuk.pp.ua/',
     'category': 'Customizations',
     'license': 'LGPL-3',
-    'version': '18.0.5.3.1',
+    'version': '18.0.5.3.2',
     'depends': [
         'base',
     ],
