@@ -84,16 +84,20 @@ class HrHospitalVisit(models.Model):
                 continue
 
             start_day = rec.planned_datetime.date()
+            next_day = start_day + timedelta(days=1)
+
             existing = self.search([
                 ('id', '!=', rec.id),
                 ('patient_id', '=', rec.patient_id.id),
                 ('doctor_id', '=', rec.doctor_id.id),
                 ('planned_datetime', '>=', start_day),
-                ('planned_datetime', '<', start_day.replace(day=start_day.day+1))
+                ('planned_datetime', '<', next_day)
             ], limit=1)
 
             if existing:
-                raise ValidationError(_("Patient already has a visit to this doctor on that day."))
+                raise ValidationError(
+                    _("Patient already has a visit to this doctor on that day.")
+                )
 
     def write(self, vals):
         for rec in self:
