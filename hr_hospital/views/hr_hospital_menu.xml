@@ -4,10 +4,10 @@
             web_icon="hr_hospital,static/description/icon.png"
             name="Caritas Ukraine" sequence="300"/>
 
-  <menuitem id="hr_hospital_menu_catalog"
+  <menuitem id="hr_hospital_visit_menu_catalog"
             parent="hr_hospital_main_menu"
-            action="action_hr_hospital_hospital_window"
-            name="Hospitals" sequence="100"/>
+            action="action_hr_hospital_visit"
+            name="Visits" sequence="100"/>
 
   <menuitem id="hr_hospital_doctor_menu_catalog"
             parent="hr_hospital_main_menu"
@@ -24,21 +24,6 @@
             action="action_hr_hospital_contact_person"
             name="Contact Person" sequence="400"/>
 
-  <menuitem id="hr_hospital_visit_menu_catalog"
-            parent="hr_hospital_main_menu"
-            action="action_hr_hospital_visit"
-            name="Visits" sequence="500"/>
-
-  <menuitem id="hr_hospital_disease_menu_catalog"
-          parent="hr_hospital_main_menu"
-          action="action_hr_hospital_disease"
-          name="Diseases" sequence="600"/>
-
-    <menuitem id="hr_hospital_disease_menu_catalog"
-          parent="hr_hospital_main_menu"
-          action="action_hr_hospital_doctor_speciality"
-          name="DoctorSpeciality" sequence="700"/>
-
   <!-- Reports Section -->
   <menuitem id="hr_hospital_menu_reports"
             parent="hr_hospital_main_menu"
@@ -47,7 +32,7 @@
   <menuitem id="hr_hospital_menu_disease_report"
             parent="hr_hospital_menu_reports"
             action="hr_hospital.action_disease_report_wizard"
-            name="Disease Report" sequence="10"/>
+            name="Disease Report" sequence="100"/>
 
   <!-- Wizards Section -->
   <menuitem id="hr_hospital_menu_wizards"
@@ -59,8 +44,35 @@
             action="hr_hospital.action_doctor_schedule_wizard"
             name="Fill Doctor Schedule" sequence="10"/>
 
+  <menuitem id="hr_hospital_menu_mass_reassign_doctor_wizard"
+            parent="hr_hospital_menu_wizards"
+            action="hr_hospital.action_mass_reassign_doctor_wizard"
+            name="Mass Reassign Doctor" sequence="20"/>
+
+  <menuitem id="hr_hospital_menu_patient_card_export_wizard"
+            parent="hr_hospital_menu_wizards"
+            action="hr_hospital.action_patient_card_export_wizard"
+            name="Patient Card Export" sequence="30"/>
+
+
+  <!-- Setting Section -->
   <menuitem id="hr_hospital_menu_main_settings"
             parent="hr_hospital_main_menu"
             name="Settings" sequence="900"/>
+
+    <menuitem id="hr_hospital_menu_catalog"
+            parent="hr_hospital_menu_main_settings"
+            action="action_hr_hospital_hospital_window"
+            name="Hospitals" sequence="100"/>
+
+    <menuitem id="hr_hospital_doctor_speciality_menu_catalog"
+          parent="hr_hospital_menu_main_settings"
+          action="action_hr_hospital_doctor_speciality"
+          name="DoctorSpeciality" sequence="200"/>
+
+    <menuitem id="hr_hospital_disease_menu_catalog"
+          parent="hr_hospital_menu_main_settings"
+          action="action_hr_hospital_disease"
+          name="Diseases" sequence="300"/>
 
 </odoo>

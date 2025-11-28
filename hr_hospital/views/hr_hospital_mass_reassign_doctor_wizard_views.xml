@@ -35,7 +35,5 @@
         <field name="res_model">mass.reassign.doctor.wizard</field>
         <field name="view_mode">form</field>
         <field name="target">new</field>
-        <field name="binding_model_id" ref="model_hr_hospital_patient"/>
-        <field name="binding_view_types">list</field>
     </record>
 </odoo>

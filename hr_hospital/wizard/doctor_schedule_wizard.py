@@ -194,10 +194,10 @@ class DoctorScheduleWizard(models.TransientModel):
             'tag': 'display_notification',
             'params': {
                 'title': _('Success'),
-                'message': _("%(visit)s schedule entries have been created for %(count)s") % (
-                    created_count,
-                    self.doctor_id.name
-                ),
+                'message': _("%(visit)s schedule entries have been created for %(count)s") % {
+                    'visit': created_count,
+                    'count': self.doctor_id.name
+                },
                 'type': 'success',
                 'sticky': False,
             }

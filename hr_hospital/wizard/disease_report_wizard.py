@@ -100,7 +100,7 @@ class DiseaseReportWizard(models.TransientModel):
             'name': _('Disease Report'),
             'type': 'ir.actions.act_window',
             'res_model': 'hr.hospital.medical.diagnosis',
-            'view_mode': 'tree,form',
+            'view_mode': 'list,form',
             'domain': [('id', 'in', diagnoses.ids)],
             'context': {
                 'default_report_data': report_data,

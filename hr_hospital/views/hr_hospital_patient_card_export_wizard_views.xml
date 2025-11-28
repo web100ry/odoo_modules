@@ -8,7 +8,8 @@
             <form string="Export Patient Medical Card">
                 <group>
                     <group>
-                        <field name="patient_id" options="{'no_create': True}"/>
+                        <field name="patient_id"
+                               options="{'no_create': True}"/>
                         <field name="date_from"/>
                         <field name="date_to"/>
                     </group>

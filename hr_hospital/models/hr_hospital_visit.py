@@ -7,13 +7,17 @@ class HrHospitalVisit(models.Model):
     _name = 'hr.hospital.visit'
     _description = 'Patient Visit'
 
-    status = fields.Selection([
+    status = fields.Selection(
+        selection=[
         ('planned', 'Planned'),
         ('in_progress', 'In Progress'),
         ('done', 'Done'),
         ('cancelled', 'Cancelled'),
         ('no_show', 'No_show'),
-    ], default='planned', required=True)
+        ],
+        default='planned',
+        required=True
+    )
 
     planned_datetime = fields.Datetime(required=True)
     actual_datetime = fields.Datetime()
@@ -32,12 +36,15 @@ class HrHospitalVisit(models.Model):
         required=True
     )
 
-    visit_type = fields.Selection([
+    visit_type = fields.Selection(
+        selection=[
         ('primary', 'Primary'),
         ('secondary', 'Secondary'),
         ('preventive', 'Preventive'),
         ('urgent', 'Urgent'),
-    ], required=True)
+        ],
+        required=True
+    )
 
     diagnosis_ids = fields.One2many(
         comodel_name='hr.hospital.medical.diagnosis',
