@@ -61,10 +61,50 @@
         </field>
       </record>
 
+    <record id="view_hr_hospital_visit_search" model="ir.ui.view">
+        <field name="name">hr.hospital.visit.search</field>
+        <field name="model">hr.hospital.visit</field>
+        <field name="arch" type="xml">
+          <search>
+            <field name="patient_id"/>
+            <field name="doctor_id"/>
+            <field name="status"/>
+            <field name="visit_type"/>
+            <field name="planned_datetime"/>
+            <filter string="Заплановані" name="filter_planned" domain="[('status', '=', 'planned')]"/>
+            <filter string="В процесі" name="filter_in_progress" domain="[('status', '=', 'in_progress')]"/>
+            <filter string="Завершені" name="filter_done" domain="[('status', '=', 'done')]"/>
+            <filter string="Скасовані" name="filter_cancelled" domain="[('status', '=', 'cancelled')]"/>
+            <separator/>
+            <filter string="Поточний місяць" name="filter_current_month"
+                    domain="[('planned_datetime', '&gt;=', (context_today() - relativedelta(day=1)).strftime('%Y-%m-%d')),
+                             ('planned_datetime', '&lt;', (context_today() + relativedelta(day=31, days=1)).strftime('%Y-%m-%d'))]"/>
+            <group expand="0" string="Групування">
+              <filter string="Статус" name="group_by_status" context="{'group_by': 'status'}"/>
+              <filter string="Лікар" name="group_by_doctor" context="{'group_by': 'doctor_id'}"/>
+              <filter string="Пацієнт" name="group_by_patient" context="{'group_by': 'patient_id'}"/>
+              <filter string="Тип візиту" name="group_by_visit_type" context="{'group_by': 'visit_type'}"/>
+            </group>
+          </search>
+        </field>
+      </record>
+
+    <record id="view_hr_hospital_visit_pivot" model="ir.ui.view">
+        <field name="name">hr.hospital.visit.pivot</field>
+        <field name="model">hr.hospital.visit</field>
+        <field name="arch" type="xml">
+          <pivot string="Зведена таблиця візитів">
+            <field name="doctor_id" type="row"/>
+            <field name="status" type="col"/>
+            <field name="planned_datetime" interval="month" invisible="1"/>
+          </pivot>
+        </field>
+      </record>
+
   <record id="action_hr_hospital_visit" model="ir.actions.act_window">
     <field name="name">Visits</field>
     <field name="type">ir.actions.act_window</field>
     <field name="res_model">hr.hospital.visit</field>
-    <field name="view_mode">list,form,calendar,kanban,pivot</field>
+    <field name="view_mode">list,form,calendar,pivot</field>
   </record>
 </odoo>
