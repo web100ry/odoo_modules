@@ -127,6 +127,60 @@ class HrHospitalPatient(models.Model):
         inverse_name='patient_id'
     )
 
+    visit_ids = fields.One2many(
+        comodel_name='hr.hospital.visit',
+        inverse_name='patient_id',
+        string='Visits'
+    )
+
+    visit_count = fields.Integer(
+        compute='_compute_visit_count',
+        string='Visit Count'
+    )
+
+    @api.depends('visit_ids')
+    def _compute_visit_count(self):
+        for patient in self:
+            patient.visit_count = len(patient.visit_ids)
+
+    def action_view_visits(self):
+        self.ensure_one()
+        return {
+            'type': 'ir.actions.act_window',
+            'name': _('Patient Visits'),
+            'res_model': 'hr.hospital.visit',
+            'view_mode': 'list,form,calendar',
+            'domain': [('patient_id', '=', self.id)],
+            'context': {'default_patient_id': self.id}
+        }
+
+    visit_ids = fields.One2many(
+        comodel_name='hr.hospital.visit',
+        inverse_name='patient_id',
+        string='Visits'
+    )
+
+    visit_count = fields.Integer(
+        compute='_compute_visit_count',
+        string='Visit Count'
+    )
+
+    @api.depends('visit_ids')
+    def _compute_visit_count(self):
+        for patient in self:
+            patient.visit_count = len(patient.visit_ids)
+
+    def action_view_visits(self):
+        self.ensure_one()
+        return {
+            'type': 'ir.actions.act_window',
+            'name': _('Patient Visits'),
+            'res_model': 'hr.hospital.visit',
+            'view_mode': 'list,form,calendar',
+            'domain': [('patient_id', '=', self.id)],
+            'context': {'default_patient_id': self.id}
+        }
+
     @api.constrains('birth_date')
     def _check_age_positive(self):
         from datetime import date

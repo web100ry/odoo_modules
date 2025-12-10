@@ -24,7 +24,15 @@
     <field name="model">hr.hospital.patient</field>
     <field name="arch" type="xml">
       <form>
+        <header>
+          <button name="action_view_visits" type="object" string="Історія візитів" class="oe_highlight"/>
+        </header>
         <sheet>
+          <div class="oe_button_box" name="button_box">
+            <button name="action_view_visits" type="object" class="oe_stat_button" icon="fa-calendar">
+              <field name="visit_count" widget="statinfo" string="Візитів"/>
+            </button>
+          </div>
           <group>
             <group>
               <field name="last_name"/>
@@ -49,11 +57,12 @@
               <field name="insurance_company_id"/>
               <field name="insurance_policy_number"/>
               <field name="disease_id"/>
+              <field name="doctor_id"/>
             </group>
           </group>
 
           <notebook>
-            <page string="Doctor History">
+            <page string="Історія лікарів">
               <field name="doctor_history_ids">
                 <list editable="bottom">
                   <field name="doctor_id"/>
@@ -64,10 +73,41 @@
                 </list>
               </field>
             </page>
+            <page string="Візити пацієнта">
+              <field name="visit_ids" context="{'default_patient_id': id}"/>
+            </page>
           </notebook>
 
         </sheet>
       </form>
+    </field>
+  </record>
+
+  <record id="view_hr_hospital_patient_search" model="ir.ui.view">
+    <field name="name">hr.hospital.patient.search</field>
+    <field name="model">hr.hospital.patient</field>
+    <field name="arch" type="xml">
+      <search>
+        <field name="fullname" string="ПІБ" filter_domain="['|', '|', ('last_name', 'ilike', self), ('first_name', 'ilike', self), ('middle_name', 'ilike', self)]"/>
+        <field name="phone" string="Телефон"/>
+        <field name="email"/>
+        <field name="personal_doctor_id"/>
+        <field name="insurance_company_id"/>
+        <separator/>
+        <filter string="Чоловіки" name="filter_male" domain="[('gender', '=', 'male')]"/>
+        <filter string="Жінки" name="filter_female" domain="[('gender', '=', 'female')]"/>
+        <filter string="Інше" name="filter_other" domain="[('gender', '=', 'other')]"/>
+        <separator/>
+        <filter string="З особистим лікарем" name="filter_has_doctor" domain="[('personal_doctor_id', '!=', False)]"/>
+        <filter string="Без особистого лікаря" name="filter_no_doctor" domain="[('personal_doctor_id', '=', False)]"/>
+        <separator/>
+        <group expand="0" string="Групування">
+          <filter string="Стать" name="group_by_gender" context="{'group_by': 'gender'}"/>
+          <filter string="Група крові" name="group_by_blood_type" context="{'group_by': 'blood_type'}"/>
+          <filter string="Особистий лікар" name="group_by_doctor" context="{'group_by': 'personal_doctor_id'}"/>
+          <filter string="Страхова компанія" name="group_by_insurance" context="{'group_by': 'insurance_company_id'}"/>
+        </group>
+      </search>
     </field>
   </record>
 
