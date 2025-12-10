@@ -58,6 +58,22 @@ class HrHospitalDoctor(models.Model):
 
     visit_ids = fields.One2many('hr.hospital.visit', 'doctor_id')
 
+    intern_ids = fields.One2many(
+        comodel_name='hr.hospital.doctor',
+        inverse_name='mentor_id',
+        string='Interns'
+    )
+
+    intern_count = fields.Integer(
+        compute='_compute_intern_count',
+        string='Number of Interns'
+    )
+
+    @api.depends('intern_ids')
+    def _compute_intern_count(self):
+        for record in self:
+            record.intern_count = len(record.intern_ids)
+
     def write(self, vals):
         if 'active' in vals and vals['active'] is False:
             for doctor in self:
@@ -161,3 +177,33 @@ class HrHospitalDoctor(models.Model):
                 domain.append(('id', 'in', schedules.mapped('doctor_id').ids))
 
         return domain
+
+    def action_view_interns(self):
+        """Відкриває список інтернів поточного лікаря"""
+        self.ensure_one()
+        return {
+            'type': 'ir.actions.act_window',
+            'name': _('Interns of %s', self.fullname),
+            'res_model': 'hr.hospital.doctor',
+            'view_mode': 'kanban,list,form',
+            'domain': [('id', 'in', self.intern_ids.ids)],
+            'context': {
+                'default_mentor_id': self.id,
+                'default_is_intern': True,
+            }
+        }
+
+    def action_quick_create_visit(self):
+        """Швидке створення візиту до лікаря з канбану"""
+        self.ensure_one()
+        return {
+            'type': 'ir.actions.act_window',
+            'name': _('Новий візит до %s', self.fullname),
+            'res_model': 'hr.hospital.visit',
+            'view_mode': 'form',
+            'target': 'new',
+            'context': {
+                'default_doctor_id': self.id,
+                'default_status': 'planned',
+            }
+        }
