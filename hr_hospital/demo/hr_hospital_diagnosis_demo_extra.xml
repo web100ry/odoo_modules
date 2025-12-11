@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <!-- 6 Demo Medical Diagnoses -->
+
+        <record id="demo_diagnosis_1" model="hr.hospital.medical.diagnosis">
+            <field name="name">Influenza type A</field>
+            <field name="disease_id" ref="hr_disease_flu"/>
+            <field name="description">
+                The patient has typical influenza symptoms: high fever
+                (39.2°C), muscle pain, headache, and general weakness.
+            </field>
+            <field name="treatment">
+                &lt;p&gt;&lt;strong&gt;Treatment plan:&lt;/strong&gt;&lt;/p&gt;
+                &lt;ul&gt;
+                    &lt;li&gt;Antiviral drugs (Oseltamivir) – 5 days&lt;/li&gt;
+                    &lt;li&gt;Antipyretic medication as needed&lt;/li&gt;
+                    &lt;li&gt;Bed rest&lt;/li&gt;
+                    &lt;li&gt;Plenty of fluids&lt;/li&gt;
+                    &lt;li&gt;Follow-up visit in 5 days&lt;/li&gt;
+                &lt;/ul&gt;
+            </field>
+            <field name="severity">medium</field>
+            <field name="approved" eval="True"/>
+            <field name="status">approved</field>
+            <field name="diagnosis_date"
+                   eval="(datetime.now() - timedelta(days=15)).strftime('%Y-%m-%d %H:%M:%S')"/>
+            <field name="approved_date"
+                   eval="(datetime.now() - timedelta(days=15)).strftime('%Y-%m-%d %H:%M:%S')"/>
+        </record>
+
+        <record id="demo_diagnosis_2" model="hr.hospital.medical.diagnosis">
+            <field name="name">COVID-19 (mild course)</field>
+            <field name="disease_id" ref="hr_disease_covid"/>
+            <field name="description">
+                Positive PCR test for SARS-CoV-2. Symptoms: low-grade fever,
+                loss of smell, mild cough.
+            </field>
+            <field name="treatment">
+                &lt;p&gt;&lt;strong&gt;Treatment:&lt;/strong&gt;&lt;/p&gt;
+                &lt;ul&gt;
+                    &lt;li&gt;Self-isolation for 10 days&lt;/li&gt;
+                    &lt;li&gt;Symptomatic therapy&lt;/li&gt;
+                    &lt;li&gt;Monitoring of blood oxygen saturation&lt;/li&gt;
+                    &lt;li&gt;Daily telemedicine follow-up&lt;/li&gt;
+                &lt;/ul&gt;
+            </field>
+            <field name="severity">light</field>
+            <field name="approved" eval="True"/>
+            <field name="status">approved</field>
+            <field name="diagnosis_date"
+                   eval="(datetime.now() - timedelta(days=8)).strftime('%Y-%m-%d %H:%M:%S')"/>
+            <field name="approved_date"
+                   eval="(datetime.now() - timedelta(days=8)).strftime('%Y-%m-%d %H:%M:%S')"/>
+        </record>
+
+        <record id="demo_diagnosis_3" model="hr.hospital.medical.diagnosis">
+            <field name="name">Hypertensive disease, grade II</field>
+            <field name="disease_id" ref="hr_disease_cardiovascular"/>
+            <field name="description">
+                BP 160/100 mmHg, elevated during the last 3 months. Headache,
+                dizziness.
+            </field>
+            <field name="treatment">
+                &lt;p&gt;&lt;strong&gt;Treatment plan:&lt;/strong&gt;&lt;/p&gt;
+                &lt;ul&gt;
+                    &lt;li&gt;Antihypertensive therapy
+                        (Enalapril 10 mg twice daily)&lt;/li&gt;
+                    &lt;li&gt;Low-salt diet&lt;/li&gt;
+                    &lt;li&gt;Moderate physical activity&lt;/li&gt;
+                    &lt;li&gt;Daily blood pressure monitoring&lt;/li&gt;
+                    &lt;li&gt;Follow-up visit in 2 weeks&lt;/li&gt;
+                &lt;/ul&gt;
+            </field>
+            <field name="severity">medium</field>
+            <field name="approved" eval="True"/>
+            <field name="status">approved</field>
+            <field name="diagnosis_date"
+                   eval="(datetime.now() - timedelta(days=22)).strftime('%Y-%m-%d %H:%M:%S')"/>
+            <field name="approved_date"
+                   eval="(datetime.now() - timedelta(days=21)).strftime('%Y-%m-%d %H:%M:%S')"/>
+        </record>
+
+        <record id="demo_diagnosis_4" model="hr.hospital.medical.diagnosis">
+            <field name="name">Right-sided lower-lobe pneumonia</field>
+            <field name="disease_id" ref="hr_disease_pneumonia"/>
+            <field name="description">
+                Radiologically confirmed pneumonia. Symptoms: fever 38.5°C,
+                productive cough, shortness of breath.
+            </field>
+            <field name="treatment">
+                &lt;p&gt;&lt;strong&gt;Treatment:&lt;/strong&gt;&lt;/p&gt;
+                &lt;ul&gt;
+                    &lt;li&gt;Antibiotic therapy (Amoxicillin +
+                        Clavulanic acid) – 7–10 days&lt;/li&gt;
+                    &lt;li&gt;Expectorant medications&lt;/li&gt;
+                    &lt;li&gt;Breathing exercises&lt;/li&gt;
+                    &lt;li&gt;Bed rest for the first 3–4 days&lt;/li&gt;
+                    &lt;li&gt;Control chest X-ray in 10 days&lt;/li&gt;
+                &lt;/ul&gt;
+            </field>
+            <field name="severity">hard</field>
+            <field name="approved" eval="True"/>
+            <field name="status">approved</field>
+            <field name="diagnosis_date"
+                   eval="(datetime.now() - timedelta(days=5)).strftime('%Y-%m-%d %H:%M:%S')"/>
+            <field name="approved_date"
+                   eval="(datetime.now() - timedelta(days=5)).strftime('%Y-%m-%d %H:%M:%S')"/>
+        </record>
+
+        <record id="demo_diagnosis_5" model="hr.hospital.medical.diagnosis">
+            <field name="name">Migraine with aura</field>
+            <field name="disease_id" ref="hr_disease_migraine"/>
+            <field name="description">
+                Recurrent migraine attacks with visual aura. Attacks 2–3 times
+                per month, lasting 4–6 hours.
+            </field>
+            <field name="treatment">
+                &lt;p&gt;&lt;strong&gt;Therapy:&lt;/strong&gt;&lt;/p&gt;
+                &lt;ul&gt;
+                    &lt;li&gt;Preventive therapy (Topiramate 25 mg)&lt;/li&gt;
+                    &lt;li&gt;Triptans for acute attack relief&lt;/li&gt;
+                    &lt;li&gt;Avoiding triggers (stress, lack of sleep, food)&lt;/li&gt;
+                    &lt;li&gt;Keeping a headache diary&lt;/li&gt;
+                    &lt;li&gt;Neurologist follow-up in 1 month&lt;/li&gt;
+                &lt;/ul&gt;
+            </field>
+            <field name="severity">medium</field>
+            <field name="approved" eval="True"/>
+            <field name="status">approved</field>
+            <field name="diagnosis_date"
+                   eval="(datetime.now() - timedelta(days=12)).strftime('%Y-%m-%d %H:%M:%S')"/>
+            <field name="approved_date"
+                   eval="(datetime.now() - timedelta(days=12)).strftime('%Y-%m-%d %H:%M:%S')"/>
+        </record>
+
+        <record id="demo_diagnosis_6" model="hr.hospital.medical.diagnosis">
+            <field name="name">Acute exacerbation of bronchial asthma</field>
+            <field name="disease_id" ref="hr_disease_viral_respiratory"/>
+            <field name="description">
+                Episodes of dyspnea, wheezing, cough (especially at night).
+                FEV1 — 65% of predicted.
+            </field>
+            <field name="treatment">
+                &lt;p&gt;&lt;strong&gt;Treatment:&lt;/strong&gt;&lt;/p&gt;
+                &lt;ul&gt;
+                    &lt;li&gt;Inhaled corticosteroids
+                        (Budesonide 400 mcg twice daily)&lt;/li&gt;
+                    &lt;li&gt;Short-acting β2-agonists as needed&lt;/li&gt;
+                    &lt;li&gt;Avoiding allergens and irritants&lt;/li&gt;
+                    &lt;li&gt;Daily peak-flow monitoring&lt;/li&gt;
+                    &lt;li&gt;Pulmonologist follow-up in 2 weeks&lt;/li&gt;
+                &lt;/ul&gt;
+            </field>
+            <field name="severity">medium</field>
+            <field name="approved" eval="False"/>
+            <field name="status">draft</field>
+            <field name="diagnosis_date"
+                   eval="(datetime.now() - timedelta(days=3)).strftime('%Y-%m-%d %H:%M:%S')"/>
+        </record>
+
+    </data>
+</odoo>

@@ -28,6 +28,7 @@
         'views/hr_hospital_mass_reassign_doctor_wizard_views.xml',
         'views/hr_hospital_patient_card_export_wizard_views.xml',
         'views/hr_hospital_reschedule_visit_wizard_views.xml',
+        'views/hr_hospital_medical_diagnosis_views.xml',
         'views/hr_hospital_menu.xml',
     ],
     'demo': [
@@ -40,6 +41,7 @@
         'demo/hr_hospital_diagnosis_demo.xml',
         'demo/hr_hospital_schedule_demo.xml',
         'demo/hr_hospital_doctor_history_demo.xml',
+        'demo/hr_hospital_diagnosis_demo_extra.xml',
     ],
     'installable': True,
     'auto_install': False,

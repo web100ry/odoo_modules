@@ -53,6 +53,9 @@
         <field name="license_number">LN-35791</field>
         <field name="license_date" eval="(DateTime.now() - timedelta(days=365*15)).strftime('%Y-%m-%d')"/>
         <field name="rating">4.8</field>
+        <field name="image_1920"
+                   type="base64"
+                   file="hr_hospital/static/img/doctor_1.png"/>
     </record>
 
     <record id="hr_doctor_2" model="hr.hospital.doctor">
@@ -70,6 +73,9 @@
         <field name="license_number">LN-12345</field>
         <field name="license_date" eval="(DateTime.now() - timedelta(days=365*12)).strftime('%Y-%m-%d')"/>
         <field name="rating">4.9</field>
+        <field name="image_1920"
+                   type="base64"
+                   file="hr_hospital/static/img/doctor_4.png"/>
     </record>
 
     <record id="hr_doctor_3" model="hr.hospital.doctor">
@@ -87,6 +93,9 @@
         <field name="license_number">LN-24689</field>
         <field name="license_date" eval="(DateTime.now() - timedelta(days=365*25)).strftime('%Y-%m-%d')"/>
         <field name="rating">4.95</field>
+        <field name="image_1920"
+                   type="base64"
+                   file="hr_hospital/static/img/doctor_2.png"/>
     </record>
 
     <record id="hr_doctor_4" model="hr.hospital.doctor">
@@ -104,6 +113,9 @@
         <field name="license_number">LN-98765</field>
         <field name="license_date" eval="(DateTime.now() - timedelta(days=365*18)).strftime('%Y-%m-%d')"/>
         <field name="rating">4.7</field>
+        <field name="image_1920"
+                   type="base64"
+                   file="hr_hospital/static/img/doctor_3.png"/>
     </record>
 
     <record id="hr_doctor_5" model="hr.hospital.doctor">
@@ -138,6 +150,9 @@
         <field name="license_number">LN-77777</field>
         <field name="license_date" eval="(DateTime.now() - timedelta(days=365*10)).strftime('%Y-%m-%d')"/>
         <field name="rating">4.6</field>
+        <field name="image_1920"
+                   type="base64"
+                   file="hr_hospital/static/img/doctor_5.png"/>
     </record>
 
     <!-- Intern Doctors (with Mentors) -->

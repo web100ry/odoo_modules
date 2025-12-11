@@ -36,6 +36,8 @@ class HrHospitalMedicalDiagnosis(models.Model):
 
     description = fields.Text()
     treatment = fields.Html()
+
+    # логічний прапорець «погоджено»
     approved = fields.Boolean(default=False)
 
     mentor_id = fields.Many2one(
@@ -43,20 +45,30 @@ class HrHospitalMedicalDiagnosis(models.Model):
         readonly=True
     )
 
-    @api.onchange('doctor_id')
-    def _onchange_doctor_set_mentor(self):
-        if self.doctor_id and self.doctor_id.is_intern:
-            if self.doctor_id.mentor_id:
-                self.mentor_id = self.doctor_id.mentor_id
-                return {
-                    'warning': {
-                        'title': _("Intern Doctor"),
-                        'message': _(
-                            "Doctor is an intern. Mentor was assigned."
-                        )
-                    }
-                }
-        return {}
+    # основна дата діагнозу — Datetime
+    diagnosis_date = fields.Datetime(
+        string='Diagnosis Date',
+        default=fields.Datetime.now,
+        required=True
+    )
+
+    diagnosis_year = fields.Integer(
+        string='Year',
+        compute='_compute_diagnosis_period',
+        store=True
+    )
+
+    diagnosis_month = fields.Integer(
+        string='Month',
+        compute='_compute_diagnosis_period',
+        store=True
+    )
+
+    disease_type = fields.Char(
+        string='Disease Type',
+        related='disease_id.parent_id.name',
+        store=True
+    )
 
     approved_date = fields.Datetime()
 
@@ -66,11 +78,42 @@ class HrHospitalMedicalDiagnosis(models.Model):
             ('medium', 'Medium'),
             ('hard', 'Hard'),
             ('critical', 'Critical'),
-        ])
+        ]
+    )
+
+    # кількість діагнозів (для pivot/graph)
+    diagnosis_count = fields.Integer(
+        string="Кількість діагнозів",
+        default=1,
+        readonly=True,
+        group_operator="sum",
+    )
+
+    status = fields.Selection(
+        selection=[
+            ('draft', 'Чернетка'),
+            ('approved', 'Затверджено'),
+        ],
+        string="Статус",
+        default='draft'
+    )
 
     def action_approve_by_mentor(self):
+        """Кнопка затвердження діагнозу ментором"""
         for record in self:
             record.write({
                 'approved': True,
-                'approved_date': fields.Datetime.now()
+                'approved_date': fields.Datetime.now(),
+                'status': 'approved',
             })
+
+    @api.depends('diagnosis_date')
+    def _compute_diagnosis_period(self):
+        for rec in self:
+            if rec.diagnosis_date:
+                # diagnosis_date — Datetime
+                rec.diagnosis_year = rec.diagnosis_date.year
+                rec.diagnosis_month = rec.diagnosis_date.month
+            else:
+                rec.diagnosis_year = False
+                rec.diagnosis_month = False

@@ -24,6 +24,12 @@
             action="action_hr_hospital_contact_person"
             name="Contact Person" sequence="400"/>
 
+  <menuitem id="menu_hr_hospital_medical_diagnosis"
+            name="Diagnoses"
+            parent="hr_hospital_main_menu"
+            action="action_hr_hospital_medical_diagnosis"
+            sequence="500"/>
+
   <!-- Reports Section -->
   <menuitem id="hr_hospital_menu_reports"
             parent="hr_hospital_main_menu"

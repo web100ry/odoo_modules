@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- ======================= Pivot View ======================= -->
+    <record id="view_hr_hospital_medical_diagnosis_pivot" model="ir.ui.view">
+        <field name="name">hr.hospital.medical.diagnosis.pivot</field>
+        <field name="model">hr.hospital.medical.diagnosis</field>
+        <field name="arch" type="xml">
+            <pivot string="Disease Analysis">
+                <field name="disease_id" type="row"/>
+                <field name="disease_type" type="row"/>
+                <field name="diagnosis_year" type="col"/>
+                <field name="diagnosis_month" type="col"/>
+                <field name="diagnosis_count"
+                       type="measure"
+                       string="Number of Diagnoses"/>
+            </pivot>
+        </field>
+    </record>
+
+    <!-- ======================= Graph View ======================= -->
+    <record id="view_hr_hospital_medical_diagnosis_graph" model="ir.ui.view">
+        <field name="name">hr.hospital.medical.diagnosis.graph</field>
+        <field name="model">hr.hospital.medical.diagnosis</field>
+        <field name="arch" type="xml">
+            <graph string="Disease Chart" type="line">
+                <field name="disease_type" type="row"/>
+                <field name="diagnosis_month" type="col"/>
+                <field name="diagnosis_count"
+                       type="measure"
+                       string="Number of Diagnoses"/>
+            </graph>
+        </field>
+    </record>
+
+    <!-- ======================= List View ======================= -->
+    <record id="view_hr_hospital_medical_diagnosis_list" model="ir.ui.view">
+        <field name="name">hr.hospital.medical.diagnosis.list</field>
+        <field name="model">hr.hospital.medical.diagnosis</field>
+        <field name="arch" type="xml">
+            <list string="Diagnoses">
+                <field name="name"/>
+                <field name="visit_id"/>
+                <field name="disease_id"/>
+                <field name="disease_type"/>
+                <field name="severity"/>
+                <field name="diagnosis_date"/>
+                <field name="status"/>
+                <field name="mentor_id"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- ======================= Form View ======================= -->
+    <record id="view_hr_hospital_medical_diagnosis_form" model="ir.ui.view">
+        <field name="name">hr.hospital.medical.diagnosis.form</field>
+        <field name="model">hr.hospital.medical.diagnosis</field>
+        <field name="arch" type="xml">
+            <form string="Diagnosis">
+                <header>
+                    <button name="action_approve_by_mentor"
+                            string="Approve by Mentor"
+                            type="object"
+                            class="btn-primary"
+                            invisible="status == 'approved'"/>
+
+                    <!-- Corrected statusbar -->
+                    <field name="status"
+                           widget="statusbar"
+                           statusbar_visible="draft,approved"/>
+                </header>
+
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="visit_id"/>
+                            <field name="disease_id"/>
+                            <field name="disease_type"/>
+                            <field name="severity"/>
+                            <field name="diagnosis_date"/>
+                        </group>
+
+                        <group>
+                            <field name="status"/>
+                            <field name="approved_date" readonly="1"/>
+                            <field name="mentor_id" readonly="1"/>
+                            <field name="diagnosis_year" invisible="1"/>
+                            <field name="diagnosis_month" invisible="1"/>
+                        </group>
+                    </group>
+
+                    <notebook>
+                        <page string="Description">
+                            <field name="description"
+                                   placeholder="Detailed description of the diagnosis..."/>
+                        </page>
+
+                        <page string="Treatment">
+                            <field name="treatment"
+                                   placeholder="Treatment plan..."/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- ======================= Search View ======================= -->
+    <record id="view_hr_hospital_medical_diagnosis_search" model="ir.ui.view">
+        <field name="name">hr.hospital.medical.diagnosis.search</field>
+        <field name="model">hr.hospital.medical.diagnosis</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="disease_id"/>
+                <field name="disease_type"/>
+                <field name="visit_id"/>
+
+                <separator/>
+
+                <!-- Status filters -->
+                <filter string="Approved"
+                        name="filter_approved"
+                        domain="[('status', '=', 'approved')]"/>
+
+                <filter string="Draft"
+                        name="filter_not_approved"
+                        domain="[('status', '=', 'draft')]"/>
+
+                <separator/>
+
+                <!-- Severity -->
+                <filter string="Light" name="filter_light"
+                        domain="[('severity', '=', 'light')]"/>
+                <filter string="Medium" name="filter_medium"
+                        domain="[('severity', '=', 'medium')]"/>
+                <filter string="Hard" name="filter_hard"
+                        domain="[('severity', '=', 'hard')]"/>
+                <filter string="Critical" name="filter_critical"
+                        domain="[('severity', '=', 'critical')]"/>
+
+                <separator/>
+
+                <group expand="0" string="Group By">
+                    <filter string="Disease"
+                            name="group_by_disease"
+                            context="{'group_by': 'disease_id'}"/>
+
+                    <filter string="Disease Type"
+                            name="group_by_disease_type"
+                            context="{'group_by': 'disease_type'}"/>
+
+                    <filter string="Severity"
+                            name="group_by_severity"
+                            context="{'group_by': 'severity'}"/>
+
+                    <filter string="Year"
+                            name="group_by_year"
+                            context="{'group_by': 'diagnosis_year'}"/>
+
+                    <filter string="Month"
+                            name="group_by_month"
+                            context="{'group_by': 'diagnosis_month'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- ======================= Action ======================= -->
+    <record id="action_hr_hospital_medical_diagnosis" model="ir.actions.act_window">
+        <field name="name">Diagnoses</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hr.hospital.medical.diagnosis</field>
+        <field name="view_mode">list,form,pivot,graph</field>
+        <field name="context">{'search_default_filter_approved': 1}</field>
+    </record>
+
+</odoo>
