@@ -28,6 +28,7 @@
         'views/hr_hospital_mass_reassign_doctor_wizard_views.xml',
         'views/hr_hospital_patient_card_export_wizard_views.xml',
         'views/hr_hospital_reschedule_visit_wizard_views.xml',
+        'views/hr_hospital_doctor_print_actions.xml',
         'views/hr_hospital_medical_diagnosis_views.xml',
         'views/hr_hospital_menu.xml',
     ],
