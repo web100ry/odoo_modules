@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<odoo>
-    <data noupdate="1">
-
+ <odoo>
         <!-- 6 Demo Medical Diagnoses -->
-
         <record id="demo_diagnosis_1" model="hr.hospital.medical.diagnosis">
             <field name="name">Influenza type A</field>
             <field name="disease_id" ref="hr_disease_flu"/>
@@ -159,6 +156,4 @@
             <field name="diagnosis_date"
                    eval="(datetime.now() - timedelta(days=3)).strftime('%Y-%m-%d %H:%M:%S')"/>
         </record>
-
-    </data>
 </odoo>

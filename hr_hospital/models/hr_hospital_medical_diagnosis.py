@@ -1,5 +1,5 @@
 from datetime import datetime, timedelta
-from odoo import fields, models, api, _
+from odoo import fields, models, api
 
 
 class HrHospitalMedicalDiagnosis(models.Model):
@@ -47,7 +47,6 @@ class HrHospitalMedicalDiagnosis(models.Model):
 
     # основна дата діагнозу — Datetime
     diagnosis_date = fields.Datetime(
-        string='Diagnosis Date',
         default=fields.Datetime.now,
         required=True
     )
