@@ -214,10 +214,11 @@ class HrHospitalPatient(models.Model):
             'warning': {
                 'title': _("Language Suggestion"),
                 'message': _(
-                    "Based on the selected citizenship (%(country)s), the recommended communication language is: %(lang)s"
+                    "Based on the selected citizenship (%(country)s), "
+                    "the recommended communication language is: %(lang)s"
                 ) % {
-                     'country': self.country_id.name,
-                      'lang': lang.name
-                    }
+                    'country': self.country_id.name,
+                    'lang': lang.name,
+                    },
             }
         }

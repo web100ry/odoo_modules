@@ -102,7 +102,10 @@ class PatientCardExportWizard(models.TransientModel):
         # Return download action
         return {
             'type': 'ir.actions.act_url',
-            'url': '/web/content/patient.card.export.wizard/%s/export_file/%s?download=true' % (
+            'url':
+                '/web/content/patient.card.export.wizard/'
+                '%s/export_file/%s?download=true' %
+            (
                 self.id, filename
             ),
             'target': 'self',
@@ -115,17 +118,21 @@ class PatientCardExportWizard(models.TransientModel):
         # Basic patient information
         data = {
             'patient_name': patient.name,
-            'birth_date': patient.birth_date.isoformat() if patient.birth_date else None,
+            'birth_date': patient.birth_date.isoformat() if
+            patient.birth_date else None,
             'age': patient.age,
             'gender': patient.gender,
             'phone': patient.phone,
             'email': patient.email,
             'country': patient.country_id.name if patient.country_id else None,
             'passport_data': patient.passport_data,
-            'blood_type': dict(patient._fields['blood_type'].selection).get(patient.blood_type, ''),
+            'blood_type': dict(patient._fields['blood_type'].selection).get(
+                patient.blood_type, ''),
             'allergies': patient.allergies,
-            'personal_doctor': patient.personal_doctor_id.name if patient.personal_doctor_id else None,
-            'insurance_company': patient.insurance_company_id.name if patient.insurance_company_id else None,
+            'personal_doctor': patient.personal_doctor_id.name if
+            patient.personal_doctor_id else None,
+            'insurance_company': patient.insurance_company_id.name if
+            patient.insurance_company_id else None,
             'insurance_policy_number': patient.insurance_policy_number,
         }
 
@@ -133,21 +140,30 @@ class PatientCardExportWizard(models.TransientModel):
         domain = [('patient_id', '=', patient.id)]
 
         if self.date_from:
-            domain.append(('planned_datetime', '>=', fields.Datetime.to_datetime(self.date_from)))
+            domain.append(('planned_datetime', '>=',
+                           fields.Datetime.to_datetime(self.date_from)))
 
         if self.date_to:
-            domain.append(('planned_datetime', '<=', fields.Datetime.to_datetime(self.date_to)))
+            domain.append(('planned_datetime', '<=',
+                           fields.Datetime.to_datetime(self.date_to)))
 
         # Get visits
-        visits = self.env['hr.hospital.visit'].search(domain, order='planned_datetime desc')
+        visits = self.env['hr.hospital.visit'].search(
+            domain, order='planned_datetime desc'
+        )
 
         visits_data = []
         for visit in visits:
             visit_info = {
-                'date': visit.planned_datetime.isoformat() if visit.planned_datetime else None,
+                'date': visit.planned_datetime.isoformat() if
+                visit.planned_datetime else None,
                 'doctor': visit.doctor_id.name,
-                'visit_type': dict(visit._fields['visit_type'].selection).get(visit.visit_type, ''),
-                'status': dict(visit._fields['status'].selection).get(visit.status, ''),
+                'visit_type': dict(
+                    visit._fields['visit_type'].selection
+                ).get(visit.visit_type, ''),
+                'status': dict(
+                    visit._fields['status'].selection
+                ).get(visit.status, ''),
             }
 
             # Include recommendations if requested
@@ -160,9 +176,12 @@ class PatientCardExportWizard(models.TransientModel):
                 for diagnosis in visit.diagnosis_ids:
                     diagnosis_info = {
                         'name': diagnosis.name,
-                        'disease': diagnosis.disease_id.name if diagnosis.disease_id else None,
+                        'disease': diagnosis.disease_id.name if
+                        diagnosis.disease_id else None,
                         'description': diagnosis.description,
-                        'severity': dict(diagnosis._fields['severity'].selection).get(diagnosis.severity, ''),
+                        'severity': dict(
+                            diagnosis._fields['severity'].selection
+                        ).get(diagnosis.severity, ''),
                         'approved': diagnosis.approved,
                     }
                     if diagnosis.treatment:

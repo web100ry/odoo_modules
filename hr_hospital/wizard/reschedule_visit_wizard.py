@@ -93,7 +93,8 @@ class RescheduleVisitWizard(models.TransientModel):
         new_datetime = new_datetime.replace(hour=hours, minute=minutes)
 
         # Determine the doctor (new or current)
-        doctor_id = self.new_doctor_id.id if self.new_doctor_id else self.visit_id.doctor_id.id
+        doctor_id = self.new_doctor_id.id if self.new_doctor_id else (
+            self.visit_id.doctor_id.id)
 
         # Check for conflicts
         conflicting_visit = self.env['hr.hospital.visit'].search([
@@ -106,7 +107,8 @@ class RescheduleVisitWizard(models.TransientModel):
 
         if conflicting_visit:
             raise ValidationError(
-                _("There is already a visit scheduled for this patient with this doctor at this time!")
+                _("There is already a visit scheduled for"
+                  " this patient with this doctor at this time!")
             )
 
         # Update the visit

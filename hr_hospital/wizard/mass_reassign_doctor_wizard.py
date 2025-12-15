@@ -39,7 +39,8 @@ class MassReassignDoctorWizard(models.TransientModel):
             self.patient_ids = patients
             return {
                 'domain': {
-                    'patient_ids': [('personal_doctor_id', '=', self.old_doctor_id.id)]
+                    'patient_ids': [('personal_doctor_id', '=',
+                                     self.old_doctor_id.id)]
                 }
             }
         self.patient_ids = False
@@ -64,7 +65,8 @@ class MassReassignDoctorWizard(models.TransientModel):
         self.ensure_one()
 
         if not self.patient_ids:
-            raise ValidationError(_("Please select at least one patient to reassign!"))
+            raise ValidationError(_("Please select at least"
+                                    " one patient to reassign!"))
 
         # Update patients with new doctor
         for patient in self.patient_ids:
@@ -85,7 +87,8 @@ class MassReassignDoctorWizard(models.TransientModel):
             'tag': 'display_notification',
             'params': {
                 'title': _('Success'),
-                'message': _("%(count)s patient(s) have been reassigned to %(doctor)s") % {
+                'message': _("%(count)s patient(s) have been "
+                             "reassigned to %(doctor)s") % {
                     'count': len(self.patient_ids),
                     'doctor': self.new_doctor_id.name
                 },

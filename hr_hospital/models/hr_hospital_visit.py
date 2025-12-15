@@ -9,11 +9,11 @@ class HrHospitalVisit(models.Model):
 
     status = fields.Selection(
         selection=[
-        ('planned', 'Planned'),
-        ('in_progress', 'In Progress'),
-        ('done', 'Done'),
-        ('cancelled', 'Cancelled'),
-        ('no_show', 'No_show'),
+            ('planned', 'Planned'),
+            ('in_progress', 'In Progress'),
+            ('done', 'Done'),
+            ('cancelled', 'Cancelled'),
+            ('no_show', 'No_show'),
         ],
         default='planned',
         required=True
@@ -38,10 +38,10 @@ class HrHospitalVisit(models.Model):
 
     visit_type = fields.Selection(
         selection=[
-        ('primary', 'Primary'),
-        ('secondary', 'Secondary'),
-        ('preventive', 'Preventive'),
-        ('urgent', 'Urgent'),
+            ('primary', 'Primary'),
+            ('secondary', 'Secondary'),
+            ('preventive', 'Preventive'),
+            ('urgent', 'Urgent'),
         ],
         required=True
     )
@@ -65,7 +65,8 @@ class HrHospitalVisit(models.Model):
     def unlink(self):
         for rec in self:
             if rec.diagnosis_ids:
-                raise ValidationError(_("You cannot delete a visit that has diagnoses."))
+                raise ValidationError(_("You cannot delete a "
+                                        "visit that has diagnoses."))
         return super(HrHospitalVisit, self).unlink()
 
     recommendations = fields.Html()
@@ -81,8 +82,10 @@ class HrHospitalVisit(models.Model):
     @api.constrains('planned_datetime', 'actual_datetime')
     def _check_test_date_after_assign(self):
         for rec in self:
-            if rec.actual_datetime and rec.actual_datetime < rec.planned_datetime:
-                raise ValidationError(_("Test date cannot be earlier than assignment date."))
+            if (rec.actual_datetime and rec.actual_datetime
+                    < rec.planned_datetime):
+                raise ValidationError(_("Test date cannot be earlier"
+                                        " than assignment date."))
 
     @api.constrains('patient_id', 'doctor_id', 'planned_datetime')
     def _check_unique_visit_same_day(self):
@@ -103,7 +106,8 @@ class HrHospitalVisit(models.Model):
 
             if existing:
                 raise ValidationError(
-                    _("Patient already has a visit to this doctor on that day.")
+                    _("Patient already has a "
+                      "visit to this doctor on that day.")
                 )
 
     def write(self, vals):
@@ -112,7 +116,8 @@ class HrHospitalVisit(models.Model):
                 blocked_fields = {'doctor_id', 'planned_datetime'}
                 if blocked_fields.intersection(vals.keys()):
                     raise ValidationError(
-                        _("You cannot change doctor, date or time of a completed visit.")
+                        _("You cannot change doctor, "
+                          "date or time of a completed visit.")
                     )
         return super(HrHospitalVisit, self).write(vals)
 
@@ -190,7 +195,9 @@ class HrHospitalVisit(models.Model):
             ], limit=1)
 
             # Перевіряємо чи немає відпустки/лікарняного
-            vacation_schedule = self.env['hr.hospital.doctor.schedule'].search([
+            vacation_schedule = self.env[
+                'hr.hospital.doctor.schedule'
+            ].search([
                 ('doctor_id', '=', doctor_id),
                 ('date', '=', check_date),
                 ('type', 'in', ['vacation', 'sick']),

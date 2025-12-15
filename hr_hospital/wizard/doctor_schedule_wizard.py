@@ -76,17 +76,23 @@ class DoctorScheduleWizard(models.TransientModel):
         """Ensure times are valid"""
         for wizard in self:
             if wizard.time_from < 0 or wizard.time_from >= 24:
-                raise ValidationError(_("Start time must be between 0:00 and 23:59!"))
+                raise ValidationError(_("Start time must be between"
+                                        " 0:00 and 23:59!"))
             if wizard.time_to < 0 or wizard.time_to >= 24:
-                raise ValidationError(_("End time must be between 0:00 and 23:59!"))
+                raise ValidationError(_("End time must be between"
+                                        " 0:00 and 23:59!"))
             if wizard.time_from >= wizard.time_to:
-                raise ValidationError(_("Start time must be before end time!"))
+                raise ValidationError(_("Start time must be"
+                                        " before end time!"))
 
             if wizard.break_from and wizard.break_to:
-                if wizard.break_from < wizard.time_from or wizard.break_to > wizard.time_to:
-                    raise ValidationError(_("Break time must be within working hours!"))
+                if (wizard.break_from < wizard.time_from or
+                        wizard.break_to > wizard.time_to):
+                    raise ValidationError(_("Break time must be"
+                                            " within working hours!"))
                 if wizard.break_from >= wizard.break_to:
-                    raise ValidationError(_("Break start must be before break end!"))
+                    raise ValidationError(_("Break start must be"
+                                            " before break end!"))
 
     def action_generate_schedule(self):
         """Generate doctor schedule"""
@@ -194,7 +200,8 @@ class DoctorScheduleWizard(models.TransientModel):
             'tag': 'display_notification',
             'params': {
                 'title': _('Success'),
-                'message': _("%(visit)s schedule entries have been created for %(count)s") % {
+                'message': _("%(visit)s schedule entries have been"
+                             " created for %(count)s") % {
                     'visit': created_count,
                     'count': self.doctor_id.name
                 },

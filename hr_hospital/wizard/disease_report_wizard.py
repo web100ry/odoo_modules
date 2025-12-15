@@ -68,21 +68,28 @@ class DiseaseReportWizard(models.TransientModel):
 
         # Build domain for diagnoses
         domain = [
-            ('visit_id.planned_datetime', '>=', fields.Datetime.to_datetime(self.date_from)),
-            ('visit_id.planned_datetime', '<=', fields.Datetime.to_datetime(self.date_to)),
+            ('visit_id.planned_datetime', '>=',
+             fields.Datetime.to_datetime(self.date_from)),
+            ('visit_id.planned_datetime', '<=',
+             fields.Datetime.to_datetime(self.date_to)),
         ]
 
         if self.doctor_ids:
-            domain.append(('visit_id.doctor_id', 'in', self.doctor_ids.ids))
+            domain.append(('visit_id.doctor_id', 'in',
+                           self.doctor_ids.ids))
 
         if self.disease_ids:
-            domain.append(('disease_id', 'in', self.disease_ids.ids))
+            domain.append(('disease_id', 'in',
+                           self.disease_ids.ids))
 
         if self.country_ids:
-            domain.append(('visit_id.patient_id.country_id', 'in', self.country_ids.ids))
+            domain.append(('visit_id.patient_id.country_id', 'in',
+                           self.country_ids.ids))
 
         # Search diagnoses
-        diagnoses = self.env['hr.hospital.medical.diagnosis'].search(domain)
+        diagnoses = self.env[
+            'hr.hospital.medical.diagnosis'
+        ].search(domain)
 
         if not diagnoses:
             raise ValidationError(
@@ -113,12 +120,17 @@ class DiseaseReportWizard(models.TransientModel):
         for diagnosis in diagnoses:
             data.append({
                 'diagnosis': diagnosis.name,
-                'disease': diagnosis.disease_id.name if diagnosis.disease_id else '',
+                'disease':
+                    diagnosis.disease_id.name if diagnosis.disease_id else '',
                 'doctor': diagnosis.visit_id.doctor_id.name,
                 'patient': diagnosis.visit_id.patient_id.name,
-                'country': diagnosis.visit_id.patient_id.country_id.name if diagnosis.visit_id.patient_id.country_id else '',
+                'country':
+                    diagnosis.visit_id.patient_id.country_id.name if
+                    diagnosis.visit_id.patient_id.country_id else '',
                 'date': diagnosis.visit_id.planned_datetime,
-                'severity': dict(diagnosis._fields['severity'].selection).get(diagnosis.severity, ''),
+                'severity':
+                    dict(diagnosis._fields['severity'].selection).get(
+                        diagnosis.severity, ''),
             })
         return data
 
