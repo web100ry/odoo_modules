@@ -161,6 +161,7 @@
                                     <field name="email"/>
                                     <field name="experience_years"/>
                                     <field name="rating"/>
+                                    <field name="is_intern"/>
                                     <templates>
                                         <t t-name="kanban-box">
                                             <div class="oe_kanban_global_click
