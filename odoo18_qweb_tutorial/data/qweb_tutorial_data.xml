@@ -80,7 +80,7 @@
 
         <record id="pdf_1" model="ir.attachment">
             <field name="name">QWEB_Статична_частина.pdf</field>
-            <field name="datas" type="base64" file="qweb_tutorial/static/src/pdf/QWEB_Статична_частина.pdf"/>
+            <field name="datas" type="base64" file="odoo18_qweb_tutorial/static/src/pdf/QWEB_Статична_частина.pdf"/>
             <field name="mimetype">application/pdf</field>
             <field name="res_model">qweb.tutorial</field>
             <field name="res_id" ref="qweb_tutorial.qweb_part_1"/>
@@ -90,7 +90,7 @@
 
         <record id="pdf_2" model="ir.attachment">
             <field name="name">QWEB_Динамічна_частина_1.pdf</field>
-            <field name="datas" type="base64" file="qweb_tutorial/static/src/pdf/QWEB_Динамічна_частина_1.pdf"/>
+            <field name="datas" type="base64" file="odoo18_qweb_tutorial/static/src/pdf/QWEB_Динамічна_частина_1.pdf"/>
             <field name="mimetype">application/pdf</field>
             <field name="res_model">qweb.tutorial</field>
             <field name="res_id" ref="qweb_tutorial.qweb_part_2"/>
