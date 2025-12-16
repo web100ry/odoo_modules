@@ -4,7 +4,7 @@ from lxml import etree
 
 class QWebTutorialController(http.Controller):
 
-    @http.route('/odoo18_qweb_tutorial/render', type='http', auth='public', website=True, csrf=False)
+    @http.route('/qweb_tutorial/render', type='http', auth='public', website=True, csrf=False)
     def render_qweb(self, **kw):
         model_name = kw.get('model_name', '')
         template_code = kw.get('template_code', '')
@@ -33,7 +33,7 @@ class QWebTutorialController(http.Controller):
 
         return request.make_response(rendered_html)
 
-    @http.route('/odoo18_qweb_tutorial/render_new_window/<int:record_id>', type='http', auth='public', website=True, csrf=False)
+    @http.route('/qweb_tutorial/render_new_window/<int:record_id>', type='http', auth='public', website=True, csrf=False)
     def render_qweb_new_window(self, record_id, **kw):
         record = request.env['qweb.tutorial'].browse(record_id)
         if not record.exists():
@@ -43,7 +43,7 @@ class QWebTutorialController(http.Controller):
 
         # Use a basic QWeb template for proper formatting
         qweb_template = """
-        <t t-name="odoo18_qweb_tutorial.render_template">
+        <t t-name="qweb_tutorial.render_template">
             <html>
                 <head>
                     <link rel="stylesheet" href="/web/static/lib/bootstrap/dist/css/bootstrap.css"/>
