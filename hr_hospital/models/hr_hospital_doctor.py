@@ -179,7 +179,7 @@ class HrHospitalDoctor(models.Model):
         return domain
 
     def action_view_interns(self):
-        """Відкриває список інтернів поточного лікаря"""
+
         self.ensure_one()
         return {
             'type': 'ir.actions.act_window',
@@ -194,7 +194,7 @@ class HrHospitalDoctor(models.Model):
         }
 
     def action_quick_create_visit(self):
-        """Швидке створення візиту до лікаря з канбану"""
+
         self.ensure_one()
         return {
             'type': 'ir.actions.act_window',

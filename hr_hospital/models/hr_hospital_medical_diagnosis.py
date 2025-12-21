@@ -52,19 +52,16 @@ class HrHospitalMedicalDiagnosis(models.Model):
     )
 
     diagnosis_year = fields.Integer(
-        string='Year',
         compute='_compute_diagnosis_period',
         store=True
     )
 
     diagnosis_month = fields.Integer(
-        string='Month',
         compute='_compute_diagnosis_period',
         store=True
     )
 
     disease_type = fields.Char(
-        string='Disease Type',
         related='disease_id.parent_id.name',
         store=True
     )
@@ -82,7 +79,6 @@ class HrHospitalMedicalDiagnosis(models.Model):
 
     # кількість діагнозів (для pivot/graph)
     diagnosis_count = fields.Integer(
-        string="Кількість діагнозів",
         default=1,
         readonly=True,
         group_operator="sum",
@@ -90,8 +86,8 @@ class HrHospitalMedicalDiagnosis(models.Model):
 
     status = fields.Selection(
         selection=[
-            ('draft', 'Чернетка'),
-            ('approved', 'Затверджено'),
+            ('draft', 'Draft'),
+            ('approved', 'Approved'),
         ],
         string="Статус",
         default='draft'
