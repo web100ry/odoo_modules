@@ -32,6 +32,7 @@
 
                     <!-- Button Box -->
                     <div class="oe_button_box" name="button_box">
+                        <!--
                         <button name="toggle_active"
                                 type="object"
                                 class="oe_stat_button"
@@ -40,6 +41,7 @@
                                    widget="boolean_button"
                                    options='{"terminology": "archive"}'/>
                         </button>
+                        -->
 
                         <button name="action_view_interns"
                                 type="object"

@@ -1,8 +1,7 @@
 Odoo Module For Hospital
------------
+---
 Installation
------------
-
+---
 To install this module, you need to:
 
 1. Clone repository.
@@ -14,3 +13,5 @@ To install this module, you need to:
 by clicking on `Update Apps List` 
 menu or use ` odoo-helper addons update-list`
 in your terminal.'
+
+---
