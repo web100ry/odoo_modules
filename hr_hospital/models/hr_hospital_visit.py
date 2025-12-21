@@ -79,6 +79,22 @@ class HrHospitalVisit(models.Model):
         currency_field='currency_id'
     )
 
+    def _compute_display_name(self):
+        for rec in self:
+            doctor_name = ""
+            if rec.doctor_id:
+                last_name = rec.doctor_id.last_name or ""
+                first_name_initial = (rec.doctor_id.first_name[0] + ".") if rec.doctor_id.first_name else ""
+                doctor_name = f"{last_name} {first_name_initial}".strip()
+
+            patient_name = ""
+            if rec.patient_id:
+                last_name = rec.patient_id.last_name or ""
+                first_name_initial = (rec.patient_id.first_name[0] + ".") if rec.patient_id.first_name else ""
+                patient_name = f"{last_name} {first_name_initial}".strip()
+
+            rec.display_name = f"Dr.{doctor_name} / {patient_name}" if doctor_name or patient_name else _("Visit #%s") % rec.id
+
     @api.constrains('planned_datetime', 'actual_datetime')
     def _check_test_date_after_assign(self):
         for rec in self:
