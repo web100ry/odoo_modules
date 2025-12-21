@@ -14,3 +14,4 @@ access_disease_report_wizard,access.disease.report.wizard,model_disease_report_w
 access_reschedule_visit_wizard,access.reschedule.visit.wizard,model_reschedule_visit_wizard,base.group_user,1,1,1,1
 access_doctor_schedule_wizard,access.doctor.schedule.wizard,model_doctor_schedule_wizard,base.group_user,1,1,1,1
 access_patient_card_export_wizard,access.patient.card.export.wizard,model_patient_card_export_wizard,base.group_user,1,1,1,1
+access_hr_hospital_doctor_report_wizard,access.hr.hospital.doctor.report.wizard,model_hr_hospital_doctor_report_wizard,base.group_user,1,1,1,1

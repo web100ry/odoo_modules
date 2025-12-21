@@ -187,8 +187,7 @@
                                                             <span class="o_kanban_record_subtitle"
                                                                   t-if="record.is_intern.raw_value">
                                                                 <i class="fa fa-graduation-cap"
-                                                                   title="Intern"/>
-                                                                &#160;Intern
+                                                                   title="Intern"/>&#160;Intern
                                                             </span>
                                                         </div>
                                                     </div>
@@ -351,7 +350,7 @@
                                         <span class="o_kanban_record_subtitle"
                                               t-if="record.is_intern.raw_value">
                                             <i class="fa fa-graduation-cap"
-                                               title="Intern"/> Intern
+                                               title="Intern"/>&#160;Intern
                                         </span>
                                     </div>
 
@@ -380,7 +379,7 @@
                                                type="object"
                                                name="action_quick_create_visit"
                                                class="dropdown-item">
-                                                <i class="fa fa-calendar-plus-o"/> Quick visit booking
+                                                <i class="fa fa-calendar-plus-o"/>&#160;Quick visit booking
                                             </a>
                                         </div>
                                     </div>
@@ -388,19 +387,19 @@
 
                                 <div class="o_kanban_record_body">
                                     <div t-if="record.phone.raw_value">
-                                        <i class="fa fa-phone"/> <field name="phone" widget="phone"/>
+                                        <i class="fa fa-phone"/>&#160;<field name="phone" widget="phone"/>
                                     </div>
                                     <div t-if="record.email.raw_value">
-                                        <i class="fa fa-envelope"/> <field name="email" widget="email"/>
+                                        <i class="fa fa-envelope"/>&#160;<field name="email" widget="email"/>
                                     </div>
                                     <div t-if="record.mentor_id.raw_value"
                                          class="text-muted">
-                                        <i class="fa fa-user"/> Mentor:
+                                        <i class="fa fa-user"/>&#160;Mentor:
                                         <field name="mentor_id"/>
                                     </div>
                                     <div t-if="record.intern_ids.raw_value.length"
                                          class="text-muted">
-                                        <i class="fa fa-users"/> Interns:
+                                        <i class="fa fa-users"/>&#160;Interns:
                                         <field name="intern_ids" widget="many2many_tags"/>
                                     </div>
                                 </div>
@@ -408,7 +407,7 @@
                                 <div class="o_kanban_record_bottom">
                                     <div class="oe_kanban_bottom_left">
                                         <span title="Work experience">
-                                            <i class="fa fa-briefcase"/> <field name="experience_years"/>
+                                            <i class="fa fa-briefcase"/>&#160;<field name="experience_years"/>
                                             yrs
                                         </span>
                                     </div>
@@ -421,8 +420,7 @@
                                                     : record.rating.raw_value >= 3.5
                                                     ? 'bg-info'
                                                     : 'bg-warning'}}">
-                                            <i class="fa fa-star"/>
-                                            <field name="rating"/>
+                                            <i class="fa fa-star"/>&#160;<field name="rating"/>
                                         </span>
                                     </div>
                                 </div>

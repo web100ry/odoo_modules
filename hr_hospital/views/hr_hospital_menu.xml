@@ -40,6 +40,11 @@
             action="hr_hospital.action_disease_report_wizard"
             name="Disease Report" sequence="100"/>
 
+  <menuitem id="hr_hospital_menu_doctor_report"
+            parent="hr_hospital_menu_reports"
+            action="hr_hospital.action_hr_hospital_doctor_report_wizard"
+            name="Doctor Cards" sequence="200"/>
+
   <!-- Wizards Section -->
   <menuitem id="hr_hospital_menu_wizards"
             parent="hr_hospital_main_menu"

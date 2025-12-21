@@ -5,7 +5,7 @@
     'website': 'https://www.vivaniuk.pp.ua/',
     'category': 'Customizations',
     'license': 'LGPL-3',
-    'version': '18.0.5.1.2',
+    'version': '18.0.5.2.3',
     'depends': [
         'base',
     ],
@@ -24,6 +24,7 @@
         'views/hr_hospital_visit_views.xml',
         'views/hr_hospital_wizard_views.xml',
         'views/hr_hospital_disease_report_wizard_views.xml',
+        'wizard/hr_hospital_doctor_report_wizard_views.xml',
         'views/hr_hospital_doctor_schedule_wizard_views.xml',
         'views/hr_hospital_mass_reassign_doctor_wizard_views.xml',
         'views/hr_hospital_patient_card_export_wizard_views.xml',

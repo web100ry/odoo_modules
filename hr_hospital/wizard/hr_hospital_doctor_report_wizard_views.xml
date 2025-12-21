@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_hr_hospital_doctor_report_wizard_form" model="ir.ui.view">
+        <field name="name">hr.hospital.doctor.report.wizard.form</field>
+        <field name="model">hr.hospital.doctor.report.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Doctor Report">
+                <group>
+                    <field name="doctor_ids" widget="many2many_tags" options="{'no_create': True}"/>
+                </group>
+                <footer>
+                    <button string="Print Report" name="action_print_report" type="object" class="btn-primary"/>
+                    <button string="Preview PDF" name="action_preview_report" type="object" class="btn-secondary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_hr_hospital_doctor_report_wizard" model="ir.actions.act_window">
+        <field name="name">Doctor Report Wizard</field>
+        <field name="res_model">hr.hospital.doctor.report.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>
