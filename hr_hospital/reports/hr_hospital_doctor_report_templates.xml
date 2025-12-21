@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_doctor_card">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <div class="oe_structure"/>
+
+                        <div class="text-center mt-4">
+                            <h2>
+                                <span t-field="doc.fullname"/>
+                            </h2>
+                            <h4>
+                                <span t-field="doc.speciality_id.name"/>
+                            </h4>
+                        </div>
+
+                        <div class="mt-5">
+                            <h3>Visit History</h3>
+                            <table class="table table-sm o_main_table">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Patient</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="doc.visit_ids.sorted(key=lambda r: r.planned_datetime, reverse=True)" t-as="visit">
+                                        <tr>
+                                            <td><span t-field="visit.planned_datetime"/></td>
+                                            <td><span t-field="visit.patient_id.fullname"/></td>
+                                            <td>
+                                                <span t-if="visit.status == 'planned'" class="badge badge-warning" style="background-color: yellow; color: black;">Заплановано</span>
+                                                <span t-if="visit.status == 'done'" class="badge badge-success" style="background-color: green; color: white;">Завершено</span>
+                                                <span t-if="visit.status == 'cancelled'" class="badge badge-danger" style="background-color: red; color: white;">Скасовано</span>
+                                                <span t-if="visit.status not in ['planned', 'done', 'cancelled']" t-field="visit.status"/>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="mt-5">
+                            <h3>Patients</h3>
+                            <table class="table table-sm o_main_table">
+                                <thead>
+                                    <tr>
+                                        <th>Full Name</th>
+                                        <th>Gender</th>
+                                        <th>Birth Date</th>
+                                        <th>Phone</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-set="patients" t-value="[]"/>
+                                    <t t-foreach="doc.visit_ids.sorted(key=lambda r: r.planned_datetime, reverse=True)" t-as="visit">
+                                        <t t-if="visit.patient_id.id not in patients">
+                                            <t t-set="patients" t-value="patients + [visit.patient_id.id]"/>
+                                            <tr>
+                                                <td><span t-field="visit.patient_id.fullname"/></td>
+                                                <td><span t-field="visit.patient_id.gender"/></td>
+                                                <td><span t-field="visit.patient_id.birth_date"/></td>
+                                                <td><span t-field="visit.patient_id.phone"/></td>
+                                                <td t-attf-style="background-color: #{'yellow' if visit.status == 'planned' else 'green' if visit.status == 'done' else 'red' if visit.status == 'cancelled' else 'transparent'}; color: #{'black' if visit.status == 'planned' else 'white' if visit.status in ['done', 'cancelled'] else 'black'};">
+                                                    <span t-if="visit.status == 'planned'">Planned</span>
+                                                    <span t-if="visit.status == 'done'">Done</span>
+                                                    <span t-if="visit.status == 'cancelled'">Cancelled</span>
+                                                    <span t-if="visit.status not in ['planned', 'done', 'cancelled']" t-field="visit.status"/>
+                                                </td>
+                                            </tr>
+                                        </t>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="oe_structure"/>
+                    </div>
+
+                    <div class="footer">
+                        <div class="row">
+                            <div class="col-6">
+                                <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d %H:%M:%S')"/>
+                            </div>
+                            <div class="col-6 text-right">
+                                <span t-field="res_company.city"/>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>
