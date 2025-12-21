@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-  <!-- Print menu -> open Disease Report wizard from Doctors -->
   <record id="server_action_print_disease_report_wizard"
           model="ir.actions.server">
     <field name="name">Disease Report</field>
-
-    <!-- model this action belongs to -->
     <field name="model_id" ref="model_hr_hospital_doctor"/>
-
-    <!-- show in Print menu of Doctors (list + form) -->
     <field name="binding_model_id" ref="model_hr_hospital_doctor"/>
     <field name="binding_type">report</field>
 
