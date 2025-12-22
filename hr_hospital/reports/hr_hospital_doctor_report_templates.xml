@@ -32,9 +32,9 @@
                                             <td><span t-field="visit.planned_datetime"/></td>
                                             <td><span t-field="visit.patient_id.fullname"/></td>
                                             <td>
-                                                <span t-if="visit.status == 'planned'" class="badge badge-warning" style="background-color: yellow; color: black;">Заплановано</span>
-                                                <span t-if="visit.status == 'done'" class="badge badge-success" style="background-color: green; color: white;">Завершено</span>
-                                                <span t-if="visit.status == 'cancelled'" class="badge badge-danger" style="background-color: red; color: white;">Скасовано</span>
+                                                <span t-if="visit.status == 'planned'" class="badge badge-warning" style="background-color: yellow; color: black;">Planned</span>
+                                                <span t-if="visit.status == 'done'" class="badge badge-success" style="background-color: green; color: white;">Done</span>
+                                                <span t-if="visit.status == 'cancelled'" class="badge badge-danger" style="background-color: red; color: white;">Cancelled</span>
                                                 <span t-if="visit.status not in ['planned', 'done', 'cancelled']" t-field="visit.status"/>
                                             </td>
                                         </tr>
