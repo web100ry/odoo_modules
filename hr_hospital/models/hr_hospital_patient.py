@@ -52,6 +52,10 @@ class HrHospitalPatient(models.Model):
     disease_id = fields.Many2one(
         comodel_name='hr.hospital.disease',
     )
+    user_id = fields.Many2one(
+        comodel_name='res.users',
+        string='Related User',
+    )
     doctor_id = fields.Many2one(
         comodel_name='hr.hospital.doctor',
     )

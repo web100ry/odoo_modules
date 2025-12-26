@@ -5,7 +5,7 @@
     'website': 'https://www.vivaniuk.pp.ua/',
     'category': 'Customizations',
     'license': 'LGPL-3',
-    'version': '18.0.6.4.1',
+    'version': '18.0.6.6.0',
     'depends': [
         'base',
     ],
@@ -13,6 +13,8 @@
         'python': [],
     },
     'data': [
+        'security/hr_hospital_groups.xml',
+        'security/hr_hospital_security.xml',
         'security/ir.model.access.csv',
         'data/hr_hospital_disease_data.xml',
         'views/hr_hospital_hospital_views.xml',
