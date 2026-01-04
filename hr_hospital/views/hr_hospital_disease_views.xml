@@ -54,7 +54,7 @@
         <field name="model">hr.hospital.disease</field>
         <field name="arch" type="xml">
             <search string="Diseases">
-                <!-- Звичайні поля пошуку -->
+                <!-- Standard search fields -->
                 <field name="name"/>
                 <field name="icd10_code"/>
                 <field name="danger_level"/>
@@ -69,16 +69,16 @@
                             context="{'group_by': 'danger_level'}"/>
                 </group>
 
-                <!-- Панель пошуку з ієрархією -->
+                <!-- Search panel with hierarchy -->
                 <searchpanel>
-                    <!-- Ієрархічний вибір хвороб за parent_id -->
+                    <!-- Hierarchical selection of diseases by parent_id -->
                     <field name="parent_id"
                            select="multi"
                            hierarchize="1"
                            enable_counters="1"
                            expand="1"
                            limit="50"/>
-                    <!-- Додатково: фільтр за регіонами -->
+                    <!-- Additionally: filter by regions -->
                     <field name="region_ids"
                            select="multi"
                            enable_counters="1"/>

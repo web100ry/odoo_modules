@@ -52,7 +52,7 @@
         <field name="name">hr.hospital.visit.calendar</field>
         <field name="model">hr.hospital.visit</field>
         <field name="arch" type="xml">
-          <calendar string="Календар візитів" date_start="planned_datetime" color="status" mode="month">
+          <calendar string="Visit Calendar" date_start="planned_datetime" color="status" mode="month">
             <field name="patient_id"/>
             <field name="doctor_id"/>
             <field name="visit_type"/>
@@ -71,19 +71,19 @@
             <field name="status"/>
             <field name="visit_type"/>
             <field name="planned_datetime"/>
-            <filter string="Заплановані" name="filter_planned" domain="[('status', '=', 'planned')]"/>
-            <filter string="В процесі" name="filter_in_progress" domain="[('status', '=', 'in_progress')]"/>
-            <filter string="Завершені" name="filter_done" domain="[('status', '=', 'done')]"/>
-            <filter string="Скасовані" name="filter_cancelled" domain="[('status', '=', 'cancelled')]"/>
+            <filter string="Planned" name="filter_planned" domain="[('status', '=', 'planned')]"/>
+            <filter string="In Progress" name="filter_in_progress" domain="[('status', '=', 'in_progress')]"/>
+            <filter string="Done" name="filter_done" domain="[('status', '=', 'done')]"/>
+            <filter string="Cancelled" name="filter_cancelled" domain="[('status', '=', 'cancelled')]"/>
             <separator/>
-            <filter string="Поточний місяць" name="filter_current_month"
+            <filter string="Current Month" name="filter_current_month"
                     domain="[('planned_datetime', '&gt;=', (context_today() - relativedelta(day=1)).strftime('%Y-%m-%d')),
                              ('planned_datetime', '&lt;', (context_today() + relativedelta(day=31, days=1)).strftime('%Y-%m-%d'))]"/>
-            <group expand="0" string="Групування">
-              <filter string="Статус" name="group_by_status" context="{'group_by': 'status'}"/>
-              <filter string="Лікар" name="group_by_doctor" context="{'group_by': 'doctor_id'}"/>
-              <filter string="Пацієнт" name="group_by_patient" context="{'group_by': 'patient_id'}"/>
-              <filter string="Тип візиту" name="group_by_visit_type" context="{'group_by': 'visit_type'}"/>
+            <group expand="0" string="Group By">
+              <filter string="Status" name="group_by_status" context="{'group_by': 'status'}"/>
+              <filter string="Doctor" name="group_by_doctor" context="{'group_by': 'doctor_id'}"/>
+              <filter string="Patient" name="group_by_patient" context="{'group_by': 'patient_id'}"/>
+              <filter string="Visit Type" name="group_by_visit_type" context="{'group_by': 'visit_type'}"/>
             </group>
           </search>
         </field>
@@ -93,7 +93,7 @@
         <field name="name">hr.hospital.visit.pivot</field>
         <field name="model">hr.hospital.visit</field>
         <field name="arch" type="xml">
-          <pivot string="Зведена таблиця візитів">
+          <pivot string="Visit Pivot Table">
             <field name="doctor_id" type="row"/>
             <field name="status" type="col"/>
             <field name="planned_datetime" interval="month" invisible="1"/>
