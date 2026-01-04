@@ -4,6 +4,10 @@ from odoo.exceptions import ValidationError
 
 
 class HrHospitalDoctor(models.Model):
+    """
+    Represents a doctor in the hospital system.
+    Tracks doctor's specialities, schedule, interns, and experience.
+    """
     _name = 'hr.hospital.doctor'
     _description = 'Doctor'
     _inherit = ['hr.hospital.abstract.person']

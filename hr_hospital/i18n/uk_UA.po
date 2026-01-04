@@ -2307,3 +2307,147 @@ msgstr "З особистим лікарем"
 #. module: hr_hospital
 msgid "Without Personal Doctor"
 msgstr "Без особистого лікаря"
+
+#. module: hr_hospital
+msgid "Respiratory Diseases"
+msgstr "Респіраторні захворювання"
+
+#. module: hr_hospital
+msgid "Diseases affecting the respiratory system"
+msgstr "Захворювання, що вражають дихальну систему"
+
+#. module: hr_hospital
+msgid "Cough, shortness of breath, chest pain"
+msgstr "Кашель, задишка, біль у грудях"
+
+#. module: hr_hospital
+msgid "Cardiovascular Diseases"
+msgstr "Серцево-судинні захворювання"
+
+#. module: hr_hospital
+msgid "Diseases of the heart and blood vessels"
+msgstr "Захворювання серця та судин"
+
+#. module: hr_hospital
+msgid "Chest pain, irregular heartbeat, fatigue"
+msgstr "Біль у грудях, нерегулярне серцебиття, втома"
+
+#. module: hr_hospital
+msgid "Neurological Disorders"
+msgstr "Неврологічні розлади"
+
+#. module: hr_hospital
+msgid "Disorders of the nervous system"
+msgstr "Розлади нервової системи"
+
+#. module: hr_hospital
+msgid "Headache, dizziness, numbness, seizures"
+msgstr "Головний біль, запаморочення, оніміння, судоми"
+
+#. module: hr_hospital
+msgid "Infectious Diseases"
+msgstr "Інфекційні захворювання"
+
+#. module: hr_hospital
+msgid "Diseases caused by pathogenic microorganisms"
+msgstr "Захворювання, викликані патогенними мікроорганізмами"
+
+#. module: hr_hospital
+msgid "Fever, weakness, body aches"
+msgstr "Лихоманка, слабкість, ломота в тілі"
+
+#. module: hr_hospital
+msgid "Viral Respiratory Infections"
+msgstr "Вірусні респіраторні інфекції"
+
+#. module: hr_hospital
+msgid "Respiratory infections caused by viruses"
+msgstr "Респіраторні інфекції, викликані вірусами"
+
+#. module: hr_hospital
+msgid "Runny nose, sore throat, cough, fever"
+msgstr "Нежить, біль у горлі, кашель, лихоманка"
+
+#. module: hr_hospital
+msgid "Heart Disease"
+msgstr "Хвороба серця"
+
+#. module: hr_hospital
+msgid "Diseases affecting the heart muscle and coronary arteries"
+msgstr "Захворювання, що вражають серцевий м'яз і коронарні артерії"
+
+#. module: hr_hospital
+msgid "Chest pain, shortness of breath, irregular heartbeat"
+msgstr "Біль у грудях, задишка, нерегулярне серцебиття"
+
+#. module: hr_hospital
+msgid "Headache Disorders"
+msgstr "Розлади, пов'язані з головним болем"
+
+#. module: hr_hospital
+msgid "Primary headache disorders"
+msgstr "Первинні головні болі"
+
+#. module: hr_hospital
+msgid "Headache, sensitivity to light and sound, nausea"
+msgstr "Головний біль, чутливість до світла та звуку, нудота"
+
+#. module: hr_hospital
+msgid "Bacterial Infections"
+msgstr "Бактеріальні інфекції"
+
+#. module: hr_hospital
+msgid "Infections caused by bacteria"
+msgstr "Інфекції, викликані бактеріями"
+
+#. module: hr_hospital
+msgid "Fever, inflammation, pain at infection site"
+msgstr "Лихоманка, запалення, біль у місці інфекції"
+
+#. module: hr_hospital
+msgid "Influenza (Flu)"
+msgstr "Грип"
+
+#. module: hr_hospital
+msgid "Influenza virus infection"
+msgstr "Інфекція вірусом грипу"
+
+#. module: hr_hospital
+msgid "High fever, body aches, cough, sore throat, fatigue"
+msgstr "Висока температура, ломота в тілі, кашель, біль у горлі, втома"
+
+#. module: hr_hospital
+msgid "COVID-19"
+msgstr "COVID-19"
+
+#. module: hr_hospital
+msgid "Respiratory infection caused by SARS-CoV-2"
+msgstr "Респіраторна інфекція, викликана SARS-CoV-2"
+
+#. module: hr_hospital
+msgid "Fever, dry cough, tiredness, loss of taste or smell"
+msgstr "Лихоманка, сухий кашель, втома, втрата смаку або нюху"
+
+#. module: hr_hospital
+msgid "Migraine"
+msgstr "Мігрень"
+
+#. module: hr_hospital
+msgid "Severe headache with sensitivity to light"
+msgstr "Сильний головний біль із чутливістю до світла"
+
+#. module: hr_hospital
+msgid "Severe headache, nausea, sensitivity to light and sound"
+msgstr "Сильний головний біль, нудота, чутливість до світла та звуку"
+
+#. module: hr_hospital
+msgid "Pneumonia"
+msgstr "Пневмонія"
+
+#. module: hr_hospital
+msgid "Lung inflammation caused by bacterial infection"
+msgstr "Запалення легенів, викликане бактеріальною інфекцією"
+
+#. module: hr_hospital
+msgid "Chest pain, cough with phlegm, fever, difficulty breathing"
+msgstr "Біль у грудях, кашель з мокротинням, лихоманка, утруднене дихання"

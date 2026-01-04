@@ -2,6 +2,10 @@ from odoo import models, fields
 
 
 class HrHospitalDisease(models.Model):
+    """
+    Represents a disease or medical condition.
+    Can be organized in a hierarchy (ICD-10).
+    """
     _name = 'hr.hospital.disease'
     _description = 'Hospital Diseases'
 

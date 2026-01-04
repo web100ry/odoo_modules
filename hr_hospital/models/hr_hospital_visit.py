@@ -4,6 +4,10 @@ from odoo.exceptions import ValidationError
 
 
 class HrHospitalVisit(models.Model):
+    """
+    Represents a patient's visit to a doctor.
+    Stores visit timing, type, diagnoses, and medical recommendations.
+    """
     _name = 'hr.hospital.visit'
     _description = 'Patient Visit'
 

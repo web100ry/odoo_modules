@@ -3,6 +3,10 @@ from odoo import fields, models, api
 
 
 class HrHospitalMedicalDiagnosis(models.Model):
+    """
+    Stores medical diagnoses for patients during their visits.
+    Includes details about the disease, treatment, and approval by mentor.
+    """
     _name = 'hr.hospital.medical.diagnosis'
     _description = 'Medical Diagnosis'
 

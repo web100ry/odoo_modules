@@ -3,6 +3,10 @@ from odoo.exceptions import ValidationError
 
 
 class HrHospitalPatient(models.Model):
+    """
+    Represents a patient in the hospital system.
+    Stores personal data, medical history, and relations to doctors.
+    """
     _name = 'hr.hospital.patient'
     _description = 'Patient'
     _inherit = ['hr.hospital.abstract.person']
@@ -14,6 +18,12 @@ class HrHospitalPatient(models.Model):
             lang_id=None,
             country_id=None
     ):
+        """
+        Returns a domain for filtering patients by language and/or country.
+        :param lang_id: ID of the res.lang record
+        :param country_id: ID of the res.country record
+        :return: list (domain)
+        """
 
         domain = []
 
@@ -27,6 +37,11 @@ class HrHospitalPatient(models.Model):
 
     @api.model
     def search_patients_by_language(self, language_code):
+        """
+        Searches for patients who speak a specific language.
+        :param language_code: code of the language (e.g., 'en_US')
+        :return: recordset of hr.hospital.patient
+        """
 
         lang = self.env['res.lang'].search(
             [('code', '=', language_code)],
@@ -38,6 +53,11 @@ class HrHospitalPatient(models.Model):
 
     @api.model
     def search_patients_by_country(self, country_code):
+        """
+        Searches for patients from a specific country.
+        :param country_code: ISO code of the country (e.g., 'US')
+        :return: recordset of hr.hospital.patient
+        """
 
         country = self.env['res.country'].search(
             [('code', '=', country_code)],
