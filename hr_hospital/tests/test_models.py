@@ -1,6 +1,7 @@
 from odoo.tests.common import TransactionCase
 from odoo.fields import Datetime
 
+
 class TestHrHospitalModels(TransactionCase):
 
     def setUp(self):
@@ -12,10 +13,19 @@ class TestHrHospitalModels(TransactionCase):
         self.Lang = self.env['res.lang']
 
         # Create test data
-        self.country_ua = self.Country.create({'name': 'Ukraine', 'code': 'UA'})
-        self.lang_ua = self.Lang.search([('code', '=', 'uk_UA')], limit=1)
+        self.country_ua = self.Country.create({
+            'name': 'Ukraine',
+            'code': 'UA'
+        })
+        self.lang_ua = self.Lang.search(
+            [('code', '=', 'uk_UA')],
+            limit=1
+        )
         if not self.lang_ua:
-            self.lang_ua = self.Lang.create({'name': 'Ukrainian', 'code': 'uk_UA'})
+            self.lang_ua = self.Lang.create({
+                'name': 'Ukrainian',
+                'code': 'uk_UA'
+            })
 
         self.doctor = self.Doctor.create({
             'first_name': 'Ivan',
@@ -35,15 +45,18 @@ class TestHrHospitalModels(TransactionCase):
     def test_01_search_patients_by_language(self):
         """Test search_patients_by_language method"""
         patients = self.Patient.search_patients_by_language('uk_UA')
-        self.assertIn(self.patient, patients, "Patient should be found by language")
+        self.assertIn(self.patient, patients, "Patient should be "
+                                              "found by language")
 
     def test_02_search_patients_by_country(self):
         """Test search_patients_by_country method"""
         patients = self.Patient.search_patients_by_country('UA')
-        self.assertIn(self.patient, patients, "Patient should be found by country")
+        self.assertIn(self.patient, patients, "Patient should be "
+                                              "found by country")
 
     def test_03_patient_doctor_history(self):
-        """Test if history is created when personal doctor is assigned or changed"""
+        """Test if history is created when personal
+        doctor is assigned or changed"""
         # Test creation history
         new_patient = self.Patient.create({
             'first_name': 'Sidor',
@@ -54,7 +67,8 @@ class TestHrHospitalModels(TransactionCase):
         history = self.env['hr.hospital.patient.doctor.history'].search([
             ('patient_id', '=', new_patient.id)
         ])
-        self.assertEqual(len(history), 1, "One history record should be created on creation")
+        self.assertEqual(len(history), 1, "One history record should be "
+                                          "created on creation")
         self.assertEqual(history.doctor_id, self.doctor)
 
         # Test change history

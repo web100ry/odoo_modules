@@ -1,5 +1,6 @@
 from odoo.tests.common import TransactionCase
 
+
 class HrHospitalTest(TransactionCase):
     def setUp(self):
         super(HrHospitalTest, self).setUp()
