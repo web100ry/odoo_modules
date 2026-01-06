@@ -9,7 +9,7 @@ class HrHospitalDisease(models.Model):
     _name = 'hr.hospital.disease'
     _description = 'Hospital Diseases'
 
-    name = fields.Char(required=True)
+    name = fields.Char(required=True, translate=True)
     icd10_code = fields.Char(size=10)
 
     parent_id = fields.Many2one(
@@ -29,6 +29,6 @@ class HrHospitalDisease(models.Model):
         ])
 
     is_contagious = fields.Boolean()
-    symptoms = fields.Text()
+    symptoms = fields.Text(translate=True)
     region_ids = fields.Many2many('res.country')
-    description = fields.Text()
+    description = fields.Text(translate=True)
