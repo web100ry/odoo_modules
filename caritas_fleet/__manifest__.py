@@ -1,6 +1,6 @@
 {
     'name': 'Caritas Fleet',
-    'version': '18.0.1.0.0',
+    'version': '18.0.1.0.1',
     'category': 'Fleet',
     'summary': 'Manage Caritas fleet operations',
     'description': """
@@ -23,4 +23,7 @@
     'installable': True,
     'application': True,
     'license': 'LGPL-3',
+    'images': [
+        'static/description/icon.png',
+    ],
 }

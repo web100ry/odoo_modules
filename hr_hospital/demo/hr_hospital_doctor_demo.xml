@@ -50,7 +50,7 @@
         <field name="user_id" ref="user_doctor_smith"/>
         <field name="speciality_id" ref="speciality_cardiology"/>
         <field name="is_intern" eval="False"/>
-        <field name="license_number">LN-35791</field>
+        <field name="license_number">LN-35791-D1</field>
         <field name="license_date" eval="(DateTime.now() - timedelta(days=365*15)).strftime('%Y-%m-%d')"/>
         <field name="rating">4.8</field>
         <field name="image_1920"
@@ -70,7 +70,7 @@
         <field name="user_id" ref="user_doctor_brown"/>
         <field name="speciality_id" ref="speciality_pediatrics"/>
         <field name="is_intern" eval="False"/>
-        <field name="license_number">LN-12345</field>
+        <field name="license_number">LN-12345-D2</field>
         <field name="license_date" eval="(DateTime.now() - timedelta(days=365*12)).strftime('%Y-%m-%d')"/>
         <field name="rating">4.9</field>
         <field name="image_1920"
@@ -90,7 +90,7 @@
         <field name="user_id" ref="user_doctor_white"/>
         <field name="speciality_id" ref="speciality_neurology"/>
         <field name="is_intern" eval="False"/>
-        <field name="license_number">LN-24689</field>
+        <field name="license_number">LN-24689-D3</field>
         <field name="license_date" eval="(DateTime.now() - timedelta(days=365*25)).strftime('%Y-%m-%d')"/>
         <field name="rating">4.95</field>
         <field name="image_1920"
@@ -110,7 +110,7 @@
         <field name="user_id" ref="user_doctor_johnson"/>
         <field name="speciality_id" ref="speciality_general_practice"/>
         <field name="is_intern" eval="False"/>
-        <field name="license_number">LN-98765</field>
+        <field name="license_number">LN-98765-D4</field>
         <field name="license_date" eval="(DateTime.now() - timedelta(days=365*18)).strftime('%Y-%m-%d')"/>
         <field name="rating">4.7</field>
         <field name="image_1920"
@@ -130,7 +130,7 @@
         <field name="user_id" ref="user_doctor_garcia"/>
         <field name="speciality_id" ref="speciality_surgery"/>
         <field name="is_intern" eval="False"/>
-        <field name="license_number">LN-55555</field>
+        <field name="license_number">LN-55555-D5</field>
         <field name="license_date" eval="(DateTime.now() - timedelta(days=365*20)).strftime('%Y-%m-%d')"/>
         <field name="rating">4.85</field>
     </record>
@@ -147,7 +147,7 @@
         <field name="user_id" ref="user_doctor_lee"/>
         <field name="speciality_id" ref="speciality_cardiology"/>
         <field name="is_intern" eval="False"/>
-        <field name="license_number">LN-77777</field>
+        <field name="license_number">LN-77777-D6</field>
         <field name="license_date" eval="(DateTime.now() - timedelta(days=365*10)).strftime('%Y-%m-%d')"/>
         <field name="rating">4.6</field>
         <field name="image_1920"
