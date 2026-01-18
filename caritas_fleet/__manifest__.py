@@ -1,6 +1,6 @@
 {
     'name': 'Caritas Fleet',
-    'version': '18.0.1.0.1',
+    'version': '18.0.1.5.3',
     'category': 'Fleet',
     'summary': 'Manage Caritas fleet operations',
     'description': """
@@ -14,8 +14,13 @@
         'calendar',
     ],
     'data': [
+        'security/caritas_fleet_security.xml',
         'security/ir.model.access.csv',
+        'data/vehicle_request_data.xml',
         'views/caritas_fleet_views.xml',
+        'report/vehicle_usage_report.xml',
+        'report/vehicle_usage_report_templates.xml',
+        'security/caritas_fleet_rules.xml',
     ],
     'demo': [
         'demo/caritas_fleet_demo.xml',

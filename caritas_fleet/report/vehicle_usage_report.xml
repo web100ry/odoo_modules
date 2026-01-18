@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_report_vehicle_usage" model="ir.actions.report">
+        <field name="name">Vehicle Usage Report</field>
+        <field name="model">vehicle.usage.log</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">caritas_fleet.report_vehicle_usage_template</field>
+        <field name="report_file">caritas_fleet.report_vehicle_usage_template</field>
+        <field name="print_report_name">'Vehicle Usage Report'</field>
+        <field name="binding_model_id" ref="model_vehicle_usage_log"/>
+        <field name="binding_type">report</field>
+    </record>
+</odoo>
