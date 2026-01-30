@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="fleet_vehicle_view_form_caritas" model="ir.ui.view">
+        <field name="name">fleet.vehicle.form.caritas.department</field>
+        <field name="model">fleet.vehicle</field>
+        <field name="inherit_id" ref="fleet.fleet_vehicle_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='driver_id']/ancestor::group[1]" position="inside">
+                <field name="department_id"/>
+                <field name="responsible_driver_id" widget="many2one_avatar"/>
+                <field name="availability_status"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="fleet_vehicle_view_tree_caritas" model="ir.ui.view">
+        <field name="name">fleet.vehicle.tree.caritas.department</field>
+        <field name="model">fleet.vehicle</field>
+        <field name="inherit_id" ref="fleet.fleet_vehicle_view_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='driver_id']" position="after">
+                <field name="responsible_driver_id" widget="many2one_avatar" optional="show"/>
+                <field name="department_id" optional="show"/>
+                <field name="availability_status" optional="show"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

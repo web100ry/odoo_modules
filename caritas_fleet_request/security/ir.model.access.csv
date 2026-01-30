@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_vehicle_department_user,vehicle.department user,model_vehicle_department,caritas_fleet_request.group_fleet_user,1,0,0,0
+access_vehicle_department_driver,vehicle.department driver,model_vehicle_department,caritas_fleet_request.group_fleet_driver,1,0,0,0
+access_vehicle_department_admin,vehicle.department admin,model_vehicle_department,caritas_fleet_request.group_fleet_admin,1,1,1,1
+access_vehicle_request_user,vehicle.request user,model_vehicle_request,caritas_fleet_request.group_fleet_user,1,1,1,0
+access_vehicle_request_driver,vehicle.request driver,model_vehicle_request,caritas_fleet_request.group_fleet_driver,1,1,1,0
+access_vehicle_request_admin,vehicle.request admin,model_vehicle_request,caritas_fleet_request.group_fleet_admin,1,1,1,1
+access_vehicle_request_portal,vehicle.request portal,model_vehicle_request,base.group_user,1,0,0,0
+access_vehicle_request_reject_wizard_user,vehicle.request.reject.wizard user,model_vehicle_request_reject_wizard,caritas_fleet_request.group_fleet_user,1,1,1,0

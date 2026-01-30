@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- ========================= -->
+    <!-- Tree View                 -->
+    <!-- ========================= -->
+    <record id="view_vehicle_department_tree" model="ir.ui.view">
+        <field name="name">vehicle.department.tree</field>
+        <field name="model">vehicle.department</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="user_ids" widget="many2many_tags"/>
+                <field name="vehicle_ids"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Form View                 -->
+    <!-- ========================= -->
+    <record id="view_vehicle_department_form" model="ir.ui.view">
+        <field name="name">vehicle.department.form</field>
+        <field name="model">vehicle.department</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="active"/>
+                    </group>
+
+                    <notebook>
+                        <page string="Employees">
+                            <field name="user_ids" widget="many2many_tags"/>
+                        </page>
+
+                        <page string="Drivers">
+                            <field name="driver_ids" widget="many2many_tags"
+                                   domain="[('id', 'in', user_ids)]"
+                                   options="{'no_create': True, 'no_create_edit': True}"/>
+                        </page>
+
+                        <page string="Vehicles">
+                            <field name="vehicle_selection_ids" widget="many2many_tags"
+                                   domain="[('active', '=', True)]"
+                                   options="{'no_create': True, 'no_create_edit': True}"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+</odoo>

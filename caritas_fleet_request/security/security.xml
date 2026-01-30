@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- ========================= -->
+    <!-- Security Category         -->
+    <!-- ========================= -->
+    <record id="module_category_caritas_fleet" model="ir.module.category">
+        <field name="name">Caritas Fleet</field>
+        <field name="description">Fleet and vehicle request management</field>
+        <field name="sequence">25</field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Fleet User                -->
+    <!-- ========================= -->
+    <record id="group_fleet_user" model="res.groups">
+        <field name="name">Fleet User</field>
+        <field name="category_id" ref="module_category_caritas_fleet"/>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Fleet Driver              -->
+    <!-- ========================= -->
+    <record id="group_fleet_driver" model="res.groups">
+        <field name="name">Fleet Driver</field>
+        <field name="category_id" ref="module_category_caritas_fleet"/>
+        <field name="implied_ids" eval="[(4, ref('group_fleet_user'))]"/>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Fleet Admin               -->
+    <!-- ========================= -->
+    <record id="group_fleet_admin" model="res.groups">
+        <field name="name">Fleet Admin</field>
+        <field name="category_id" ref="module_category_caritas_fleet"/>
+        <field name="implied_ids" eval="[(4, ref('group_fleet_user'))]"/>
+    </record>
+
+</odoo>

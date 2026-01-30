@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="view_vehicle_request_reject_wizard" model="ir.ui.view">
+        <field name="name">vehicle.request.reject.wizard.form</field>
+        <field name="model">vehicle.request.reject.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Reject Request" create="false" edit="false">
+                <group>
+                    <field name="request_id" readonly="1"/>
+                    <field name="comment" widget="text" required="1"/>
+                </group>
+                <footer>
+                    <button name="action_confirm" type="object" string="Reject" class="btn-primary"/>
+                    <button string="Cancel" special="cancel" class="btn-secondary"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+</odoo>
