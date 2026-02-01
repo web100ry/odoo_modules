@@ -9,6 +9,11 @@
                 <field name="name"/>
                 <field name="requester_id"/>
                 <field name="department_id"/>
+                <field name="origin_organization_id" context="{'caritas_org_format': True}"/>
+                <field name="destination_organization_ids" widget="many2many_tags" context="{'caritas_org_format': True}"/>
+                <field name="origin_city" readonly="1"/>
+                <field name="destination_cities" readonly="1"/>
+                <field name="trip_category"/>
                 <field name="vehicle_id"/>
                 <field name="date_start"/>
                 <field name="date_end"/>
@@ -55,14 +60,23 @@
                             <field name="requester_id" readonly="1"/>
                             <field name="department_id"/>
                             <field name="trip_type"/>
+                            <field name="trip_category"/>
                         </group>
                         <group>
+                            <field name="origin_organization_id" context="{'caritas_org_format': True}"/>
+                            <field name="destination_organization_ids" widget="many2many_tags" context="{'caritas_org_format': True}"/>
+                            <field name="origin_city" readonly="1"/>
+                            <field name="destination_cities" readonly="1"/>
                             <field name="vehicle_id" domain="['&amp;', ('availability_status', '=', 'available'), ('department_id', '=', department_id)]"/>
                             <field name="driver_id"
                                 invisible="trip_type == 'self_drive'"/>
                             <field name="date_start"/>
                             <field name="date_end"/>
                         </group>
+                    </group>
+
+                    <group>
+                        <field name="trip_details" colspan="4" nolabel="0" widget="text"/>
                     </group>
                 </sheet>
 

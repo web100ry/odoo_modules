@@ -27,6 +27,29 @@ class VehicleRequest(models.Model):
         default=lambda self: self._default_department(),
     )
 
+    origin_organization_id = fields.Many2one(
+        comodel_name="res.partner",
+        string="Departure Organization",
+        default=lambda self: self.env.user.partner_id.commercial_partner_id,
+    )
+
+    destination_organization_ids = fields.Many2many(
+        comodel_name="res.partner",
+        string="Destination Organizations",
+    )
+
+    origin_city = fields.Char(
+        string="Departure City",
+        compute="_compute_city_fields",
+        readonly=True,
+    )
+
+    destination_cities = fields.Char(
+        string="Destination Cities",
+        compute="_compute_city_fields",
+        readonly=True,
+    )
+
     trip_type = fields.Selection(
         selection=[
             ("with_driver", "With Driver"),
@@ -34,6 +57,17 @@ class VehicleRequest(models.Model):
         ],
         string="Trip Type",
         default="with_driver",
+        required=True,
+    )
+
+    trip_category = fields.Selection(
+        selection=[
+            ("work", "Work"),
+            ("business_trip", "Business Trip"),
+            ("personal", "Personal"),
+        ],
+        string="Trip Purpose",
+        default="work",
         required=True,
     )
 
@@ -69,6 +103,10 @@ class VehicleRequest(models.Model):
         required=True,
     )
 
+    trip_details = fields.Text(
+        string="Trip Details",
+    )
+
     state = fields.Selection(
         selection=[
             ("draft", "New"),
@@ -101,6 +139,33 @@ class VehicleRequest(models.Model):
         for request in self:
             if request.date_start and request.date_end and request.date_end <= request.date_start:
                 raise ValidationError(_("End Date must be after Start Date."))
+
+    @api.depends(
+        "origin_organization_id.city",
+        "origin_organization_id.commercial_partner_id.city",
+        "destination_organization_ids.city",
+        "destination_organization_ids.commercial_partner_id.city",
+    )
+    def _compute_city_fields(self):
+        for request in self:
+            origin_partner = request.origin_organization_id.commercial_partner_id or request.origin_organization_id
+            request.origin_city = origin_partner.city or request.origin_organization_id.city or False
+
+            dest_cities = []
+            for partner in request.destination_organization_ids:
+                commercial = partner.commercial_partner_id or partner
+                city = commercial.city or partner.city
+                if city:
+                    dest_cities.append(city)
+
+            seen = set()
+            unique_cities = []
+            for city in dest_cities:
+                if city not in seen:
+                    seen.add(city)
+                    unique_cities.append(city)
+
+            request.destination_cities = ", ".join(unique_cities)
 
     @api.onchange("department_id")
     def _onchange_department_id(self):
