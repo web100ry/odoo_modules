@@ -35,6 +35,7 @@ Main features:
         "views/vehicle_trip_views.xml",
         "views/vehicle_department_views.xml",
         "views/fleet_vehicle_views.xml",
+        "views/vehicle_request_bulk_approve_wizard.xml",
         "views/vehicle_request_reject_wizard.xml",
         "views/vehicle_request_views.xml",
         "views/vehicle_request_menu.xml",
