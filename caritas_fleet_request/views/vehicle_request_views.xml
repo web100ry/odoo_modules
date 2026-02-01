@@ -67,7 +67,7 @@
                             <field name="destination_organization_ids" widget="many2many_tags" context="{'caritas_org_format': True}"/>
                             <field name="origin_city" readonly="1"/>
                             <field name="destination_cities" readonly="1"/>
-                            <field name="vehicle_id" domain="['&amp;', ('availability_status', '=', 'available'), ('department_id', '=', department_id)]"/>
+                            <field name="vehicle_id" domain="['|', ('department_id', '=', False), ('department_id', '=', department_id)]"/>
                             <field name="driver_id"
                                 invisible="trip_type == 'self_drive'"/>
                             <field name="date_start"/>

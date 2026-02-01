@@ -43,4 +43,18 @@
         <field name="domain_force">['|', ('requester_id', '=', user.id), '&amp;', ('driver_id', '=', user.id), ('state', 'in', ['approved', 'in_progress', 'done', 'closed'])]</field>
     </record>
 
+    <record id="vehicle_trip_rule_user" model="ir.rule">
+        <field name="name">Vehicle Trips by Department</field>
+        <field name="model_id" ref="caritas_fleet_request.model_vehicle_trip"/>
+        <field name="groups" eval="[(4, ref('caritas_fleet_request.group_fleet_user')), (4, ref('caritas_fleet_request.group_fleet_driver'))]"/>
+        <field name="domain_force">['|', ('driver_id', '=', user.id), ('department_id.user_ids', 'in', user.id)]</field>
+    </record>
+
+    <record id="vehicle_trip_rule_admin" model="ir.rule">
+        <field name="name">Vehicle Trips for Admin</field>
+        <field name="model_id" ref="caritas_fleet_request.model_vehicle_trip"/>
+        <field name="groups" eval="[(4, ref('caritas_fleet_request.group_fleet_admin'))]"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+    </record>
+
 </odoo>

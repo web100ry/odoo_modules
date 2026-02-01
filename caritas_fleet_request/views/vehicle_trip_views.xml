@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="view_vehicle_trip_calendar" model="ir.ui.view">
+        <field name="name">vehicle.trip.calendar</field>
+        <field name="model">vehicle.trip</field>
+        <field name="arch" type="xml">
+            <calendar string="Fleet Calendar" date_start="date_start" date_stop="date_end" color="vehicle_id">
+                <field name="calendar_display_name"/>
+                <field name="vehicle_id"/>
+                <field name="driver_id"/>
+                <field name="request_state" widget="badge"/>
+            </calendar>
+        </field>
+    </record>
+
+    <record id="view_vehicle_trip_tree" model="ir.ui.view">
+        <field name="name">vehicle.trip.tree</field>
+        <field name="model">vehicle.trip</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="request_id"/>
+                <field name="requester_id"/>
+                <field name="department_id"/>
+                <field name="vehicle_id"/>
+                <field name="driver_id"/>
+                <field name="date_start"/>
+                <field name="date_end"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_vehicle_trip_form" model="ir.ui.view">
+        <field name="name">vehicle.trip.form</field>
+        <field name="model">vehicle.trip</field>
+        <field name="arch" type="xml">
+            <form string="Vehicle Trip">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" readonly="1"/>
+                            <field name="request_id" readonly="1"/>
+                            <field name="requester_id"/>
+                            <field name="department_id"/>
+                        </group>
+                        <group>
+                            <field name="vehicle_id"/>
+                            <field name="driver_id"/>
+                            <field name="date_start"/>
+                            <field name="date_end"/>
+                        </group>
+                    </group>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_vehicle_trip_calendar" model="ir.actions.act_window">
+        <field name="name">Fleet Calendar</field>
+        <field name="res_model">vehicle.trip</field>
+        <field name="view_mode">calendar,list,form</field>
+        <field name="view_id" ref="view_vehicle_trip_calendar"/>
+        <field name="view_ids" eval="[(5, 0, 0), (0, 0, {'sequence': 1, 'view_mode': 'calendar', 'view_id': ref('view_vehicle_trip_calendar')}), (0, 0, {'sequence': 2, 'view_mode': 'list', 'view_id': ref('view_vehicle_trip_tree')}), (0, 0, {'sequence': 3, 'view_mode': 'form', 'view_id': ref('view_vehicle_trip_form')})]"/>
+        <field name="context">{"search_default_groupby_vehicle_id": 1}</field>
+    </record>
+
+    <menuitem
+        id="menu_vehicle_trip_calendar"
+        name="Fleet Calendar"
+        parent="menu_caritas_fleet_root"
+        sequence="22"
+        action="action_vehicle_trip_calendar"
+        groups="caritas_fleet_request.group_fleet_admin,caritas_fleet_request.group_fleet_user"
+    />
+
+</odoo>

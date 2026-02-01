@@ -1,6 +1,6 @@
 {
     "name": "Caritas Fleet Management",
-    "version": "18.0.1.3.0",
+    "version": "18.0.1.5.0",
     "category": "Operations/Fleet",
     "summary": "Vehicle request and fleet management system",
     "description": """
@@ -30,7 +30,9 @@ Main features:
         "security/security.xml",
         "security/ir.model.access.csv",
         "data/vehicle_request_sequence.xml",
+        "data/vehicle_trip_sequence.xml",
         "views/menus.xml",
+        "views/vehicle_trip_views.xml",
         "views/vehicle_department_views.xml",
         "views/fleet_vehicle_views.xml",
         "views/vehicle_request_reject_wizard.xml",

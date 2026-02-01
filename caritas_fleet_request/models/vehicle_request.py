@@ -74,7 +74,6 @@ class VehicleRequest(models.Model):
     vehicle_id = fields.Many2one(
         comodel_name="fleet.vehicle",
         string="Vehicle",
-        domain=[("availability_status", "=", "available")],
     )
 
     driver_id = fields.Many2one(
@@ -107,6 +106,13 @@ class VehicleRequest(models.Model):
         string="Trip Details",
     )
 
+    trip_id = fields.Many2one(
+        comodel_name="vehicle.trip",
+        string="Trip",
+        readonly=True,
+        copy=False,
+    )
+
     state = fields.Selection(
         selection=[
             ("draft", "New"),
@@ -125,7 +131,16 @@ class VehicleRequest(models.Model):
     def create(self, vals):
         if vals.get("name", "New") == "New":
             vals["name"] = self.env["ir.sequence"].next_by_code("vehicle.request") or "New"
-        return super().create(vals)
+        request = super().create(vals)
+        request._sync_draft_trip()
+        return request
+
+    def write(self, vals):
+        res = super().write(vals)
+        draft_requests = self.filtered(lambda r: r.state == "draft")
+        if draft_requests:
+            draft_requests._sync_draft_trip()
+        return res
 
     @api.model
     def _default_department(self):
@@ -169,12 +184,36 @@ class VehicleRequest(models.Model):
 
     @api.onchange("department_id")
     def _onchange_department_id(self):
-        domain = [("availability_status", "=", "available")]
+        domain = []
         if self.department_id:
             domain.append(("department_id", "=", self.department_id.id))
         else:
             domain.append(("department_id", "=", False))
         return {"domain": {"vehicle_id": domain}}
+
+    def _sync_draft_trip(self):
+        for request in self:
+            if request.state != "draft":
+                continue
+
+            if request.vehicle_id and request.date_start and request.date_end:
+                trip_vals = {
+                    "request_id": request.id,
+                    "requester_id": request.requester_id.id,
+                    "department_id": request.department_id.id,
+                    "vehicle_id": request.vehicle_id.id,
+                    "driver_id": request.driver_id.id if request.driver_id else False,
+                    "date_start": request.date_start,
+                    "date_end": request.date_end,
+                }
+                if request.trip_id:
+                    request.trip_id.write(trip_vals)
+                else:
+                    request.trip_id = self.env["vehicle.trip"].create(trip_vals)
+            else:
+                if request.trip_id:
+                    request.trip_id.unlink()
+                    request.trip_id = False
 
     def action_approve(self):
         for request in self:
@@ -186,8 +225,34 @@ class VehicleRequest(models.Model):
                 raise ValidationError(_("Driver is required for trips with driver."))
             if request.trip_type == "self_drive" and request.driver_id:
                 raise ValidationError(_("Driver must be empty for self-drive trips."))
-            if request.vehicle_id.availability_status != "available":
-                raise ValidationError(_("Only available vehicles can be approved."))
+            overlap_domain = [
+                ("vehicle_id", "=", request.vehicle_id.id),
+                ("date_start", "<", request.date_end),
+                ("date_end", ">", request.date_start),
+            ]
+            if request.trip_id:
+                overlap_domain.append(("id", "!=", request.trip_id.id))
+            conflicting_trips = self.env["vehicle.trip"].search(overlap_domain, limit=1)
+            if conflicting_trips:
+                raise ValidationError(
+                    _(
+                        "Vehicle %s is already scheduled for the selected period."
+                    )
+                    % (request.vehicle_id.display_name,)
+                )
+            trip_vals = {
+                "request_id": request.id,
+                "requester_id": request.requester_id.id,
+                "department_id": request.department_id.id,
+                "vehicle_id": request.vehicle_id.id,
+                "driver_id": request.driver_id.id if request.driver_id else False,
+                "date_start": request.date_start,
+                "date_end": request.date_end,
+            }
+            if request.trip_id:
+                request.trip_id.write(trip_vals)
+            else:
+                request.trip_id = self.env["vehicle.trip"].create(trip_vals)
             request.state = "approved"
             request.vehicle_id.availability_status = "reserved"
         return True
@@ -196,6 +261,9 @@ class VehicleRequest(models.Model):
         for request in self:
             if request.vehicle_id and request.vehicle_id.availability_status == "reserved":
                 request.vehicle_id.availability_status = "available"
+            if request.trip_id:
+                request.trip_id.unlink()
+                request.trip_id = False
             request.state = "rejected"
         return True
 

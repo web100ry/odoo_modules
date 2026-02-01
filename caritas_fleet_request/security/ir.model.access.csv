@@ -7,3 +7,6 @@ access_vehicle_request_driver,vehicle.request driver,model_vehicle_request,carit
 access_vehicle_request_admin,vehicle.request admin,model_vehicle_request,caritas_fleet_request.group_fleet_admin,1,1,1,1
 access_vehicle_request_portal,vehicle.request portal,model_vehicle_request,base.group_user,1,0,0,0
 access_vehicle_request_reject_wizard_user,vehicle.request.reject.wizard user,model_vehicle_request_reject_wizard,caritas_fleet_request.group_fleet_user,1,1,1,0
+access_vehicle_trip_user,vehicle.trip user,model_vehicle_trip,caritas_fleet_request.group_fleet_user,1,0,0,0
+access_vehicle_trip_driver,vehicle.trip driver,model_vehicle_trip,caritas_fleet_request.group_fleet_driver,1,0,0,0
+access_vehicle_trip_admin,vehicle.trip admin,model_vehicle_trip,caritas_fleet_request.group_fleet_admin,1,1,1,1
