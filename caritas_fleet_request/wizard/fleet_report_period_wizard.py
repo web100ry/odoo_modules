@@ -100,8 +100,8 @@ class FleetReportPeriodWizard(models.TransientModel):
 
 
 def _prepare_trip_search_domain(data, env):
-    date_from = data.get("date_from")
-    date_to = data.get("date_to")
+    date_from = fields.Date.to_date(data.get("date_from"))
+    date_to = fields.Date.to_date(data.get("date_to"))
     dt_start = datetime.combine(date_from, time.min)
     dt_end = datetime.combine(date_to, time.max)
 

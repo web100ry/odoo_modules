@@ -146,34 +146,37 @@
         </t>
     </template>
 
-    <report
-        id="report_vehicle_trips"
-        model="fleet.report.period.wizard"
-        string="Vehicle Trips Report"
-        report_type="qweb-pdf"
-        name="caritas_fleet_request.report_vehicle_trips_template"
-        file="caritas_fleet_request.report_vehicle_trips_template"
-        print_report_name="(object.report_mode == 'vehicle' and '%s' % (object.vehicle_id.display_name,)) or _('Vehicle Trips Report')"
-    />
+    <record id="report_vehicle_trips" model="ir.actions.report">
+        <field name="name">Vehicle Trips Report</field>
+        <field name="model">fleet.report.period.wizard</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">caritas_fleet_request.report_vehicle_trips_template</field>
+        <field name="report_file">caritas_fleet_request.report_vehicle_trips_template</field>
+        <field name="binding_model_id" ref="model_fleet_report_period_wizard"/>
+        <field name="binding_type">report</field>
+        <field name="print_report_name">(object.report_mode == 'vehicle' and '%s' % (object.vehicle_id.display_name,)) or _('Vehicle Trips Report')</field>
+    </record>
 
-    <report
-        id="report_department_trips"
-        model="fleet.report.period.wizard"
-        string="Department Trips Report"
-        report_type="qweb-pdf"
-        name="caritas_fleet_request.report_department_trips_template"
-        file="caritas_fleet_request.report_department_trips_template"
-        print_report_name="(object.report_mode == 'department' and '%s' % (object.department_id.display_name,)) or _('Department Trips Report')"
-    />
+    <record id="report_department_trips" model="ir.actions.report">
+        <field name="name">Department Trips Report</field>
+        <field name="model">fleet.report.period.wizard</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">caritas_fleet_request.report_department_trips_template</field>
+        <field name="report_file">caritas_fleet_request.report_department_trips_template</field>
+        <field name="binding_model_id" ref="model_fleet_report_period_wizard"/>
+        <field name="binding_type">report</field>
+        <field name="print_report_name">(object.report_mode == 'department' and '%s' % (object.department_id.display_name,)) or _('Department Trips Report')</field>
+    </record>
 
-    <report
-        id="report_personnel_trips"
-        model="fleet.report.period.wizard"
-        string="Personnel Trips Report"
-        report_type="qweb-pdf"
-        name="caritas_fleet_request.report_personnel_trips_template"
-        file="caritas_fleet_request.report_personnel_trips_template"
-        print_report_name="(object.report_mode == 'personnel' and '%s' % (object.driver_id.display_name,)) or _('Personnel Trips Report')"
-    />
+    <record id="report_personnel_trips" model="ir.actions.report">
+        <field name="name">Personnel Trips Report</field>
+        <field name="model">fleet.report.period.wizard</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">caritas_fleet_request.report_personnel_trips_template</field>
+        <field name="report_file">caritas_fleet_request.report_personnel_trips_template</field>
+        <field name="binding_model_id" ref="model_fleet_report_period_wizard"/>
+        <field name="binding_type">report</field>
+        <field name="print_report_name">(object.report_mode == 'personnel' and '%s' % (object.driver_id.display_name,)) or _('Personnel Trips Report')</field>
+    </record>
 
 </odoo>
