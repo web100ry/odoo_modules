@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Users and Partners -->
+    <record id="res_partner_driver_1" model="res.partner">
+        <field name="name">Олександр Водій</field>
+        <field name="email">driver1@caritas.ua</field>
+        <field name="company_id" ref="base.main_company"/>
+    </record>
+
+    <record id="res_users_driver_1" model="res.users">
+        <field name="name">Олександр Водій</field>
+        <field name="login">driver1</field>
+        <field name="password">driver1</field>
+        <field name="partner_id" ref="res_partner_driver_1"/>
+        <field name="groups_id" eval="[(6, 0, [ref('caritas_fleet_request.group_fleet_driver'), ref('base.group_user')])]"/>
+    </record>
+
+    <record id="res_partner_user_1" model="res.partner">
+        <field name="name">Іван Співробітник</field>
+        <field name="email">user1@caritas.ua</field>
+        <field name="company_id" ref="base.main_company"/>
+    </record>
+
+    <record id="res_users_user_1" model="res.users">
+        <field name="name">Іван Співробітник</field>
+        <field name="login">user1</field>
+        <field name="password">user1</field>
+        <field name="partner_id" ref="res_partner_user_1"/>
+        <field name="groups_id" eval="[(6, 0, [ref('caritas_fleet_request.group_fleet_user'), ref('base.group_user')])]"/>
+    </record>
+
+    <!-- Departments -->
+    <record id="vehicle_department_humanitarian" model="vehicle.department">
+        <field name="name">Гуманітарна допомога</field>
+        <field name="user_ids" eval="[(4, ref('res_users_user_1')), (4, ref('res_users_driver_1')), (4, ref('base.user_admin'))]"/>
+        <field name="driver_ids" eval="[(4, ref('res_users_driver_1'))]"/>
+    </record>
+
+    <record id="vehicle_department_admin" model="vehicle.department">
+        <field name="name">Адміністрація</field>
+        <field name="user_ids" eval="[(4, ref('base.user_admin'))]"/>
+    </record>
+
+    <!-- Vehicles -->
+    <record id="fleet_vehicle_model_skoda_octavia" model="fleet.vehicle.model">
+        <field name="name">Octavia</field>
+        <field name="brand_id" ref="fleet.brand_skoda"/>
+        <field name="vehicle_type">car</field>
+    </record>
+
+    <record id="fleet_vehicle_model_volkswagen_passat" model="fleet.vehicle.model">
+        <field name="name">Passat</field>
+        <field name="brand_id" ref="fleet.brand_volkswagen"/>
+        <field name="vehicle_type">car</field>
+    </record>
+
+    <record id="fleet_vehicle_1" model="fleet.vehicle">
+        <field name="model_id" ref="fleet_vehicle_model_skoda_octavia"/>
+        <field name="license_plate">AA1234BB</field>
+        <field name="department_id" ref="vehicle_department_humanitarian"/>
+        <field name="responsible_driver_id" ref="res_users_driver_1"/>
+        <field name="availability_status">available</field>
+    </record>
+
+    <record id="fleet_vehicle_2" model="fleet.vehicle">
+        <field name="model_id" ref="fleet_vehicle_model_volkswagen_passat"/>
+        <field name="license_plate">BC5678DE</field>
+        <field name="department_id" ref="vehicle_department_admin"/>
+        <field name="availability_status">available</field>
+    </record>
+
+    <!-- Organizations for trips -->
+    <record id="res_partner_org_lviv" model="res.partner">
+        <field name="name">Карітас Львів</field>
+        <field name="city">Львів</field>
+        <field name="is_company">True</field>
+    </record>
+
+    <record id="res_partner_org_kyiv" model="res.partner">
+        <field name="name">Карітас Київ</field>
+        <field name="city">Київ</field>
+        <field name="is_company">True</field>
+    </record>
+
+    <!-- Vehicle Requests -->
+    <record id="vehicle_request_1" model="vehicle.request">
+        <field name="requester_id" ref="res_users_user_1"/>
+        <field name="department_id" ref="vehicle_department_humanitarian"/>
+        <field name="origin_organization_id" ref="res_partner_org_lviv"/>
+        <field name="destination_organization_ids" eval="[(4, ref('res_partner_org_kyiv'))]"/>
+        <field name="trip_type">with_driver</field>
+        <field name="trip_category">work</field>
+        <field name="vehicle_id" ref="fleet_vehicle_1"/>
+        <field name="driver_id" ref="res_users_driver_1"/>
+        <field name="date_start" eval="(datetime.now() + relativedelta(days=1)).strftime('%Y-%m-%d 08:00:00')"/>
+        <field name="date_end" eval="(datetime.now() + relativedelta(days=1)).strftime('%Y-%m-%d 18:00:00')"/>
+        <field name="trip_details">Доставка гуманітарного вантажу до Києва</field>
+        <field name="state">draft</field>
+    </record>
+
+    <record id="vehicle_request_2" model="vehicle.request">
+        <field name="requester_id" ref="base.user_admin"/>
+        <field name="department_id" ref="vehicle_department_admin"/>
+        <field name="origin_organization_id" ref="res_partner_org_kyiv"/>
+        <field name="destination_organization_ids" eval="[(4, ref('res_partner_org_lviv'))]"/>
+        <field name="trip_type">self_drive</field>
+        <field name="trip_category">business_trip</field>
+        <field name="vehicle_id" ref="fleet_vehicle_2"/>
+        <field name="date_start" eval="(datetime.now() + relativedelta(days=2)).strftime('%Y-%m-%d 09:00:00')"/>
+        <field name="date_end" eval="(datetime.now() + relativedelta(days=3)).strftime('%Y-%m-%d 17:00:00')"/>
+        <field name="trip_details">Робоча зустріч у Львові</field>
+        <field name="state">draft</field>
+    </record>
+
+    <!-- Vehicle Trips -->
+    <!-- Trips are automatically created when request is in draft state according to the model logic -->
+    <!-- But we can also define some completed trips -->
+
+    <record id="vehicle_request_done" model="vehicle.request">
+        <field name="requester_id" ref="res_users_user_1"/>
+        <field name="department_id" ref="vehicle_department_humanitarian"/>
+        <field name="origin_organization_id" ref="res_partner_org_lviv"/>
+        <field name="destination_organization_ids" eval="[(4, ref('res_partner_org_kyiv'))]"/>
+        <field name="trip_type">with_driver</field>
+        <field name="trip_category">work</field>
+        <field name="vehicle_id" ref="fleet_vehicle_1"/>
+        <field name="driver_id" ref="res_users_driver_1"/>
+        <field name="date_start" eval="(datetime.now() - relativedelta(days=5)).strftime('%Y-%m-%d 08:00:00')"/>
+        <field name="date_end" eval="(datetime.now() - relativedelta(days=5)).strftime('%Y-%m-%d 18:00:00')"/>
+        <field name="trip_details">Минула поїздка до Києва</field>
+        <field name="state">closed</field>
+    </record>
+
+</odoo>

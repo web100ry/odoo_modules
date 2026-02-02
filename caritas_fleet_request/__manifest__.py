@@ -43,7 +43,7 @@ Main features:
         "views/vehicle_request_menu.xml",
     ],
     "demo": [
-        # Demo data will be added in later steps
+        "data/demo.xml",
     ],
     'installable': True,
     'auto_install': False,
