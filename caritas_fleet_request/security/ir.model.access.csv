@@ -12,3 +12,4 @@ access_vehicle_trip_date_filter_wizard_admin,vehicle.trip.date.filter.wizard adm
 access_vehicle_trip_user,vehicle.trip user,model_vehicle_trip,caritas_fleet_request.group_fleet_user,1,0,0,0
 access_vehicle_trip_driver,vehicle.trip driver,model_vehicle_trip,caritas_fleet_request.group_fleet_driver,1,0,0,0
 access_vehicle_trip_admin,vehicle.trip admin,model_vehicle_trip,caritas_fleet_request.group_fleet_admin,1,1,1,1
+access_fleet_report_period_wizard,fleet.report.period.wizard,model_fleet_report_period_wizard,base.group_user,1,1,1,1

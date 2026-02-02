@@ -14,6 +14,12 @@ class FleetReportPeriodWizard(models.TransientModel):
     date_to = fields.Date(string="End Date", required=True, default=lambda self: self._default_date_to())
     vehicle_id = fields.Many2one("fleet.vehicle", string="Vehicle")
     department_id = fields.Many2one("vehicle.department", string="Department")
+    driver_id = fields.Many2one("res.partner", string="Driver")
+    report_mode = fields.Selection([
+        ("vehicle", "Vehicle"),
+        ("department", "Department"),
+        ("personnel", "Personnel"),
+    ], string="Report Mode", required=True, default="vehicle")
 
     @staticmethod
     def _default_date_range():
@@ -44,6 +50,15 @@ class FleetReportPeriodWizard(models.TransientModel):
             "date_to": self.date_to,
         }
 
+    def action_print(self):
+        self.ensure_one()
+        if self.report_mode == "vehicle":
+            return self.action_print_vehicle()
+        elif self.report_mode == "department":
+            return self.action_print_department()
+        elif self.report_mode == "personnel":
+            return self.action_print_personnel()
+
     def action_print_vehicle(self):
         self.ensure_one()
         if not self.vehicle_id:
@@ -70,6 +85,19 @@ class FleetReportPeriodWizard(models.TransientModel):
 
         return self.env.ref("caritas_fleet_request.report_department_trips").report_action(self, data=data)
 
+    def action_print_personnel(self):
+        self.ensure_one()
+        if not self.driver_id:
+            raise ValidationError(_("Driver is required."))
+
+        data = self._prepare_common_data()
+        data.update({
+            "driver_id": self.driver_id.id,
+            "report_mode": "personnel",
+        })
+
+        return self.env.ref("caritas_fleet_request.report_personnel_trips").report_action(self, data=data)
+
 
 def _prepare_trip_search_domain(data, env):
     date_from = data.get("date_from")
@@ -85,6 +113,7 @@ def _prepare_trip_search_domain(data, env):
     report_mode = data.get("report_mode")
     vehicle = None
     department = None
+    driver = None
 
     if report_mode == "vehicle":
         vehicle_id = data.get("vehicle_id")
@@ -94,6 +123,10 @@ def _prepare_trip_search_domain(data, env):
         department_id = data.get("department_id")
         department = env["vehicle.department"].browse(department_id)
         domain.append(("department_id", "=", department.id))
+    elif report_mode == "personnel":
+        driver_id = data.get("driver_id")
+        driver = env["res.partner"].browse(driver_id)
+        domain.append(("driver_id", "=", driver.id))
 
     trips = env["vehicle.trip"].search(domain, order="date_start asc")
 
@@ -101,6 +134,7 @@ def _prepare_trip_search_domain(data, env):
         "trips": trips,
         "vehicle": vehicle,
         "department": department,
+        "driver": driver,
         "date_from": date_from,
         "date_to": date_to,
     }

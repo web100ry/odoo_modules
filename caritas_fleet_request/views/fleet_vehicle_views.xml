@@ -27,4 +27,19 @@
         </field>
     </record>
 
+    <record id="action_caritas_fleet_vehicles" model="ir.actions.act_window">
+        <field name="name">Fleet Vehicles</field>
+        <field name="res_model">fleet.vehicle</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem
+        id="menu_caritas_fleet_vehicles"
+        name="Fleet Vehicles"
+        parent="menu_caritas_fleet_root"
+        sequence="20"
+        action="action_caritas_fleet_vehicles"
+        groups="caritas_fleet_request.group_fleet_admin"
+    />
+
 </odoo>

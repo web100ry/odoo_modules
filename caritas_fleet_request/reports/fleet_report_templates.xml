@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <template id="report_vehicle_trips_template">
+        <t t-call="web.basic_layout">
+            <t t-set="doc_ids" t-value="doc_ids"/>
+            <t t-set="doc_model" t-value="doc_model"/>
+            <t t-set="date_from" t-value="date_from"/>
+            <t t-set="date_to" t-value="date_to"/>
+            <t t-set="vehicle" t-value="vehicle"/>
+            <t t-set="department" t-value="department"/>
+            <t t-set="trips" t-value="trips"/>
+            <t t-set="report_title" t-value="report_title"/>
+
+            <div class="page">
+                <h2 t-esc="report_title"/>
+                <p>
+                    <strong t-esc="_('Period:')"/> 
+                    <span t-esc="'%s - %s' % (date_from, date_to)"/>
+                </p>
+                <p class="report-context-line report-vehicle-line">
+                    <strong t-esc="_('Vehicle:')"/> 
+                    <span t-esc="vehicle.display_name"/>
+                </p>
+
+                <table class="table table-sm o_main_table">
+                    <thead>
+                        <tr>
+                            <th t-esc="_('Trip')"/>
+                            <th t-esc="_('Department')"/>
+                            <th t-esc="_('Driver')"/>
+                            <th t-esc="_('Start')"/>
+                            <th t-esc="_('End')"/>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr t-foreach="trips" t-as="trip">
+                            <td t-esc="trip.name"/>
+                            <td t-esc="trip.department_id.display_name"/>
+                            <td t-esc="trip.driver_id.display_name"/>
+                            <td t-esc="trip.date_start"/>
+                            <td t-esc="trip.date_end"/>
+                        </tr>
+                        <tr t-if="not trips">
+                            <td colspan="5" class="text-center" t-esc="_('No trips found for the selected period.')"/>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </t>
+    </template>
+
+    <template id="report_department_trips_template">
+        <t t-call="web.basic_layout">
+            <t t-set="doc_ids" t-value="doc_ids"/>
+            <t t-set="doc_model" t-value="doc_model"/>
+            <t t-set="date_from" t-value="date_from"/>
+            <t t-set="date_to" t-value="date_to"/>
+            <t t-set="department" t-value="department"/>
+            <t t-set="trips" t-value="trips"/>
+            <t t-set="report_title" t-value="report_title"/>
+
+            <div class="page">
+                <h2 t-esc="report_title"/>
+                <p>
+                    <strong t-esc="_('Period:')"/> 
+                    <span t-esc="'%s - %s' % (date_from, date_to)"/>
+                </p>
+                <p>
+                    <strong t-esc="_('Department:')"/> 
+                    <span t-esc="department.display_name"/>
+                </p>
+
+                <table class="table table-sm o_main_table">
+                    <thead>
+                        <tr>
+                            <th t-esc="_('Trip')"/>
+                            <th t-esc="_('Vehicle')"/>
+                            <th t-esc="_('Driver')"/>
+                            <th t-esc="_('Start')"/>
+                            <th t-esc="_('End')"/>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr t-foreach="trips" t-as="trip">
+                            <td t-esc="trip.name"/>
+                            <td t-esc="trip.vehicle_id.display_name"/>
+                            <td t-esc="trip.driver_id.display_name"/>
+                            <td t-esc="trip.date_start"/>
+                            <td t-esc="trip.date_end"/>
+                        </tr>
+                        <tr t-if="not trips">
+                            <td colspan="5" class="text-center" t-esc="_('No trips found for the selected period.')"/>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </t>
+    </template>
+
+    <template id="report_personnel_trips_template">
+        <t t-call="web.basic_layout">
+            <t t-set="doc_ids" t-value="doc_ids"/>
+            <t t-set="doc_model" t-value="doc_model"/>
+            <t t-set="date_from" t-value="date_from"/>
+            <t t-set="date_to" t-value="date_to"/>
+            <t t-set="driver" t-value="driver"/>
+            <t t-set="trips" t-value="trips"/>
+            <t t-set="report_title" t-value="report_title"/>
+
+            <div class="page">
+                <h2 t-esc="report_title"/>
+                <p>
+                    <strong t-esc="_('Period:')"/> 
+                    <span t-esc="'%s - %s' % (date_from, date_to)"/>
+                </p>
+                <p>
+                    <strong t-esc="_('Driver:')"/> 
+                    <span t-esc="driver.display_name"/>
+                </p>
+
+                <table class="table table-sm o_main_table">
+                    <thead>
+                        <tr>
+                            <th t-esc="_('Trip')"/>
+                            <th t-esc="_('Department')"/>
+                            <th t-esc="_('Vehicle')"/>
+                            <th t-esc="_('Start')"/>
+                            <th t-esc="_('End')"/>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr t-foreach="trips" t-as="trip">
+                            <td t-esc="trip.name"/>
+                            <td t-esc="trip.department_id.display_name"/>
+                            <td t-esc="trip.vehicle_id.display_name"/>
+                            <td t-esc="trip.date_start"/>
+                            <td t-esc="trip.date_end"/>
+                        </tr>
+                        <tr t-if="not trips">
+                            <td colspan="5" class="text-center" t-esc="_('No trips found for the selected period.')"/>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </t>
+    </template>
+
+    <report
+        id="report_vehicle_trips"
+        model="fleet.report.period.wizard"
+        string="Vehicle Trips Report"
+        report_type="qweb-pdf"
+        name="caritas_fleet_request.report_vehicle_trips_template"
+        file="caritas_fleet_request.report_vehicle_trips_template"
+        print_report_name="(object.report_mode == 'vehicle' and '%s' % (object.vehicle_id.display_name,)) or _('Vehicle Trips Report')"
+    />
+
+    <report
+        id="report_department_trips"
+        model="fleet.report.period.wizard"
+        string="Department Trips Report"
+        report_type="qweb-pdf"
+        name="caritas_fleet_request.report_department_trips_template"
+        file="caritas_fleet_request.report_department_trips_template"
+        print_report_name="(object.report_mode == 'department' and '%s' % (object.department_id.display_name,)) or _('Department Trips Report')"
+    />
+
+    <report
+        id="report_personnel_trips"
+        model="fleet.report.period.wizard"
+        string="Personnel Trips Report"
+        report_type="qweb-pdf"
+        name="caritas_fleet_request.report_personnel_trips_template"
+        file="caritas_fleet_request.report_personnel_trips_template"
+        print_report_name="(object.report_mode == 'personnel' and '%s' % (object.driver_id.display_name,)) or _('Personnel Trips Report')"
+    />
+
+</odoo>

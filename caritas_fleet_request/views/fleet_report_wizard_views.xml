@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="view_fleet_report_period_wizard_form" model="ir.ui.view">
+        <field name="name">fleet.report.period.wizard.form</field>
+        <field name="model">fleet.report.period.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Fleet Report" create="false" edit="false">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="date_from"/>
+                            <field name="date_to"/>
+                            <field name="report_mode" invisible="1"/>
+                        </group>
+                        <group>
+                            <field name="vehicle_id" invisible="report_mode != 'vehicle'" required="report_mode == 'vehicle'"/>
+                            <field name="department_id" invisible="report_mode != 'department'" required="report_mode == 'department'"/>
+                            <field name="driver_id" invisible="report_mode != 'personnel'" required="report_mode == 'personnel'"/>
+                        </group>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name="action_print" type="object" string="Print" class="btn-primary"/>
+                    <button string="Cancel" special="cancel" class="btn-secondary"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_fleet_report_vehicle" model="ir.actions.act_window">
+        <field name="name">Vehicle Trips Report</field>
+        <field name="res_model">fleet.report.period.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_fleet_report_period_wizard_form"/>
+        <field name="target">new</field>
+        <field name="context">{"default_report_mode": "vehicle"}</field>
+        <field name="groups_id" eval="[(6, 0, [ref('caritas_fleet_request.group_fleet_admin')])]"/>
+    </record>
+
+    <record id="action_fleet_report_department" model="ir.actions.act_window">
+        <field name="name">Department Trips Report</field>
+        <field name="res_model">fleet.report.period.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_fleet_report_period_wizard_form"/>
+        <field name="target">new</field>
+        <field name="context">{"default_report_mode": "department"}</field>
+        <field name="groups_id" eval="[(6, 0, [ref('caritas_fleet_request.group_fleet_admin')])]"/>
+    </record>
+
+    <record id="action_fleet_report_personnel" model="ir.actions.act_window">
+        <field name="name">Personnel Trips Report</field>
+        <field name="res_model">fleet.report.period.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_fleet_report_period_wizard_form"/>
+        <field name="target">new</field>
+        <field name="context">{"default_report_mode": "personnel"}</field>
+        <field name="groups_id" eval="[(6, 0, [ref('caritas_fleet_request.group_fleet_admin')])]"/>
+    </record>
+
+    <menuitem
+        id="menu_fleet_report_department"
+        name="Department Report"
+        parent="menu_caritas_fleet_reports"
+        action="action_fleet_report_department"
+        sequence="10"
+    />
+
+    <menuitem
+        id="menu_fleet_report_vehicle"
+        name="Vehicle Report"
+        parent="menu_caritas_fleet_reports"
+        action="action_fleet_report_vehicle"
+        sequence="20"
+    />
+
+</odoo>
