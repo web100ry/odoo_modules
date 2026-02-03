@@ -61,9 +61,10 @@
 
     <menuitem
         id="menu_caritas_fleet_departments_action"
+        name="Departments"
         parent="menu_caritas_fleet_root"
         action="action_vehicle_department"
-        sequence="10"
+        sequence="9"
     />
 
 </odoo>

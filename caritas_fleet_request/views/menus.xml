@@ -9,19 +9,10 @@
     />
 
     <menuitem
-        id="menu_caritas_fleet_dashboard"
-        name="Dashboard"
-        parent="menu_caritas_fleet_root"
-        action="action_caritas_fleet_dashboard"
-        sequence="5"
-        groups="caritas_fleet_request.group_fleet_admin"
-    />
-
-    <menuitem
         id="menu_caritas_fleet_reports"
         name="Reports"
         parent="menu_caritas_fleet_root"
         sequence="50"
-        groups="caritas_fleet_request.group_fleet_admin"
+        groups="group_fleet_admin"
     />
 </odoo>

@@ -6,11 +6,9 @@
         <field name="name">Vehicle usage by departments in the current year</field>
         <field name="res_model">vehicle.trip</field>
         <field name="view_mode">graph</field>
-        <field name="view_id" ref="caritas_fleet_request.view_vehicle_trip_graph_department"/>
-        <field name="search_view_id" ref="caritas_fleet_request.view_vehicle_trip_search"/>
-        <field name="context">{
-            'search_default_current_year': 1
-        }</field>
+        <field name="view_id" ref="view_vehicle_trip_graph_department"/>
+        <field name="search_view_id" ref="view_vehicle_trip_search"/>
+        <field name="context">{'search_default_current_year': 1}</field>
     </record>
 
     <!-- Action: Vehicles -->
@@ -18,11 +16,9 @@
         <field name="name">Number of trips by vehicles in the current year</field>
         <field name="res_model">vehicle.trip</field>
         <field name="view_mode">graph</field>
-        <field name="view_id" ref="caritas_fleet_request.view_vehicle_trip_graph_vehicle"/>
-        <field name="search_view_id" ref="caritas_fleet_request.view_vehicle_trip_search"/>
-        <field name="context">{
-            'search_default_current_year': 1
-        }</field>
+        <field name="view_id" ref="view_vehicle_trip_graph_vehicle"/>
+        <field name="search_view_id" ref="view_vehicle_trip_search"/>
+        <field name="context">{'search_default_current_year': 1}</field>
     </record>
 
     <!-- Dashboard -->
@@ -53,5 +49,14 @@
         <field name="view_id" ref="view_caritas_fleet_dashboard"/>
         <field name="usage">menu</field>
     </record>
+    
+    <menuitem
+        id="menu_caritas_fleet_dashboard"
+        name="Dashboard"
+        parent="menu_caritas_fleet_root"
+        action="action_caritas_fleet_dashboard"
+        sequence="5"
+        groups="group_fleet_admin"
+    />
 
 </odoo>

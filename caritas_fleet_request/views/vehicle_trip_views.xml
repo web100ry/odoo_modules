@@ -147,7 +147,7 @@
         parent="menu_caritas_fleet_root"
         sequence="2"
         action="action_vehicle_trip_calendar"
-        groups="caritas_fleet_request.group_fleet_admin,caritas_fleet_request.group_fleet_user"
+        groups="group_fleet_admin,group_fleet_user"
     />
 
 </odoo>

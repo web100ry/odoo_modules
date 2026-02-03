@@ -35,7 +35,7 @@
         parent="menu_caritas_fleet_root"
         sequence="25"
         action="action_vehicle_request_all"
-        groups="caritas_fleet_request.group_fleet_admin,caritas_fleet_request.group_fleet_driver"
+        groups="group_fleet_admin,group_fleet_driver"
     />
 
     <menuitem
@@ -44,7 +44,7 @@
         parent="menu_caritas_fleet_root"
         sequence="27"
         action="action_vehicle_request_to_approve"
-        groups="caritas_fleet_request.group_fleet_admin"
+        groups="group_fleet_admin"
     />
 
 </odoo>
