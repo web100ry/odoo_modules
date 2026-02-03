@@ -2,13 +2,13 @@
 <odoo>
     <!-- Users and Partners -->
     <record id="res_partner_driver_1" model="res.partner">
-        <field name="name">Олександр Водій</field>
+        <field name="name">Alex Driver</field>
         <field name="email">driver1@caritas.ua</field>
         <field name="company_id" ref="base.main_company"/>
     </record>
 
     <record id="res_users_driver_1" model="res.users">
-        <field name="name">Олександр Водій</field>
+        <field name="name">Alex Driver</field>
         <field name="login">driver1</field>
         <field name="password">driver1</field>
         <field name="partner_id" ref="res_partner_driver_1"/>
@@ -16,13 +16,13 @@
     </record>
 
     <record id="res_partner_user_1" model="res.partner">
-        <field name="name">Іван Співробітник</field>
+        <field name="name">John Employee</field>
         <field name="email">user1@caritas.ua</field>
         <field name="company_id" ref="base.main_company"/>
     </record>
 
     <record id="res_users_user_1" model="res.users">
-        <field name="name">Іван Співробітник</field>
+        <field name="name">John Employee</field>
         <field name="login">user1</field>
         <field name="password">user1</field>
         <field name="partner_id" ref="res_partner_user_1"/>
@@ -31,13 +31,13 @@
 
     <!-- Departments -->
     <record id="vehicle_department_humanitarian" model="vehicle.department">
-        <field name="name">Гуманітарна допомога</field>
+        <field name="name">Humanitarian Aid</field>
         <field name="user_ids" eval="[(4, ref('res_users_user_1')), (4, ref('res_users_driver_1')), (4, ref('base.user_admin'))]"/>
         <field name="driver_ids" eval="[(4, ref('res_users_driver_1'))]"/>
     </record>
 
     <record id="vehicle_department_admin" model="vehicle.department">
-        <field name="name">Адміністрація</field>
+        <field name="name">Administration</field>
         <field name="user_ids" eval="[(4, ref('base.user_admin'))]"/>
     </record>
 
@@ -71,14 +71,14 @@
 
     <!-- Organizations for trips -->
     <record id="res_partner_org_lviv" model="res.partner">
-        <field name="name">Карітас Львів</field>
-        <field name="city">Львів</field>
+        <field name="name">Caritas Lviv</field>
+        <field name="city">Lviv</field>
         <field name="is_company">True</field>
     </record>
 
     <record id="res_partner_org_kyiv" model="res.partner">
-        <field name="name">Карітас Київ</field>
-        <field name="city">Київ</field>
+        <field name="name">Caritas Kyiv</field>
+        <field name="city">Kyiv</field>
         <field name="is_company">True</field>
     </record>
 
@@ -94,7 +94,7 @@
         <field name="driver_id" ref="res_users_driver_1"/>
         <field name="date_start" eval="(datetime.now() + relativedelta(days=1)).strftime('%Y-%m-%d 08:00:00')"/>
         <field name="date_end" eval="(datetime.now() + relativedelta(days=1)).strftime('%Y-%m-%d 18:00:00')"/>
-        <field name="trip_details">Доставка гуманітарного вантажу до Києва</field>
+        <field name="trip_details">Delivery of humanitarian cargo to Kyiv</field>
         <field name="state">draft</field>
     </record>
 
@@ -108,7 +108,7 @@
         <field name="vehicle_id" ref="fleet_vehicle_2"/>
         <field name="date_start" eval="(datetime.now() + relativedelta(days=2)).strftime('%Y-%m-%d 09:00:00')"/>
         <field name="date_end" eval="(datetime.now() + relativedelta(days=3)).strftime('%Y-%m-%d 17:00:00')"/>
-        <field name="trip_details">Робоча зустріч у Львові</field>
+        <field name="trip_details">Work meeting in Lviv</field>
         <field name="state">draft</field>
     </record>
 
@@ -127,7 +127,7 @@
         <field name="driver_id" ref="res_users_driver_1"/>
         <field name="date_start" eval="(datetime.now() - relativedelta(days=5)).strftime('%Y-%m-%d 08:00:00')"/>
         <field name="date_end" eval="(datetime.now() - relativedelta(days=5)).strftime('%Y-%m-%d 18:00:00')"/>
-        <field name="trip_details">Минула поїздка до Києва</field>
+        <field name="trip_details">Past trip to Kyiv</field>
         <field name="state">closed</field>
     </record>
 

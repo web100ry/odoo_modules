@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-    <!-- Графік: використання авто за департаментами -->
+    <!-- Graph: vehicle usage by departments -->
     <record id="view_vehicle_trip_graph_department" model="ir.ui.view">
         <field name="name">vehicle.trip.graph.department</field>
         <field name="model">vehicle.trip</field>
         <field name="arch" type="xml">
-            <graph string="Використання авто за департаментами" type="pie">
+            <graph string="Vehicle usage by departments" type="pie">
                 <field name="department_id" type="row"/>
                 <field name="id" type="measure"/>
             </graph>
         </field>
     </record>
 
-    <!-- Графік: кількість поїздок за автомобілями -->
+    <!-- Graph: number of trips by vehicles -->
     <record id="view_vehicle_trip_graph_vehicle" model="ir.ui.view">
         <field name="name">vehicle.trip.graph.vehicle</field>
         <field name="model">vehicle.trip</field>
         <field name="arch" type="xml">
-            <graph string="Кількість поїздок за автомобілями" type="pie">
+            <graph string="Number of trips by vehicles" type="pie">
                 <field name="vehicle_id" type="row"/>
                 <field name="id" type="measure"/>
             </graph>

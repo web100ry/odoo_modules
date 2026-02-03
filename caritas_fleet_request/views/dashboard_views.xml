@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-    <!-- Action: департаменти -->
+    <!-- Action: Departments -->
     <record id="action_vehicle_trip_graph_department" model="ir.actions.act_window">
-        <field name="name">Використання авто за департаментами</field>
+        <field name="name">Vehicle usage by departments in the current year</field>
         <field name="res_model">vehicle.trip</field>
         <field name="view_mode">graph</field>
         <field name="view_id" ref="caritas_fleet_request.view_vehicle_trip_graph_department"/>
@@ -13,9 +13,9 @@
         }</field>
     </record>
 
-    <!-- Action: автомобілі -->
+    <!-- Action: Vehicles -->
     <record id="action_vehicle_trip_graph_vehicle" model="ir.actions.act_window">
-        <field name="name">Кількість поїздок за автомобілями</field>
+        <field name="name">Number of trips by vehicles in the current year</field>
         <field name="res_model">vehicle.trip</field>
         <field name="view_mode">graph</field>
         <field name="view_id" ref="caritas_fleet_request.view_vehicle_trip_graph_vehicle"/>
@@ -30,24 +30,24 @@
         <field name="name">caritas.fleet.dashboard</field>
         <field name="model">board.board</field>
         <field name="arch" type="xml">
-            <form string="Дашборд автопарку">
+            <form string="Fleet Dashboard">
                 <board style="1-1">
                     <column>
                         <action name="%(action_vehicle_trip_graph_department)d"
-                                string="Використання авто за департаментами"/>
+                                string="Vehicle usage by departments"/>
                     </column>
                     <column>
                         <action name="%(action_vehicle_trip_graph_vehicle)d"
-                                string="Кількість поїздок за автомобілями"/>
+                                string="Number of trips by vehicles"/>
                     </column>
                 </board>
             </form>
         </field>
     </record>
 
-    <!-- Відкриття дашборду -->
+    <!-- Opening dashboard -->
     <record id="action_caritas_fleet_dashboard" model="ir.actions.act_window">
-        <field name="name">Дашборд</field>
+        <field name="name">Dashboard</field>
         <field name="res_model">board.board</field>
         <field name="view_mode">form</field>
         <field name="view_id" ref="view_caritas_fleet_dashboard"/>
