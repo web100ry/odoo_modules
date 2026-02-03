@@ -1,0 +1,1039 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* caritas_fleet_request
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-02-03 10:23+0000\n"
+"PO-Revision-Date: 2026-02-03 10:23+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: caritas_fleet_request
+#: model:ir.actions.report,print_report_name:caritas_fleet_request.report_department_trips
+msgid ""
+"(object.report_mode == 'department' and '%s' % "
+"(object.department_id.display_name,)) or _('Department Trips Report')"
+msgstr ""
+"(object.report_mode == 'department' and '%s' % "
+"(object.department_id.display_name,)) or _('Звіт про поїздки по департаментах')"
+
+#. module: caritas_fleet_request
+#: model:ir.actions.report,print_report_name:caritas_fleet_request.report_personnel_trips
+msgid ""
+"(object.report_mode == 'personnel' and '%s' % "
+"(object.driver_id.display_name,)) or _('Personnel Trips Report')"
+msgstr ""
+"(object.report_mode == 'personnel' and '%s' % "
+"(object.driver_id.display_name,)) or _('Звіт про поїздки персоналу')"
+
+#. module: caritas_fleet_request
+#: model:ir.actions.report,print_report_name:caritas_fleet_request.report_vehicle_trips
+msgid ""
+"(object.report_mode == 'vehicle' and '%s' % "
+"(object.vehicle_id.display_name,)) or _('Vehicle Trips Report')"
+msgstr ""
+"(object.report_mode == 'vehicle' and '%s' % "
+"(object.vehicle_id.display_name,)) or _('Звіт про поїздки автомобіля')"
+
+#. module: caritas_fleet_request
+#. odoo-python
+#: code:addons/caritas_fleet_request/models/vehicle_request.py:0
+msgid "A vehicle must be selected before approval."
+msgstr "Транспортний засіб повинен бути обраний до затвердження."
+
+#. module: caritas_fleet_request
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_request__message_needaction
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_trip__message_needaction
+msgid "Action Needed"
+msgstr "Необхідна дія"
+
+#. module: caritas_fleet_request
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_department__active
+msgid "Active"
+msgstr "Активно"
+
+#. module: caritas_fleet_request
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_request__activity_ids
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_trip__activity_ids
+msgid "Activities"
+msgstr "Дії"
+
+#. module: caritas_fleet_request
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_request__activity_exception_decoration
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_trip__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr "Оформлення виключення дії"
+
+#. module: caritas_fleet_request
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_request__activity_state
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_trip__activity_state
+msgid "Activity State"
+msgstr "Стан дії"
+
+#. module: caritas_fleet_request
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_request__activity_type_icon
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_trip__activity_type_icon
+msgid "Activity Type Icon"
+msgstr "Іконка типу дії"
+
+#. module: caritas_fleet_request
+#. odoo-python
+#: code:addons/caritas_fleet_request/wizard/vehicle_request_bulk_approve_wizard.py:0
+msgid "All selected requests must be in draft state."
+msgstr "Усі вибрані запити повинні бути в стані чернетки."
+
+#. module: caritas_fleet_request
+#: model_terms:ir.ui.view,arch_db:caritas_fleet_request.view_vehicle_request_form
+msgid "Approve"
+msgstr "Затвердити"
+
+#. module: caritas_fleet_request
+#: model_terms:ir.ui.view,arch_db:caritas_fleet_request.view_vehicle_request_bulk_approve_wizard
+msgid "Approve Requests"
+msgstr "Затвердити запити"
+
+#. module: caritas_fleet_request
+#: model:ir.model.fields.selection,name:caritas_fleet_request.selection__vehicle_request__state__approved
+msgid "Approved"
+msgstr "Затверджено"
+
+#. module: caritas_fleet_request
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_request__message_attachment_count
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_trip__message_attachment_count
+msgid "Attachment Count"
+msgstr "Кількість прикріплень"
+
+#. module: caritas_fleet_request
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_fleet_vehicle__availability_status
+msgid "Availability Status"
+msgstr "Статус доступності"
+
+#. module: caritas_fleet_request
+#: model:ir.model.fields.selection,name:caritas_fleet_request.selection__fleet_vehicle__availability_status__available
+msgid "Available"
+msgstr "Доступно"
+
+#. module: caritas_fleet_request
+#: model:ir.actions.act_window,name:caritas_fleet_request.action_vehicle_request_bulk_approve_wizard
+msgid "Bulk Approve"
+msgstr "Масове затвердження"
+
+#. module: caritas_fleet_request
+#: model_terms:ir.ui.view,arch_db:caritas_fleet_request.view_vehicle_request_bulk_approve_wizard
+msgid "Bulk Approve Requests"
+msgstr "Масове затвердження запитів"
+
+#. module: caritas_fleet_request
+#: model:ir.model,name:caritas_fleet_request.model_vehicle_request_bulk_approve_wizard
+msgid "Bulk Approve Vehicle Requests"
+msgstr "Масове затвердження запитів на авто"
+
+#. module: caritas_fleet_request
+#: model:ir.model.fields.selection,name:caritas_fleet_request.selection__vehicle_request__trip_category__business_trip
+msgid "Business Trip"
+msgstr "Відрядження"
+
+#. module: caritas_fleet_request
+#: model:ir.model,name:caritas_fleet_request.model_calendar_event
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_trip__calendar_event_id
+msgid "Calendar Event"
+msgstr "Подія календаря"
+
+#. module: caritas_fleet_request
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_trip__calendar_display_name
+msgid "Calendar Title"
+msgstr "Заголовок календаря"
+
+#. module: caritas_fleet_request
+#: model_terms:ir.ui.view,arch_db:caritas_fleet_request.view_fleet_report_period_wizard_form
+#: model_terms:ir.ui.view,arch_db:caritas_fleet_request.view_vehicle_request_bulk_approve_wizard
+#: model_terms:ir.ui.view,arch_db:caritas_fleet_request.view_vehicle_request_reject_wizard
+msgid "Cancel"
+msgstr "Скасувати"
+
+#. module: caritas_fleet_request
+#: model:ir.module.category,name:caritas_fleet_request.module_category_caritas_fleet
+msgid "Caritas Fleet"
+msgstr "Карітас Автопарк"
+
+#. module: caritas_fleet_request
+#: model:ir.ui.menu,name:caritas_fleet_request.menu_caritas_fleet_root
+msgid "Caritas Fleet Management"
+msgstr "Управління автопарком Карітас"
+
+#. module: caritas_fleet_request
+#: model_terms:ir.ui.view,arch_db:caritas_fleet_request.view_vehicle_request_form
+msgid "Close"
+msgstr "Закрити"
+
+#. module: caritas_fleet_request
+#: model:ir.model.fields.selection,name:caritas_fleet_request.selection__vehicle_request__state__closed
+msgid "Closed"
+msgstr "Закрито"
+
+#. module: caritas_fleet_request
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_request_reject_wizard__comment
+msgid "Comment"
+msgstr "Коментар"
+
+#. module: caritas_fleet_request
+#: model:ir.model.fields.selection,name:caritas_fleet_request.selection__vehicle_request__state__done
+msgid "Completed"
+msgstr "Завершено"
+
+#. module: caritas_fleet_request
+#: model:ir.model,name:caritas_fleet_request.model_res_partner
+msgid "Contact"
+msgstr "Контакт"
+
+#. module: caritas_fleet_request
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_fleet_report_period_wizard__create_uid
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_department__create_uid
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_request__create_uid
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_request_bulk_approve_wizard__create_uid
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_request_reject_wizard__create_uid
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_trip__create_uid
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_trip_date_filter_wizard__create_uid
+msgid "Created by"
+msgstr "Створено"
+
+#. module: caritas_fleet_request
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_fleet_report_period_wizard__create_date
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_department__create_date
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_request__create_date
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_request_bulk_approve_wizard__create_date
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_request_reject_wizard__create_date
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_trip__create_date
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_trip_date_filter_wizard__create_date
+msgid "Created on"
+msgstr "Створено"
+
+#. module: caritas_fleet_request
+#: model_terms:ir.ui.view,arch_db:caritas_fleet_request.view_vehicle_trip_search
+msgid "Current Year"
+msgstr "Поточний рік"
+
+#. module: caritas_fleet_request
+#: model:ir.actions.act_window,name:caritas_fleet_request.action_caritas_fleet_dashboard
+#: model:ir.ui.menu,name:caritas_fleet_request.menu_caritas_fleet_dashboard
+msgid "Dashboard"
+msgstr "Дашборд"
+
+#. module: caritas_fleet_request
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_trip_date_filter_wizard__date_from
+msgid "Date From"
+msgstr "Дата з"
+
+#. module: caritas_fleet_request
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_trip_date_filter_wizard__date_to
+msgid "Date To"
+msgstr "Дата по"
+
+#. module: caritas_fleet_request
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_fleet_report_period_wizard__department_id
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_fleet_vehicle__department_id
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_request__department_id
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_trip__department_id
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_trip_date_filter_wizard__department_id
+#: model:ir.model.fields.selection,name:caritas_fleet_request.selection__fleet_report_period_wizard__report_mode__department
+#: model_terms:ir.ui.view,arch_db:caritas_fleet_request.view_vehicle_trip_search
+msgid "Department"
+msgstr "Департамент"
+
+#. module: caritas_fleet_request
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_department__name
+msgid "Department Name"
+msgstr "Назва департаменту"
+
+#. module: caritas_fleet_request
+#: model:ir.ui.menu,name:caritas_fleet_request.menu_fleet_report_department
+msgid "Department Report"
+msgstr "Звіт по департаменту"
+
+#. module: caritas_fleet_request
+#. odoo-python
+#: code:addons/caritas_fleet_request/reports/fleet_reports.py:0
+#: model:ir.actions.act_window,name:caritas_fleet_request.action_fleet_report_department
+#: model:ir.actions.report,name:caritas_fleet_request.report_department_trips
+#: model:ir.model,name:caritas_fleet_request.model_report_caritas_fleet_request_report_department_trips_template
+msgid "Department Trips Report"
+msgstr "Звіт про поїздки по департаментах"
+
+#. module: caritas_fleet_request
+#. odoo-python
+#: code:addons/caritas_fleet_request/reports/fleet_reports.py:0
+#: code:addons/caritas_fleet_request/wizard/fleet_report_period_wizard.py:0
+msgid "Department is required."
+msgstr "Департамент обов'язковий."
+
+#. module: caritas_fleet_request
+#: model:ir.actions.act_window,name:caritas_fleet_request.action_vehicle_department
+#: model:ir.ui.menu,name:caritas_fleet_request.menu_caritas_fleet_departments_action
+msgid "Departments"
+msgstr "Департаменти"
+
+#. module: caritas_fleet_request
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_request__origin_city
+msgid "Departure City"
+msgstr "Місто відправлення"
+
+#. module: caritas_fleet_request
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_request__origin_organization_id
+msgid "Departure Organization"
+msgstr "Організація відправлення"
+
+#. module: caritas_fleet_request
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_request__destination_cities
+msgid "Destination Cities"
+msgstr "Міста призначення"
+
+#. module: caritas_fleet_request
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_request__destination_organization_ids
+msgid "Destination Organizations"
+msgstr "Організації призначення"
+
+#. module: caritas_fleet_request
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_fleet_report_period_wizard__display_name
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_department__display_name
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_request__display_name
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_request_bulk_approve_wizard__display_name
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_request_reject_wizard__display_name
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_trip__display_name
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_trip_date_filter_wizard__display_name
+msgid "Display Name"
+msgstr "Назва для відображення"
+
+#. module: caritas_fleet_request
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_fleet_report_period_wizard__driver_id
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_request__driver_id
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_trip__driver_id
+msgid "Driver"
+msgstr "Водій"
+
+#. module: caritas_fleet_request
+#. odoo-python
+#: code:addons/caritas_fleet_request/models/vehicle_request.py:0
+msgid "Driver is required for trips with driver."
+msgstr "Водій обов'язковий для поїздок з водієм."
+
+#. module: caritas_fleet_request
+#. odoo-python
+#: code:addons/caritas_fleet_request/models/vehicle_request.py:0
+msgid "Driver is required to start this trip."
+msgstr "Водій обов'язковий для початку цієї поїздки."
+
+#. module: caritas_fleet_request
+#. odoo-python
+#: code:addons/caritas_fleet_request/reports/fleet_reports.py:0
+#: code:addons/caritas_fleet_request/wizard/fleet_report_period_wizard.py:0
+msgid "Driver is required."
+msgstr "Водій обов'язковий."
+
+#. module: caritas_fleet_request
+#. odoo-python
+#: code:addons/caritas_fleet_request/models/vehicle_request.py:0
+msgid "Driver must be empty for self-drive trips."
+msgstr "Поле водія повинно бути порожнім для поїздок за кермом (без водія)."
+
+#. module: caritas_fleet_request
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_department__driver_ids
+#: model_terms:ir.ui.view,arch_db:caritas_fleet_request.view_vehicle_department_form
+msgid "Drivers"
+msgstr "Водії"
+
+#. module: caritas_fleet_request
+#. odoo-python
+#: code:addons/caritas_fleet_request/models/vehicle_department.py:0
+msgid "Drivers must be selected among department employees."
+msgstr "Водії повинні бути обрані серед співробітників департаменту."
+
+#. module: caritas_fleet_request
+#. odoo-python
+#: code:addons/caritas_fleet_request/models/vehicle_department.py:0
+msgid "Drivers must belong to the Fleet Driver group."
+msgstr "Водії повинні належати до групи Водій автопарку."
+
+#. module: caritas_fleet_request
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_department__user_ids
+#: model_terms:ir.ui.view,arch_db:caritas_fleet_request.view_vehicle_department_form
+msgid "Employees"
+msgstr "Співробітники"
+
+#. module: caritas_fleet_request
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_fleet_report_period_wizard__date_to
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_request__date_end
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_trip__date_end
+msgid "End Date"
+msgstr "Дата закінчення"
+
+#. module: caritas_fleet_request
+#. odoo-python
+#: code:addons/caritas_fleet_request/models/vehicle_request.py:0
+#: code:addons/caritas_fleet_request/models/vehicle_trip.py:0
+msgid "End Date must be after Start Date."
+msgstr "Дата закінчення повинна бути після дати початку."
+
+#. module: caritas_fleet_request
+#. odoo-python
+#: code:addons/caritas_fleet_request/wizard/vehicle_trip_date_filter_wizard.py:0
+msgid "End date must be after start date."
+msgstr "Дата закінчення повинна бути після дати початку."
+
+#. module: caritas_fleet_request
+#. odoo-python
+#: code:addons/caritas_fleet_request/wizard/fleet_report_period_wizard.py:0
+msgid "End date must be on or after start date."
+msgstr "Дата закінчення повинна бути не раніше дати початку."
+
+#. module: caritas_fleet_request
+#: model:res.groups,name:caritas_fleet_request.group_fleet_admin
+msgid "Fleet Admin"
+msgstr "Адмін автопарку"
+
+#. module: caritas_fleet_request
+#: model:ir.actions.act_window,name:caritas_fleet_request.action_vehicle_trip_calendar
+#: model:ir.ui.menu,name:caritas_fleet_request.menu_vehicle_trip_calendar
+#: model_terms:ir.ui.view,arch_db:caritas_fleet_request.view_vehicle_trip_calendar
+msgid "Fleet Calendar"
+msgstr "Календар автопарку"
+
+#. module: caritas_fleet_request
+#: model_terms:ir.ui.view,arch_db:caritas_fleet_request.view_caritas_fleet_dashboard
+msgid "Fleet Dashboard"
+msgstr "Дашборд автопарку"
+
+#. module: caritas_fleet_request
+#: model:res.groups,name:caritas_fleet_request.group_fleet_driver
+msgid "Fleet Driver"
+msgstr "Водій автопарку"
+
+#. module: caritas_fleet_request
+#: model_terms:ir.ui.view,arch_db:caritas_fleet_request.view_fleet_report_period_wizard_form
+msgid "Fleet Report"
+msgstr "Звіт автопарку"
+
+#. module: caritas_fleet_request
+#: model:ir.model,name:caritas_fleet_request.model_fleet_report_period_wizard
+msgid "Fleet Report Period Wizard"
+msgstr "Помічник періоду звіту автопарку"
+
+#. module: caritas_fleet_request
+#: model:res.groups,name:caritas_fleet_request.group_fleet_user
+msgid "Fleet User"
+msgstr "Користувач автопарку"
+
+#. module: caritas_fleet_request
+#: model:ir.actions.act_window,name:caritas_fleet_request.action_caritas_fleet_vehicles
+#: model:ir.ui.menu,name:caritas_fleet_request.menu_caritas_fleet_vehicles
+msgid "Fleet Vehicles"
+msgstr "Автомобілі автопарку"
+
+#. module: caritas_fleet_request
+#: model:ir.module.category,description:caritas_fleet_request.module_category_caritas_fleet
+msgid "Fleet and vehicle request management"
+msgstr "Управління автопарком та запитами на авто"
+
+#. module: caritas_fleet_request
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_request__message_follower_ids
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_trip__message_follower_ids
+msgid "Followers"
+msgstr "Підписники"
+
+#. module: caritas_fleet_request
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_request__message_partner_ids
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_trip__message_partner_ids
+msgid "Followers (Partners)"
+msgstr "Підписники (Партнери)"
+
+#. module: caritas_fleet_request
+#: model:ir.model.fields,help:caritas_fleet_request.field_vehicle_request__activity_type_icon
+#: model:ir.model.fields,help:caritas_fleet_request.field_vehicle_trip__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr "Іконка Font awesome, наприклад fa-tasks"
+
+#. module: caritas_fleet_request
+#: model_terms:ir.ui.view,arch_db:caritas_fleet_request.view_vehicle_trip_search
+msgid "Group By"
+msgstr "Групувати за"
+
+#. module: caritas_fleet_request
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_request__has_message
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_trip__has_message
+msgid "Has Message"
+msgstr "Є повідомлення"
+
+#. module: caritas_fleet_request
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_fleet_report_period_wizard__id
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_department__id
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_request__id
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_request_bulk_approve_wizard__id
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_request_reject_wizard__id
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_trip__id
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_trip_date_filter_wizard__id
+msgid "ID"
+msgstr "ID"
+
+#. module: caritas_fleet_request
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_request__activity_exception_icon
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_trip__activity_exception_icon
+msgid "Icon"
+msgstr "Іконка"
+
+#. module: caritas_fleet_request
+#: model:ir.model.fields,help:caritas_fleet_request.field_vehicle_request__activity_exception_icon
+#: model:ir.model.fields,help:caritas_fleet_request.field_vehicle_trip__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr "Іконка для позначення виключної дії."
+
+#. module: caritas_fleet_request
+#: model:ir.model.fields,help:caritas_fleet_request.field_vehicle_request__message_needaction
+#: model:ir.model.fields,help:caritas_fleet_request.field_vehicle_trip__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr "Якщо позначено, нові повідомлення потребують вашої уваги."
+
+#. module: caritas_fleet_request
+#: model:ir.model.fields,help:caritas_fleet_request.field_vehicle_request__message_has_error
+#: model:ir.model.fields,help:caritas_fleet_request.field_vehicle_request__message_has_sms_error
+#: model:ir.model.fields,help:caritas_fleet_request.field_vehicle_trip__message_has_error
+#: model:ir.model.fields,help:caritas_fleet_request.field_vehicle_trip__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr "Якщо позначено, деякі повідомлення мають помилку доставки."
+
+#. module: caritas_fleet_request
+#: model:ir.model.fields.selection,name:caritas_fleet_request.selection__vehicle_request__state__in_progress
+msgid "In Progress"
+msgstr "В процесі"
+
+#. module: caritas_fleet_request
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_request__message_is_follower
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_trip__message_is_follower
+msgid "Is Follower"
+msgstr "Підписник"
+
+#. module: caritas_fleet_request
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_fleet_report_period_wizard__write_uid
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_department__write_uid
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_request__write_uid
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_request_bulk_approve_wizard__write_uid
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_request_reject_wizard__write_uid
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_trip__write_uid
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_trip_date_filter_wizard__write_uid
+msgid "Last Updated by"
+msgstr "Останнім оновив"
+
+#. module: caritas_fleet_request
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_fleet_report_period_wizard__write_date
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_department__write_date
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_request__write_date
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_request_bulk_approve_wizard__write_date
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_request_reject_wizard__write_date
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_trip__write_date
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_trip_date_filter_wizard__write_date
+msgid "Last Updated on"
+msgstr "Останнє оновлення"
+
+#. module: caritas_fleet_request
+#: model_terms:ir.ui.view,arch_db:caritas_fleet_request.view_vehicle_request_form
+msgid "Mark Completed"
+msgstr "Позначити завершеним"
+
+#. module: caritas_fleet_request
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_request__message_has_error
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_trip__message_has_error
+msgid "Message Delivery error"
+msgstr "Помилка доставки повідомлення"
+
+#. module: caritas_fleet_request
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_request__message_ids
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_trip__message_ids
+msgid "Messages"
+msgstr "Повідомлення"
+
+#. module: caritas_fleet_request
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_request__my_activity_date_deadline
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_trip__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr "Дедлайн моєї дії"
+
+#. module: caritas_fleet_request
+#: model:ir.actions.act_window,name:caritas_fleet_request.action_vehicle_request_my
+#: model:ir.ui.menu,name:caritas_fleet_request.menu_vehicle_request_my
+msgid "My Requests"
+msgstr "Мої запити"
+
+#. module: caritas_fleet_request
+#: model:ir.model.fields.selection,name:caritas_fleet_request.selection__vehicle_request__state__draft
+msgid "New"
+msgstr "Новий"
+
+#. module: caritas_fleet_request
+#. odoo-python
+#: code:addons/caritas_fleet_request/models/vehicle_request.py:0
+msgid "New vehicle request created: %s"
+msgstr "Створено новий запит на авто: %s"
+
+#. module: caritas_fleet_request
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_request__activity_calendar_event_id
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_trip__activity_calendar_event_id
+msgid "Next Activity Calendar Event"
+msgstr "Подія календаря наступної дії"
+
+#. module: caritas_fleet_request
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_request__activity_date_deadline
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_trip__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr "Дедлайн наступної дії"
+
+#. module: caritas_fleet_request
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_request__activity_summary
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_trip__activity_summary
+msgid "Next Activity Summary"
+msgstr "Підсумок наступної дії"
+
+#. module: caritas_fleet_request
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_request__activity_type_id
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_trip__activity_type_id
+msgid "Next Activity Type"
+msgstr "Тип наступної дії"
+
+#. module: caritas_fleet_request
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_request__message_needaction_counter
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_trip__message_needaction_counter
+msgid "Number of Actions"
+msgstr "Кількість дій"
+
+#. module: caritas_fleet_request
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_request__message_has_error_counter
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_trip__message_has_error_counter
+msgid "Number of errors"
+msgstr "Кількість помилок"
+
+#. module: caritas_fleet_request
+#: model:ir.model.fields,help:caritas_fleet_request.field_vehicle_request__message_needaction_counter
+#: model:ir.model.fields,help:caritas_fleet_request.field_vehicle_trip__message_needaction_counter
+msgid "Number of messages requiring action"
+msgstr "Кількість повідомлень, що потребують дії"
+
+#. module: caritas_fleet_request
+#: model:ir.model.fields,help:caritas_fleet_request.field_vehicle_request__message_has_error_counter
+#: model:ir.model.fields,help:caritas_fleet_request.field_vehicle_trip__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr "Кількість повідомлень з помилкою доставки"
+
+#. module: caritas_fleet_request
+#: model_terms:ir.ui.view,arch_db:caritas_fleet_request.view_caritas_fleet_dashboard
+#: model_terms:ir.ui.view,arch_db:caritas_fleet_request.view_vehicle_trip_graph_vehicle
+msgid "Number of trips by vehicles"
+msgstr "Кількість поїздок по автомобілях"
+
+#. module: caritas_fleet_request
+#: model:ir.actions.act_window,name:caritas_fleet_request.action_vehicle_trip_graph_vehicle
+msgid "Number of trips by vehicles in the current year"
+msgstr "Кількість поїздок по автомобілях у поточному році"
+
+#. module: caritas_fleet_request
+#. odoo-python
+#: code:addons/caritas_fleet_request/models/vehicle_request.py:0
+msgid "Only approved requests can be started."
+msgstr "Тільки затверджені запити можуть бути розпочаті."
+
+#. module: caritas_fleet_request
+#. odoo-python
+#: code:addons/caritas_fleet_request/models/vehicle_request.py:0
+msgid "Only completed requests can be closed."
+msgstr "Тільки завершені запити можуть бути закриті."
+
+#. module: caritas_fleet_request
+#. odoo-python
+#: code:addons/caritas_fleet_request/models/vehicle_request.py:0
+#: code:addons/caritas_fleet_request/wizard/vehicle_request_reject_wizard.py:0
+msgid "Only completed requests can be rejected at this stage."
+msgstr "Тільки завершені запити можуть бути відхилені на цьому етапі."
+
+#. module: caritas_fleet_request
+#. odoo-python
+#: code:addons/caritas_fleet_request/models/vehicle_request.py:0
+msgid "Only draft requests can be approved."
+msgstr "Тільки чернетки запитів можуть бути затверджені."
+
+#. module: caritas_fleet_request
+#. odoo-python
+#: code:addons/caritas_fleet_request/models/vehicle_request.py:0
+msgid "Only in-progress requests can be completed."
+msgstr "Тільки запити в процесі виконання можуть бути завершені."
+
+#. module: caritas_fleet_request
+#: model:ir.model.fields.selection,name:caritas_fleet_request.selection__vehicle_request__trip_category__personal
+msgid "Personal"
+msgstr "Особиста"
+
+#. module: caritas_fleet_request
+#: model:ir.model.fields.selection,name:caritas_fleet_request.selection__fleet_report_period_wizard__report_mode__personnel
+msgid "Personnel"
+msgstr "Персонал"
+
+#. module: caritas_fleet_request
+#: model:ir.ui.menu,name:caritas_fleet_request.menu_fleet_report_personnel
+msgid "Personnel Report"
+msgstr "Звіт по персоналу"
+
+#. module: caritas_fleet_request
+#. odoo-python
+#: code:addons/caritas_fleet_request/reports/fleet_reports.py:0
+#: model:ir.actions.act_window,name:caritas_fleet_request.action_fleet_report_personnel
+#: model:ir.actions.report,name:caritas_fleet_request.report_personnel_trips
+#: model:ir.model,name:caritas_fleet_request.model_report_caritas_fleet_request_report_personnel_trips_template
+msgid "Personnel Trips Report"
+msgstr "Звіт про поїздки персоналу"
+
+#. module: caritas_fleet_request
+#: model_terms:ir.ui.view,arch_db:caritas_fleet_request.view_fleet_report_period_wizard_form
+msgid "Print"
+msgstr "Друк"
+
+#. module: caritas_fleet_request
+#: model_terms:ir.ui.view,arch_db:caritas_fleet_request.view_vehicle_request_form
+#: model_terms:ir.ui.view,arch_db:caritas_fleet_request.view_vehicle_request_reject_wizard
+msgid "Reject"
+msgstr "Відхилити"
+
+#. module: caritas_fleet_request
+#: model_terms:ir.ui.view,arch_db:caritas_fleet_request.view_vehicle_request_reject_wizard
+msgid "Reject Request"
+msgstr "Відхилити запит"
+
+#. module: caritas_fleet_request
+#: model:ir.model.fields.selection,name:caritas_fleet_request.selection__vehicle_request__state__rejected
+msgid "Rejected"
+msgstr "Відхилено"
+
+#. module: caritas_fleet_request
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_fleet_report_period_wizard__report_mode
+msgid "Report Mode"
+msgstr "Режим звіту"
+
+#. module: caritas_fleet_request
+#: model:ir.ui.menu,name:caritas_fleet_request.menu_caritas_fleet_reports
+msgid "Reports"
+msgstr "Звіти"
+
+#. module: caritas_fleet_request
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_request_reject_wizard__request_id
+msgid "Request"
+msgstr "Запит"
+
+#. module: caritas_fleet_request
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_request__name
+msgid "Request Reference"
+msgstr "Посилання на запит"
+
+#. module: caritas_fleet_request
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_trip__request_state
+msgid "Request Status"
+msgstr "Статус запиту"
+
+#. module: caritas_fleet_request
+#. odoo-python
+#: code:addons/caritas_fleet_request/wizard/vehicle_request_reject_wizard.py:0
+msgid "Request rejected"
+msgstr "Запит відхилено"
+
+#. module: caritas_fleet_request
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_request__requester_id
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_trip__requester_id
+#: model_terms:ir.ui.view,arch_db:caritas_fleet_request.view_vehicle_trip_search
+msgid "Requester"
+msgstr "Замовник"
+
+#. module: caritas_fleet_request
+#. odoo-python
+#: code:addons/caritas_fleet_request/models/vehicle_request.py:0
+msgid "Requester has accepted the work for request %s."
+msgstr "Замовник прийняв роботу за запитом %s."
+
+#. module: caritas_fleet_request
+#. odoo-python
+#: code:addons/caritas_fleet_request/wizard/vehicle_request_reject_wizard.py:0
+msgid "Requester has rejected the work for request %s. Comment: %s"
+msgstr "Замовник відхилив роботу за запитом %s. Коментар: %s"
+
+#. module: caritas_fleet_request
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_request_bulk_approve_wizard__request_ids
+msgid "Requests"
+msgstr "Запити"
+
+#. module: caritas_fleet_request
+#: model:ir.actions.act_window,name:caritas_fleet_request.action_vehicle_request_to_approve
+#: model:ir.ui.menu,name:caritas_fleet_request.menu_vehicle_request_to_approve
+msgid "Requests To Approve"
+msgstr "Запити на затвердження"
+
+#. module: caritas_fleet_request
+#: model:ir.model.fields.selection,name:caritas_fleet_request.selection__fleet_vehicle__availability_status__reserved
+msgid "Reserved"
+msgstr "Зарезервовано"
+
+#. module: caritas_fleet_request
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_fleet_vehicle__responsible_driver_id
+msgid "Responsible Driver"
+msgstr "Відповідальний водій"
+
+#. module: caritas_fleet_request
+#. odoo-python
+#: code:addons/caritas_fleet_request/models/fleet_vehicle.py:0
+msgid "Responsible Driver must belong to the Fleet Driver group."
+msgstr "Відповідальний водій повинен належати до групи Водій автопарку."
+
+#. module: caritas_fleet_request
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_request__activity_user_id
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_trip__activity_user_id
+msgid "Responsible User"
+msgstr "Відповідальний користувач"
+
+#. module: caritas_fleet_request
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_request__message_has_sms_error
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_trip__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr "Помилка доставки SMS"
+
+#. module: caritas_fleet_request
+#: model_terms:ir.ui.view,arch_db:caritas_fleet_request.view_vehicle_trip_search
+msgid "Search Vehicle Trips"
+msgstr "Пошук поїздок"
+
+#. module: caritas_fleet_request
+#: model:ir.model.fields.selection,name:caritas_fleet_request.selection__vehicle_request__trip_type__self_drive
+msgid "Self Drive"
+msgstr "За кермом (без водія)"
+
+#. module: caritas_fleet_request
+#: model_terms:ir.ui.view,arch_db:caritas_fleet_request.view_vehicle_request_form
+msgid "Start"
+msgstr "Старт"
+
+#. module: caritas_fleet_request
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_fleet_report_period_wizard__date_from
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_request__date_start
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_trip__date_start
+msgid "Start Date"
+msgstr "Дата початку"
+
+#. module: caritas_fleet_request
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_request__state
+msgid "Status"
+msgstr "Статус"
+
+#. module: caritas_fleet_request
+#: model:ir.model.fields,help:caritas_fleet_request.field_vehicle_request__activity_state
+#: model:ir.model.fields,help:caritas_fleet_request.field_vehicle_trip__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+"Статус на основі дій\n"
+"Протерміновано: Термін виконання вже минув\n"
+"Сьогодні: Дата дії сьогодні\n"
+"Заплановано: Майбутні дії."
+
+#. module: caritas_fleet_request
+#. odoo-python
+#: code:addons/caritas_fleet_request/models/vehicle_request.py:0
+msgid "The trip for request %s has been completed."
+msgstr "Поїздку за запитом %s завершено."
+
+#. module: caritas_fleet_request
+#. odoo-python
+#: code:addons/caritas_fleet_request/models/vehicle_request.py:0
+msgid "The trip for request %s has started."
+msgstr "Поїздка за запитом %s розпочалася."
+
+#. module: caritas_fleet_request
+#. odoo-python
+#: code:addons/caritas_fleet_request/models/vehicle_trip.py:0
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_request__trip_id
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_trip__name
+msgid "Trip"
+msgstr "Поїздка"
+
+#. module: caritas_fleet_request
+#: model:ir.model,name:caritas_fleet_request.model_vehicle_trip_date_filter_wizard
+msgid "Trip Date Filter"
+msgstr "Фільтр дати поїздки"
+
+#. module: caritas_fleet_request
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_request__trip_details
+msgid "Trip Details"
+msgstr "Деталі поїздки"
+
+#. module: caritas_fleet_request
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_request__trip_category
+msgid "Trip Purpose"
+msgstr "Мета поїздки"
+
+#. module: caritas_fleet_request
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_request__trip_type
+msgid "Trip Type"
+msgstr "Тип поїздки"
+
+#. module: caritas_fleet_request
+#: model:ir.model.fields,help:caritas_fleet_request.field_vehicle_request__activity_exception_decoration
+#: model:ir.model.fields,help:caritas_fleet_request.field_vehicle_trip__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr "Тип виключної дії в записі."
+
+#. module: caritas_fleet_request
+#: model:ir.model.fields.selection,name:caritas_fleet_request.selection__fleet_vehicle__availability_status__unavailable
+msgid "Unavailable"
+msgstr "Недоступно"
+
+#. module: caritas_fleet_request
+#: model:ir.model,name:caritas_fleet_request.model_fleet_vehicle
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_fleet_report_period_wizard__vehicle_id
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_request__vehicle_id
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_trip__vehicle_id
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_trip_date_filter_wizard__vehicle_id
+#: model:ir.model.fields.selection,name:caritas_fleet_request.selection__fleet_report_period_wizard__report_mode__vehicle
+#: model_terms:ir.ui.view,arch_db:caritas_fleet_request.view_vehicle_trip_search
+msgid "Vehicle"
+msgstr "Транспортний засіб"
+
+#. module: caritas_fleet_request
+#. odoo-python
+#: code:addons/caritas_fleet_request/models/vehicle_request.py:0
+msgid "Vehicle %s is already scheduled for the selected period."
+msgstr "Транспортний засіб %s вже запланований на вибраний період."
+
+#. module: caritas_fleet_request
+#: model:ir.model,name:caritas_fleet_request.model_vehicle_department
+msgid "Vehicle Department"
+msgstr "Департамент автотранспорту"
+
+#. module: caritas_fleet_request
+#: model:ir.ui.menu,name:caritas_fleet_request.menu_fleet_report_vehicle
+msgid "Vehicle Report"
+msgstr "Звіт по авто"
+
+#. module: caritas_fleet_request
+#: model:ir.model,name:caritas_fleet_request.model_vehicle_request
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_trip__request_id
+#: model_terms:ir.ui.view,arch_db:caritas_fleet_request.view_vehicle_request_form
+msgid "Vehicle Request"
+msgstr "Запит на авто"
+
+#. module: caritas_fleet_request
+#. odoo-python
+#: code:addons/caritas_fleet_request/models/vehicle_request.py:0
+msgid "Vehicle Request Rejection"
+msgstr "Відхилення запиту на авто"
+
+#. module: caritas_fleet_request
+#: model:ir.model,name:caritas_fleet_request.model_vehicle_request_reject_wizard
+msgid "Vehicle Request Rejection Wizard"
+msgstr "Помічник відхилення запиту на авто"
+
+#. module: caritas_fleet_request
+#: model:ir.actions.act_window,name:caritas_fleet_request.action_vehicle_request_all
+#: model:ir.ui.menu,name:caritas_fleet_request.menu_vehicle_request_all
+msgid "Vehicle Requests"
+msgstr "Запити на авто"
+
+#. module: caritas_fleet_request
+#: model:ir.model,name:caritas_fleet_request.model_vehicle_trip
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_calendar_event__vehicle_trip_id
+#: model_terms:ir.ui.view,arch_db:caritas_fleet_request.view_vehicle_trip_form
+msgid "Vehicle Trip"
+msgstr "Поїздка на авто"
+
+#. module: caritas_fleet_request
+#: model_terms:ir.ui.view,arch_db:caritas_fleet_request.view_vehicle_trip_graph
+msgid "Vehicle Trips"
+msgstr "Поїздки"
+
+#. module: caritas_fleet_request
+#. odoo-python
+#: code:addons/caritas_fleet_request/reports/fleet_reports.py:0
+#: model:ir.actions.act_window,name:caritas_fleet_request.action_fleet_report_vehicle
+#: model:ir.actions.report,name:caritas_fleet_request.report_vehicle_trips
+#: model:ir.model,name:caritas_fleet_request.model_report_caritas_fleet_request_report_vehicle_trips_template
+msgid "Vehicle Trips Report"
+msgstr "Звіт про поїздки автомобіля"
+
+#. module: caritas_fleet_request
+#. odoo-python
+#: code:addons/caritas_fleet_request/reports/fleet_reports.py:0
+#: code:addons/caritas_fleet_request/wizard/fleet_report_period_wizard.py:0
+msgid "Vehicle is required."
+msgstr "Транспортний засіб обов'язковий."
+
+#. module: caritas_fleet_request
+#: model_terms:ir.ui.view,arch_db:caritas_fleet_request.view_caritas_fleet_dashboard
+#: model_terms:ir.ui.view,arch_db:caritas_fleet_request.view_vehicle_trip_graph_department
+msgid "Vehicle usage by departments"
+msgstr "Використання авто за департаментами"
+
+#. module: caritas_fleet_request
+#: model:ir.actions.act_window,name:caritas_fleet_request.action_vehicle_trip_graph_department
+msgid "Vehicle usage by departments in the current year"
+msgstr "Використання авто за департаментами у поточному році"
+
+#. module: caritas_fleet_request
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_department__vehicle_ids
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_department__vehicle_selection_ids
+#: model_terms:ir.ui.view,arch_db:caritas_fleet_request.view_vehicle_department_form
+msgid "Vehicles"
+msgstr "Автомобілі"
+
+#. module: caritas_fleet_request
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_request__website_message_ids
+#: model:ir.model.fields,field_description:caritas_fleet_request.field_vehicle_trip__website_message_ids
+msgid "Website Messages"
+msgstr "Повідомлення з веб-сайту"
+
+#. module: caritas_fleet_request
+#: model:ir.model.fields,help:caritas_fleet_request.field_vehicle_request__website_message_ids
+#: model:ir.model.fields,help:caritas_fleet_request.field_vehicle_trip__website_message_ids
+msgid "Website communication history"
+msgstr "Історія спілкування через веб-сайт"
+
+#. module: caritas_fleet_request
+#: model:ir.model.fields.selection,name:caritas_fleet_request.selection__vehicle_request__trip_type__with_driver
+msgid "With Driver"
+msgstr "З водієм"
+
+#. module: caritas_fleet_request
+#: model:ir.model.fields.selection,name:caritas_fleet_request.selection__vehicle_request__trip_category__work
+msgid "Work"
+msgstr "Робоча"
+
+#. module: caritas_fleet_request
+#. odoo-python
+#: code:addons/caritas_fleet_request/models/calendar_event.py:0
+msgid "You cannot delete a calendar event linked to a vehicle trip manually."
+msgstr "Ви не можете вручну видалити подію календаря, пов'язану з поїздкою на автомобілі."
+
+#. module: caritas_fleet_request
+#. odoo-python
+#: code:addons/caritas_fleet_request/models/calendar_event.py:0
+msgid "You cannot modify a calendar event linked to a vehicle trip manually."
+msgstr "Ви не можете вручну змінити подію календаря, пов'язану з поїздкою на автомобілі."
+
+#. module: caritas_fleet_request
+#. odoo-python
+#: code:addons/caritas_fleet_request/models/vehicle_request.py:0
+msgid "Your vehicle request %s has been approved."
+msgstr "Ваш запит на авто %s був затверджений."
+
+#. module: caritas_fleet_request
+#. odoo-python
+#: code:addons/caritas_fleet_request/models/vehicle_request.py:0
+msgid "Your vehicle request %s has been rejected."
+msgstr "Ваш запит на авто %s був відхилений."
