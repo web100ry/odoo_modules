@@ -22,6 +22,7 @@ Main features:
         "fleet",
         "mail",
         "calendar",
+        "board",
     ],
     "external_dependencies": {
         "python": []
@@ -29,13 +30,15 @@ Main features:
     "data": [
         "security/security.xml",
         "security/ir.model.access.csv",
-        "views/menus.xml",
         "data/vehicle_request_sequence.xml",
         "data/vehicle_trip_sequence.xml",
         "views/vehicle_department_views.xml",
         "views/fleet_vehicle_views.xml",
         "views/fleet_report_wizard_views.xml",
         "views/vehicle_trip_views.xml",
+        "views/vehicle_trip_graph_views.xml",
+        "views/dashboard_views.xml",
+        "views/menus.xml",
         "reports/fleet_report_templates.xml",
         "views/vehicle_request_bulk_approve_wizard.xml",
         "views/vehicle_request_reject_wizard.xml",

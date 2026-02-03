@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Графік: використання авто за департаментами -->
+    <record id="view_vehicle_trip_graph_department" model="ir.ui.view">
+        <field name="name">vehicle.trip.graph.department</field>
+        <field name="model">vehicle.trip</field>
+        <field name="arch" type="xml">
+            <graph string="Використання авто за департаментами" type="pie">
+                <field name="department_id" type="row"/>
+                <field name="id" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <!-- Графік: кількість поїздок за автомобілями -->
+    <record id="view_vehicle_trip_graph_vehicle" model="ir.ui.view">
+        <field name="name">vehicle.trip.graph.vehicle</field>
+        <field name="model">vehicle.trip</field>
+        <field name="arch" type="xml">
+            <graph string="Кількість поїздок за автомобілями" type="pie">
+                <field name="vehicle_id" type="row"/>
+                <field name="id" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+</odoo>
