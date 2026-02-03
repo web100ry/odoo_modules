@@ -33,6 +33,7 @@ Main features:
 
         "data/vehicle_request_sequence.xml",
         "data/vehicle_trip_sequence.xml",
+        "data/mail_channel_data.xml",
 
         "views/menus.xml",
 

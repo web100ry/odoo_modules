@@ -29,6 +29,12 @@ class VehicleRequestRejectWizard(models.TransientModel):
 
         request.state = "rejected"
 
+        request._notify_parties(
+            _("Requester has rejected the work for request %s. Comment: %s") % (request.name, self.comment),
+            notify_driver=True,
+            notify_admin=True
+        )
+
         admin_group = self.env.ref("caritas_fleet_request.group_fleet_admin", raise_if_not_found=False)
         admin_partners = admin_group.users.partner_id if admin_group else self.env["res.partner"]
 

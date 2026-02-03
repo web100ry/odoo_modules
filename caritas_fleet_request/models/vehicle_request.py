@@ -133,7 +133,40 @@ class VehicleRequest(models.Model):
             vals["name"] = self.env["ir.sequence"].next_by_code("vehicle.request") or "New"
         request = super().create(vals)
         request._sync_draft_trip()
+        request._notify_fleet_base_new_request()
         return request
+
+    def _notify_fleet_base_new_request(self):
+        fleet_base_channel = self.env.ref('caritas_fleet_request.channel_fleet_base', raise_if_not_found=False)
+        if not fleet_base_channel:
+            return
+        for request in self:
+            message = _("New vehicle request created: %s") % request.name
+            fleet_base_channel.message_post(
+                body=message,
+                message_type='comment',
+                subtype_xmlid='mail.mt_comment'
+            )
+
+    def _notify_parties(self, message, notify_requester=False, notify_driver=False, notify_admin=False):
+        for request in self:
+            partner_ids = []
+            if notify_requester and request.requester_id:
+                partner_ids.append(request.requester_id.partner_id.id)
+            if notify_driver and request.driver_id:
+                partner_ids.append(request.driver_id.partner_id.id)
+            if notify_admin:
+                admin_group = self.env.ref("caritas_fleet_request.group_fleet_admin", raise_if_not_found=False)
+                if admin_group:
+                    partner_ids.extend(admin_group.users.mapped('partner_id').ids)
+
+            if partner_ids:
+                request.message_post(
+                    body=message,
+                    message_type='comment',
+                    subtype_xmlid='mail.mt_comment',
+                    partner_ids=list(set(partner_ids))
+                )
 
     def write(self, vals):
         res = super().write(vals)
@@ -255,6 +288,11 @@ class VehicleRequest(models.Model):
                 request.trip_id = self.env["vehicle.trip"].create(trip_vals)
             request.state = "approved"
             request.vehicle_id.availability_status = "reserved"
+            request._notify_parties(
+                _("Your vehicle request %s has been approved.") % request.name,
+                notify_requester=True,
+                notify_driver=True
+            )
         return True
 
     def action_reject(self):
@@ -265,6 +303,11 @@ class VehicleRequest(models.Model):
                 request.trip_id.unlink()
                 request.trip_id = False
             request.state = "rejected"
+            request._notify_parties(
+                _("Your vehicle request %s has been rejected.") % request.name,
+                notify_requester=True,
+                notify_driver=True
+            )
         return True
 
     def action_start(self):
@@ -274,6 +317,11 @@ class VehicleRequest(models.Model):
             if request.trip_type == "with_driver" and not request.driver_id:
                 raise ValidationError(_("Driver is required to start this trip."))
             request.state = "in_progress"
+            request._notify_parties(
+                _("The trip for request %s has started.") % request.name,
+                notify_requester=True,
+                notify_admin=True
+            )
         return True
 
     def action_done(self):
@@ -281,6 +329,11 @@ class VehicleRequest(models.Model):
             if request.state != "in_progress":
                 raise ValidationError(_("Only in-progress requests can be completed."))
             request.state = "done"
+            request._notify_parties(
+                _("The trip for request %s has been completed.") % request.name,
+                notify_requester=True,
+                notify_admin=True
+            )
         return True
 
     def action_close(self):
@@ -290,6 +343,11 @@ class VehicleRequest(models.Model):
             request.state = "closed"
             if request.vehicle_id:
                 request.vehicle_id.availability_status = "available"
+            request._notify_parties(
+                _("Requester has accepted the work for request %s.") % request.name,
+                notify_driver=True,
+                notify_admin=True
+            )
         return True
 
     def action_open_reject_wizard(self):
